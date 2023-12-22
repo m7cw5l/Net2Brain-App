@@ -11,7 +11,8 @@ import SwiftUI
 struct Net2BrainApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //WelcomeListView()
+            WelcomeView()
         }
     }
 }

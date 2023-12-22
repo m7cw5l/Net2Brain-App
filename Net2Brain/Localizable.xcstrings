@@ -1,0 +1,610 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+
+    },
+    "0" : {
+
+    },
+    "3D model is being generated" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3D-Modell wird generiert"
+          }
+        }
+      }
+    },
+    "3D not implemented yet" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3D noch nicht implementiert"
+          }
+        }
+      }
+    },
+    "5" : {
+
+    },
+    "10" : {
+
+    },
+    "15" : {
+
+    },
+    "20" : {
+
+    },
+    "25" : {
+
+    },
+    "About" : {
+
+    },
+    "About this app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über diese App"
+          }
+        }
+      }
+    },
+    "All" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        }
+      }
+    },
+    "All ROIs" : {
+
+    },
+    "Anatomical" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anatomie"
+          }
+        }
+      }
+    },
+    "Anatomical streams" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anatomische Ströme"
+          }
+        }
+      }
+    },
+    "Available Datasets" : {
+
+    },
+    "Available distance metrics" : {
+
+    },
+    "Available Evaluation Types" : {
+
+    },
+    "Available Layers for selected ML Model" : {
+
+    },
+    "Available Machine Learning Models" : {
+
+    },
+    "Available Parameters for selected Evaluation Type" : {
+
+    },
+    "available stimulus images" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "verfügbare"
+          }
+        }
+      }
+    },
+    "Body" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körper"
+          }
+        }
+      }
+    },
+    "Body-selective regions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körperselektive Bereiche"
+          }
+        }
+      }
+    },
+    "Calculate Distance Matrix" : {
+
+    },
+    "Calculate RSA" : {
+
+    },
+    "calculating RSA..." : {
+
+    },
+    "calculating..." : {
+
+    },
+    "Deselect All" : {
+
+    },
+    "Dismiss" : {
+
+    },
+    "Done" : {
+
+    },
+    "Early retinotopic visual regions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frühe retinotopische Sehbereiche"
+          }
+        }
+      }
+    },
+    "Encoding accuracy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kodiergenauigkeit"
+          }
+        }
+      }
+    },
+    "Explain what I see here" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erklär mir, was ich hier sehe"
+          }
+        }
+      }
+    },
+    "Face" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesicht"
+          }
+        }
+      }
+    },
+    "Face-selective regions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesichtsselektive Bereiche"
+          }
+        }
+      }
+    },
+    "Heatmap of Metric" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Hemisphere" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemisphäre"
+          }
+        }
+      }
+    },
+    "Here you will see an interactive SceneView when implemented\n\nSelected Hemisphere: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier wird eine interaktive SceneView erscheinen, wenn Sie implementiert wurde.\n\nausgewählte Hemisphäre: %@"
+          }
+        }
+      }
+    },
+    "How the brain data was generated" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie die Gehirndaten erzeugt wurden"
+          }
+        }
+      }
+    },
+    "How to's and explanations" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anleitungen und Erklärungen"
+          }
+        }
+      }
+    },
+    "individual ROIs" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "einzelne ROIs"
+          }
+        }
+      }
+    },
+    "Layer" : {
+
+    },
+    "Left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
+          }
+        }
+      }
+    },
+    "loading Brain RDMs..." : {
+
+    },
+    "loading data..." : {
+
+    },
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, in aut soluta blanditiis fuga doloribus voluptatem, tenetur possimus, earum fugit consequuntur. Quam maiores enim nemo? Mollitia suscipit officiis unde nobis." : {
+
+    },
+    "Mean Pearson's r" : {
+
+    },
+    "Next" : {
+
+    },
+    "OK" : {
+
+    },
+    "Place" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ort"
+          }
+        }
+      }
+    },
+    "Place-selective regions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortsselektive Bereiche"
+          }
+        }
+      }
+    },
+    "Please select an image" : {
+
+    },
+    "Please select ROI" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte ROI auswählen"
+          }
+        }
+      }
+    },
+    "Predict fMRI response with ML model" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhersage der fMRI-Reaktion mit ML-Modell"
+          }
+        }
+      }
+    },
+    "Predict fMRI responses with ML model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhersage der fMRI-Reaktionen mit ML-Modell"
+          }
+        }
+      }
+    },
+    "predicting..." : {
+
+    },
+    "processing data..." : {
+
+    },
+    "R2" : {
+
+    },
+    "Region of Interest" : {
+
+    },
+    "Right" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechts"
+          }
+        }
+      }
+    },
+    "ROI" : {
+
+    },
+    "RSA Chart" : {
+
+    },
+    "Run Prediction" : {
+
+    },
+    "Select All" : {
+
+    },
+    "Select Dataset" : {
+
+    },
+    "Select Distance Metric" : {
+
+    },
+    "Select Evaluation Type" : {
+
+    },
+    "Select ML Model" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell auswählen"
+          }
+        }
+      }
+    },
+    "Select ML Model Layers" : {
+
+    },
+    "Select the ROI you want visualized" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle die ROI aus, welche visualisiert werden soll"
+          }
+        }
+      }
+    },
+    "Show available stimulus images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Stimulusbilder anzeigen"
+          }
+        }
+      }
+    },
+    "Show Heatmap of Metric" : {
+
+    },
+    "Show RSA Chart" : {
+
+    },
+    "The different models explained" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die verschiedenen Modelle erläutert"
+          }
+        }
+      }
+    },
+    "The different regions explained" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die verschiedenen Regionen erläutert"
+          }
+        }
+      }
+    },
+    "the following models are just examples" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "die folgenden Modelle sind nur Beispiele"
+          }
+        }
+      }
+    },
+    "Total Count" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamt"
+          }
+        }
+      }
+    },
+    "Value" : {
+
+    },
+    "Visual" : {
+
+    },
+    "Visualize fMRI data with image" : {
+
+    },
+    "Visualize fMRI data with selected image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRI Daten mit gewähltem Bild visualisieren"
+          }
+        }
+      }
+    },
+    "Visualize vertices" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hirnbereiche visualisieren"
+          }
+        }
+      }
+    },
+    "Visualize vertices on brain surface map" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hirnbereiche visualisieren"
+          }
+        }
+      }
+    },
+    "Welcome" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen"
+          }
+        }
+      }
+    },
+    "What are \"Stimulus images\"?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was sind \"Stimulusbilder\"?"
+          }
+        }
+      }
+    },
+    "What do you see here" : {
+
+    },
+    "What is a ROI?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist ein ROI?"
+          }
+        }
+      }
+    },
+    "What is fMRI data?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was sind fMRI Daten?"
+          }
+        }
+      }
+    },
+    "Why compare brain data with ML models?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warum vergleicht man Hirndaten mit ML Modellen?"
+          }
+        }
+      }
+    },
+    "Word" : {
+
+    },
+    "Word-selective regions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wortselektive Bereiche"
+          }
+        }
+      }
+    },
+    "xEnd" : {
+
+    },
+    "xStart" : {
+
+    },
+    "yEnd" : {
+
+    },
+    "yStart" : {
+
+    }
+  },
+  "version" : "1.0"
+}
