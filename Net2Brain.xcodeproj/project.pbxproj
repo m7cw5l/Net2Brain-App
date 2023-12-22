@@ -1101,7 +1101,6 @@
 		AA7380C52B1DE2A600517431 /* RSAChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChartView.swift; sourceTree = "<group>"; };
 		AA73A2452B0C9F0A00EB13A1 /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
 		AA8037752B28752C000B2CE5 /* PredictionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionResult.swift; sourceTree = "<group>"; };
-		AA8277FC2B29A8FF008E8A0F /* Net2Brain-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Net2Brain-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeGridItemView.swift; sourceTree = "<group>"; };
 		AA8B10DC2AFA2A7300C76E63 /* Dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dist.swift; sourceTree = "<group>"; };
 		AA8B7FF92B1DF39900D3879A /* 78images_fmri_EVC_RDMs.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = 78images_fmri_EVC_RDMs.gzip; sourceTree = "<group>"; };
@@ -1163,7 +1162,6 @@
 		AA1613FB2B107902007FFA70 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				AA8277FB2B29A89C008E8A0F /* C-Code */,
 				AA47B2002ADFAB3300A933D7 /* BrainConverter.swift */,
 				AA202B8F2ACEDC06009D2EE1 /* DataStructures.swift */,
 				AA7380C32B1DE15300517431 /* AvailableData.swift */,
@@ -1637,14 +1635,6 @@
 				AA5AA28D2AB838F80019C38A /* Net2BrainUITestsLaunchTests.swift */,
 			);
 			path = Net2BrainUITests;
-			sourceTree = "<group>";
-		};
-		AA8277FB2B29A89C008E8A0F /* C-Code */ = {
-			isa = PBXGroup;
-			children = (
-				AA8277FC2B29A8FF008E8A0F /* Net2Brain-Bridging-Header.h */,
-			);
-			path = "C-Code";
 			sourceTree = "<group>";
 		};
 		AAF570B12B12417C007DC141 /* data_rdm */ = {
@@ -2739,7 +2729,6 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Net2Brain/Helper/C-Code/Net2Brain-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2775,7 +2764,6 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Net2Brain/Helper/C-Code/Net2Brain-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
