@@ -19,7 +19,7 @@ struct SelectDatasetView: View {
                 PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .dataset)
                 
                 Form {
-                    Picker("Available Datasets", selection: $pipelineParameters.dataset) {
+                    Picker("pipeline.available.datasets.title", selection: $pipelineParameters.dataset) {
                         ForEach(availableDatasets, id: \.name) { dataset in
                             VStack(alignment: .leading) {
                                 Text(dataset.name)
@@ -31,12 +31,12 @@ struct SelectDatasetView: View {
                 NavigationLink(destination: {
                     SelectDatasetImagesView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
                 }, label: {
-                    Text("Next").frame(maxWidth: .infinity).padding(6)
+                    Text("button.next.title").frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedProminentButtonStyle())
                     .padding()
                     .disabled(pipelineParameters.dataset.name == "")
             }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Select Dataset")
+            .navigationTitle("view.pipeline.dataset.title")
             .onChange(of: pipelineParameters.dataset, initial: false) {
                 pipelineParameters.resetDatasetImages()
                 pipelineData.resetPredictionOutputs()

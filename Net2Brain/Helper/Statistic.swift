@@ -7,7 +7,6 @@
 
 import Foundation
 import Matft
-import Numerics
 
 struct Statistic {
     /*func variance(_ array: MfArray, axis: Int) -> Double {

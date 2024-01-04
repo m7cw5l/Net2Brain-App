@@ -35,11 +35,11 @@ struct HeatmapChart: View {
             ForEach(0..<matrix.shape[0], id: \.self) { x in
                 ForEach(0..<matrix.shape[1], id: \.self) { y in
                     RectangleMark(
-                        xStart: .value("xStart", x),
-                        xEnd: .value("xEnd", x + 1),
-                        yStart: .value("yStart", y),
-                        yEnd: .value("yEnd", y + 1)
-                    ).foregroundStyle(by: .value("Value", matrix.item(indices: [x, y], type: Float.self)))
+                        xStart: .value("", x),
+                        xEnd: .value("", x + 1),
+                        yStart: .value("", y),
+                        yEnd: .value("", y + 1)
+                    ).foregroundStyle(by: .value("", matrix.item(indices: [x, y], type: Float.self)))
                 }
             }
         }

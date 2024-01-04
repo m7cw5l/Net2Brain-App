@@ -14,22 +14,22 @@ struct PipelineSelectionView: View {
     
     var body: some View {
         VStack(spacing: 6) {
-            PipelineSelectionRow(title: "Dataset", description: parameterValueText(.dataset))
+            PipelineSelectionRow(title: "pipeline.dataset.title", description: parameterValueText(.dataset))
                 .foregroundStyle(parameterForegroundStyle(.dataset))
-            PipelineSelectionRow(title: "Images", description: parameterValueText(.images))
+            PipelineSelectionRow(title: "pipeline.images.title", description: parameterValueText(.images))
                 .foregroundStyle(parameterForegroundStyle(.images))
             Divider()
-            PipelineSelectionRow(title: "ML Model", description: parameterValueText(.mlModel))
+            PipelineSelectionRow(title: "pipeline.model.title", description: parameterValueText(.mlModel))
                 .foregroundStyle(parameterForegroundStyle(.mlModel))
             /*PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "ML Model Layer" : "ML Model Layers", description: pipelineParameters.mlModel.name == "" ? "select a ML Model" : pipelineParameters.mlModelLayers.count == 0 ? "select model layers" : pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : "\(pipelineParameters.mlModelLayers.count) Layers")
                 .foregroundStyle(parameterForegroundStyle(.mlModelLayer))*/
-            PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "ML Model Layer" : "ML Model Layers", description: parameterValueText(.mlModelLayer))
+            PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "pipeline.model.layer.title" : "pipeline.model.layers.title", description: parameterValueText(.mlModelLayer))
                 .foregroundStyle(parameterForegroundStyle(.mlModelLayer))
             Divider()
-            PipelineSelectionRow(title: "RDM Metric", description: parameterValueText(.rdmMetric))
+            PipelineSelectionRow(title: "pipeline.rdm.title", description: parameterValueText(.rdmMetric))
                 .foregroundStyle(parameterForegroundStyle(.rdmMetric))
             Divider()
-            PipelineSelectionRow(title: "Evaluation Type", description: parameterValueText(.evaluationType))
+            PipelineSelectionRow(title: "pipeline.evaluation.title", description: parameterValueText(.evaluationType))
                 .foregroundStyle(parameterForegroundStyle(.evaluationType))
         }.padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
@@ -94,11 +94,12 @@ struct PipelineSelectionView: View {
         case .dataset:
             return pipelineParameters.dataset.name
         case .images:
-            return pipelineParameters.datasetImages.count == 1 ? "1 image" : "\(pipelineParameters.datasetImages.count) images"
+            //return pipelineParameters.datasetImages.count == 1 ? "1 image" : "\(pipelineParameters.datasetImages.count) images"
+            return String(localized: "pipeline.images.\(pipelineParameters.datasetImages.count)")
         case .mlModel:
             return pipelineParameters.mlModel.name
         case .mlModelLayer:
-            return pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : "\(pipelineParameters.mlModelLayers.count) layers"
+            return pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : String(localized: "pipeline.model.layers.\(pipelineParameters.mlModelLayers.count)")
         case .rdmMetric:
             return pipelineParameters.rdmMetric.name
         case .evaluationType, .evaluationParameter:
@@ -107,7 +108,7 @@ struct PipelineSelectionView: View {
     }
     
     func parameterValueText(_ parameter: PipelineParameter) -> String {
-        return isParameterEmpty(parameter) ? parameter == currentlySelectedParameter ? "select \(parameter.rawValue)" : "will be selected later" : valueForParameter(parameter)
+        return isParameterEmpty(parameter) ? parameter == currentlySelectedParameter ? String(localized: "pipeline.select.parameter.\(currentlySelectedParameter.localizedString())") : "pipeline.selected.later" : valueForParameter(parameter)
     }
     
     func parameterForegroundStyle(_ parameter: PipelineParameter) -> Color {

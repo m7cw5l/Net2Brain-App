@@ -78,14 +78,18 @@ class PipelineParameters {
 }
 
 enum PipelineParameter: String {
-    case none = "None"
-    case dataset = "Dataset"
-    case images = "Images"
-    case mlModel = "ML Model"
-    case mlModelLayer = "Model Layer"
-    case rdmMetric = "RDM Metric"
-    case evaluationType = "Evaluation Type"
-    case evaluationParameter = "Evaluation Parameter"
+    case none = "pipeline.parameter.none"
+    case dataset = "pipeline.parameter.dataset"
+    case images = "pipeline.parameter.images"
+    case mlModel = "pipeline.parameter.model"
+    case mlModelLayer = "pipeline.parameter.model.layer"
+    case rdmMetric = "pipeline.parameter.rdm"
+    case evaluationType = "pipeline.parameter.evaluation.type"
+    case evaluationParameter = "pipeline.parameter.evaluation.parameter"
+    
+    func localizedString() -> String {
+        return String(localized: String.LocalizationValue(self.rawValue))
+    }
 }
 
 struct N2BDataset: Hashable {

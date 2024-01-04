@@ -22,7 +22,7 @@ struct WelcomeGridItemView: View {
                     .fontWeight(.light)
                     .foregroundColor(.accentColor)
                 Spacer()
-                Text(title)/*.font(.headline)*/
+                Text(LocalizedStringKey(title))/*.font(.headline)*/
                     .multilineTextAlignment(.center)
                     .foregroundColor(.primary)
             }

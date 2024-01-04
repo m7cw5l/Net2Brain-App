@@ -16,10 +16,8 @@
 		AA202B882ACED321009D2EE1 /* ImagesOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */; };
 		AA202B8A2ACED36B009D2EE1 /* VisualizeRoiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B892ACED36B009D2EE1 /* VisualizeRoiView.swift */; };
 		AA202B8C2ACED608009D2EE1 /* VisualizeRoiImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B8B2ACED608009D2EE1 /* VisualizeRoiImageView.swift */; };
-		AA202B8E2ACED9FD009D2EE1 /* ModelAccuracyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B8D2ACED9FD009D2EE1 /* ModelAccuracyView.swift */; };
 		AA202B902ACEDC06009D2EE1 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B8F2ACEDC06009D2EE1 /* DataStructures.swift */; };
 		AA2AED252AE7C0F9004753C2 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */; };
-		AA2AED272AE7CAD6004753C2 /* WelcomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2AED262AE7CAD6004753C2 /* WelcomeListView.swift */; };
 		AA2D78ED2AFB7AB8003BCEE4 /* Matft in Frameworks */ = {isa = PBXBuildFile; productRef = AA2D78EC2AFB7AB8003BCEE4 /* Matft */; };
 		AA2F89DB2ADD5E8E0041BCA2 /* image00005.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2F89132ADD5E570041BCA2 /* image00005.png */; };
 		AA2F89E02ADD5E8E0041BCA2 /* image00011.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2F89182ADD5E590041BCA2 /* image00011.png */; };
@@ -524,14 +522,11 @@
 		AA5CB9F02B15CAA200A5C2CC /* 78images_00073.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA5CB9A22B15CAA200A5C2CC /* 78images_00073.jpg */; };
 		AA5CB9F22B15D9C100A5C2CC /* PipelineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */; };
 		AA5CB9F42B15E0B500A5C2CC /* PipelineSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */; };
-		AA5EC1BC2B20C81700984C27 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = AA5EC1BB2B20C81700984C27 /* Numerics */; };
-		AA5EC1BE2B20C81700984C27 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = AA5EC1BD2B20C81700984C27 /* RealModule */; };
 		AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */; };
 		AA6EDE2F2B17400C004EFBCF /* HeatmapChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */; };
 		AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C32B1DE15300517431 /* AvailableData.swift */; };
 		AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C52B1DE2A600517431 /* RSAChartView.swift */; };
 		AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73A2452B0C9F0A00EB13A1 /* RSA.swift */; };
-		AA8037762B28752C000B2CE5 /* PredictionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8037752B28752C000B2CE5 /* PredictionResult.swift */; };
 		AA894E2A2AE24C41005ABC3C /* WelcomeGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */; };
 		AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B10DC2AFA2A7300C76E63 /* Dist.swift */; };
 		AA8B80052B1DF66400D3879A /* 78images_fmri_T2_IT_RDMs.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA8B7FFA2B1DF39A00D3879A /* 78images_fmri_T2_IT_RDMs.gzip */; };
@@ -548,6 +543,9 @@
 		AA8B80102B1DF66900D3879A /* 92images_fmri_EVC_RDMs.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA8B80032B1DF3A600D3879A /* 92images_fmri_EVC_RDMs.gzip */; };
 		AA969A672B1A3F49002A5900 /* vgg11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AA969A652B1A3F48002A5900 /* vgg11.mlpackage */; };
 		AA969A682B1A3F49002A5900 /* vgg13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AA969A662B1A3F49002A5900 /* vgg13.mlpackage */; };
+		AA9ADFEF2B46CFD900818FDB /* ExplanationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */; };
+		AA9ADFF12B46D1E500818FDB /* ExplanationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFF02B46D1E500818FDB /* ExplanationButton.swift */; };
+		AA9ADFF32B46D5F900818FDB /* ExplanationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */; };
 		AA9BEB4A2AD4238E001B3DA2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */; };
 		AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */; };
 		AAC0F9B42B18CF9C002A7A65 /* alexnet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */; };
@@ -586,10 +584,8 @@
 		AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesOverviewView.swift; sourceTree = "<group>"; };
 		AA202B892ACED36B009D2EE1 /* VisualizeRoiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeRoiView.swift; sourceTree = "<group>"; };
 		AA202B8B2ACED608009D2EE1 /* VisualizeRoiImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeRoiImageView.swift; sourceTree = "<group>"; };
-		AA202B8D2ACED9FD009D2EE1 /* ModelAccuracyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAccuracyView.swift; sourceTree = "<group>"; };
 		AA202B8F2ACEDC06009D2EE1 /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
-		AA2AED262AE7CAD6004753C2 /* WelcomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeListView.swift; sourceTree = "<group>"; };
 		AA2F89132ADD5E570041BCA2 /* image00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image00005.png; sourceTree = "<group>"; };
 		AA2F89182ADD5E590041BCA2 /* image00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image00011.png; sourceTree = "<group>"; };
 		AA2F891A2ADD5E5A0041BCA2 /* image00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image00014.png; sourceTree = "<group>"; };
@@ -1100,7 +1096,6 @@
 		AA7380C32B1DE15300517431 /* AvailableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableData.swift; sourceTree = "<group>"; };
 		AA7380C52B1DE2A600517431 /* RSAChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChartView.swift; sourceTree = "<group>"; };
 		AA73A2452B0C9F0A00EB13A1 /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
-		AA8037752B28752C000B2CE5 /* PredictionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionResult.swift; sourceTree = "<group>"; };
 		AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeGridItemView.swift; sourceTree = "<group>"; };
 		AA8B10DC2AFA2A7300C76E63 /* Dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dist.swift; sourceTree = "<group>"; };
 		AA8B7FF92B1DF39900D3879A /* 78images_fmri_EVC_RDMs.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = 78images_fmri_EVC_RDMs.gzip; sourceTree = "<group>"; };
@@ -1117,6 +1112,9 @@
 		AA8B80042B1DF3A600D3879A /* 92images_meg_MEG_RDMs_late.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = 92images_meg_MEG_RDMs_late.gzip; sourceTree = "<group>"; };
 		AA969A652B1A3F48002A5900 /* vgg11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vgg11.mlpackage; sourceTree = "<group>"; };
 		AA969A662B1A3F49002A5900 /* vgg13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vgg13.mlpackage; sourceTree = "<group>"; };
+		AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationSheet.swift; sourceTree = "<group>"; };
+		AA9ADFF02B46D1E500818FDB /* ExplanationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationButton.swift; sourceTree = "<group>"; };
+		AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationMenuButton.swift; sourceTree = "<group>"; };
 		AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = resnet50.mlpackage; sourceTree = "<group>"; };
 		AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = alexnet.mlpackage; sourceTree = "<group>"; };
@@ -1136,8 +1134,6 @@
 			files = (
 				AA2D78ED2AFB7AB8003BCEE4 /* Matft in Frameworks */,
 				AA3D9F632ADFD1BA00F782F6 /* Gzip in Frameworks */,
-				AA5EC1BC2B20C81700984C27 /* Numerics in Frameworks */,
-				AA5EC1BE2B20C81700984C27 /* RealModule in Frameworks */,
 				AA202B7E2ACEB992009D2EE1 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1578,11 +1574,12 @@
 				AA1613FB2B107902007FFA70 /* Helper */,
 				AA5AA2702AB838F70019C38A /* Net2BrainApp.swift */,
 				AA202B812ACECDA9009D2EE1 /* WelcomeView.swift */,
-				AA2AED262AE7CAD6004753C2 /* WelcomeListView.swift */,
 				AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */,
+				AA9ADFF02B46D1E500818FDB /* ExplanationButton.swift */,
+				AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */,
+				AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */,
 				AA202B892ACED36B009D2EE1 /* VisualizeRoiView.swift */,
 				AA202B8B2ACED608009D2EE1 /* VisualizeRoiImageView.swift */,
-				AA202B8D2ACED9FD009D2EE1 /* ModelAccuracyView.swift */,
 				AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */,
 				AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */,
 				AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */,
@@ -1607,7 +1604,6 @@
 				AA5AA2742AB838F80019C38A /* Assets.xcassets */,
 				AA5AA2762AB838F80019C38A /* Preview Content */,
 				AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */,
-				AA8037752B28752C000B2CE5 /* PredictionResult.swift */,
 			);
 			path = Net2Brain;
 			sourceTree = "<group>";
@@ -1878,8 +1874,6 @@
 				AA202B7D2ACEB992009D2EE1 /* Kingfisher */,
 				AA3D9F622ADFD1BA00F782F6 /* Gzip */,
 				AA2D78EC2AFB7AB8003BCEE4 /* Matft */,
-				AA5EC1BB2B20C81700984C27 /* Numerics */,
-				AA5EC1BD2B20C81700984C27 /* RealModule */,
 			);
 			productName = Net2Brain;
 			productReference = AA5AA26D2AB838F70019C38A /* Net2Brain.app */;
@@ -1959,7 +1953,6 @@
 				AA202B7C2ACEB992009D2EE1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AA3D9F612ADFD1BA00F782F6 /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				AA2D78EB2AFB7AB8003BCEE4 /* XCRemoteSwiftPackageReference "Matft" */,
-				AA5EC1BA2B20C81700984C27 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = AA5AA26E2AB838F70019C38A /* Products */;
 			projectDirPath = "";
@@ -2510,9 +2503,8 @@
 			files = (
 				AA202B822ACECDA9009D2EE1 /* WelcomeView.swift in Sources */,
 				AAC0F9B52B18CF9C002A7A65 /* resnet34.mlpackage in Sources */,
-				AA202B8E2ACED9FD009D2EE1 /* ModelAccuracyView.swift in Sources */,
+				AA9ADFF32B46D5F900818FDB /* ExplanationMenuButton.swift in Sources */,
 				AA894E2A2AE24C41005ABC3C /* WelcomeGridItemView.swift in Sources */,
-				AA2AED272AE7CAD6004753C2 /* WelcomeListView.swift in Sources */,
 				AA202B862ACED24A009D2EE1 /* SelectMLModelView.swift in Sources */,
 				AA5CB9F22B15D9C100A5C2CC /* PipelineSelectionView.swift in Sources */,
 				AA202B882ACED321009D2EE1 /* ImagesOverviewView.swift in Sources */,
@@ -2523,8 +2515,10 @@
 				AA5CB9F42B15E0B500A5C2CC /* PipelineSelectionRow.swift in Sources */,
 				AAD0EE9F2B1F31430058FF33 /* Statistic.swift in Sources */,
 				AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */,
+				AA9ADFF12B46D1E500818FDB /* ExplanationButton.swift in Sources */,
 				AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */,
 				AAF570AE2B123E40007DC141 /* SelectEvaluationTypeView.swift in Sources */,
+				AA9ADFEF2B46CFD900818FDB /* ExplanationSheet.swift in Sources */,
 				AA47B2012ADFAB3300A933D7 /* BrainConverter.swift in Sources */,
 				AA202B8A2ACED36B009D2EE1 /* VisualizeRoiView.swift in Sources */,
 				AA2AED252AE7C0F9004753C2 /* AboutAppView.swift in Sources */,
@@ -2541,7 +2535,6 @@
 				AAF570B02B1240CF007DC141 /* SelectDatasetImagesView.swift in Sources */,
 				AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */,
 				AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */,
-				AA8037762B28752C000B2CE5 /* PredictionResult.swift in Sources */,
 				AA969A672B1A3F49002A5900 /* vgg11.mlpackage in Sources */,
 				AAC0F9BA2B18E555002A7A65 /* resnet18.mlpackage in Sources */,
 			);
@@ -2911,14 +2904,6 @@
 				minimumVersion = 6.0.1;
 			};
 		};
-		AA5EC1BA2B20C81700984C27 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-numerics.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2936,16 +2921,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA3D9F612ADFD1BA00F782F6 /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
-		};
-		AA5EC1BB2B20C81700984C27 /* Numerics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA5EC1BA2B20C81700984C27 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = Numerics;
-		};
-		AA5EC1BD2B20C81700984C27 /* RealModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA5EC1BA2B20C81700984C27 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = RealModule;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -28,7 +28,7 @@ struct SelectDatasetImagesView: View {
                         pipelineParameters.datasetImages.removeAll()
                         pipelineParameters.datasetImages.append(contentsOf: pipelineParameters.dataset.images)
                     }, label: {
-                        Text("Select All").frame(maxWidth: .infinity).padding(6)
+                        Text("button.select.all.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
                         .padding(.leading)
                         .disabled(pipelineParameters.datasetImages.count == pipelineParameters.dataset.images.count)
@@ -36,43 +36,23 @@ struct SelectDatasetImagesView: View {
                     Button(action: {
                         pipelineParameters.datasetImages.removeAll()
                     }, label: {
-                        Text("Deselect All").frame(maxWidth: .infinity).padding(6)
+                        Text("button.deselect.all.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
                         .padding(.trailing)
                         .disabled(pipelineParameters.datasetImages.count == 0)
                 }
                 //Text("Select random images:").font(.headline)
-                HStack {
-                    Button(action: {
-                        selectRandomImages(5)
-                    }, label: {
-                        Text("5").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        selectRandomImages(10)
-                    }, label: {
-                        Text("10").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        selectRandomImages(15)
-                    }, label: {
-                        Text("15").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        selectRandomImages(20)
-                    }, label: {
-                        Text("20").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        selectRandomImages(25)
-                    }, label: {
-                        Text("25").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                }.padding(.horizontal)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach([5, 10, 15, 20, 25, 30, 35, 40], id: \.self) { number in
+                            Button(action: {
+                                selectRandomImages(number)
+                            }, label: {
+                                Text("\(number)").frame(maxWidth: .infinity).padding(6)
+                            }).buttonStyle(BorderedButtonStyle())
+                        }
+                    }.padding(.horizontal)
+                }
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 2) {
@@ -103,12 +83,12 @@ struct SelectDatasetImagesView: View {
                 NavigationLink(destination: {
                     SelectMLModelView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
                 }, label: {
-                    Text("Next").frame(maxWidth: .infinity).padding(6)
+                    Text("button.next.title").frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedProminentButtonStyle())
                     .padding()
                     .disabled(pipelineParameters.datasetImages.count == 0)
             }.background(Color(uiColor: .systemGroupedBackground))
-                .navigationTitle("Please select an image")
+                .navigationTitle("view.pipeline.dataset.images.title")
                 .navigationBarTitleDisplayMode(.inline)
                 .onChange(of: pipelineParameters.datasetImages) {
                     pipelineData.resetPredictionOutputs()

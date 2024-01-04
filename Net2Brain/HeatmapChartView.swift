@@ -19,33 +19,44 @@ struct HeatmapChartView: View {
     @State var currentLayer: N2BMLLayer = N2BMLLayer(name: "", description: "", coremlKey: "")
     @State var currentMatrix: MfArray = MfArray((1...100).map { _ in Float.random(in: 0...1) }, shape: [10, 10])
     
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    
     var body: some View {
         NavigationStack {
             VStack {
                 PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
                 
                 if matrices.count > 1 {
-                    Picker("Available distance metrics", selection: $currentLayer) {
-                        ForEach(pipelineParameters.mlModelLayers, id: \.self) {
-                            Text($0.name).tag($0)
-                        }
-                    }//.pickerStyle(.segmented)
-                    .padding(.horizontal)
+                    HStack {
+                        Text("pipeline.heatmap.layer.select.title").font(.headline)
+                        Picker("pipeline.heatmap.available.layers", selection: $currentLayer) {
+                            ForEach(pipelineParameters.mlModelLayers, id: \.self) {
+                                Text($0.name).tag($0)
+                            }
+                        }//.pickerStyle(.segmented)
+                    }.padding(.horizontal)
                 }
                 HeatmapChart(matrix: currentMatrix)
-                    //.padding()
-                    //.background(Color(uiColor: .secondarySystemGroupedBackground))
-                    //.clipShape(.rect(cornerRadius: 16))
-                    //.padding(.horizontal)
-                
+                Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
+                    explanation.show.toggle()
+                }).padding([.top])
             }.padding(.vertical)
             .background(Color(uiColor: .systemGroupedBackground))
-                .navigationTitle("Heatmap of Metric")
+                .navigationTitle("view.pipeline.heatmap.title")
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
-                    Button("Done") {
-                        dismiss()
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("button.done.title") {
+                            dismiss()
+                        }
                     }
+                    /*ToolbarItem(placement: .topBarLeading) {
+                        Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                            Button("What does the heatmap show me?") {
+                                
+                            }
+                        })
+                    }*/
                 }
         }.onAppear {
             currentLayer = pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")
@@ -54,6 +65,10 @@ struct HeatmapChartView: View {
         .onChange(of: currentLayer, initial: true, {
             currentMatrix = matrices[currentLayer.coremlKey] ?? MfArray([-1])
         })
+        .sheet(isPresented: $explanation.show) {
+            /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+            ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
+        }
     }
 }
 

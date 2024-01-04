@@ -20,6 +20,8 @@ struct SelectMLLayersView: View {
     @State var predictionStatus = PredictionStatus.none
     @State var predictionProgress = 0.0
     
+    @State var currentExplanation = Explanation(title: "", description: "", show: false)
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -31,7 +33,7 @@ struct SelectMLLayersView: View {
                         pipelineParameters.mlModelLayers.removeAll()
                         pipelineParameters.mlModelLayers.append(contentsOf: pipelineParameters.mlModel.layers)
                     }, label: {
-                        Text("Select All").frame(maxWidth: .infinity).padding(6)
+                        Text("button.select.all.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
                         .padding(.leading)
                         .disabled(pipelineParameters.mlModelLayers.count == pipelineParameters.mlModel.layers.count)
@@ -39,13 +41,13 @@ struct SelectMLLayersView: View {
                     Button(action: {
                         pipelineParameters.mlModelLayers.removeAll()
                     }, label: {
-                        Text("Deselect All").frame(maxWidth: .infinity).padding(6)
+                        Text("button.deselect.all.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
                         .padding(.trailing)
                         .disabled(pipelineParameters.mlModelLayers.count == 0)
                 }
                 List {
-                    Section("Available Layers for selected ML Model") {
+                    Section("pipeline.model.layers.available.title") {
                         ForEach(pipelineParameters.mlModel.layers, id: \.name) { layer in
                             Button(action: {
                                 if pipelineParameters.mlModelLayers.contains(layer) {
@@ -57,7 +59,7 @@ struct SelectMLLayersView: View {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(layer.name).foregroundColor(.primary)
-                                        Text(layer.description).font(.caption).foregroundColor(.primary)
+                                        Text(layer.description).font(.caption).fontDesign(.monospaced).foregroundColor(.primary)
                                     }
                                     if pipelineParameters.mlModelLayers.contains(layer) {
                                         Spacer()
@@ -77,7 +79,7 @@ struct SelectMLLayersView: View {
                             await predict()
                         }
                     }, label: {
-                        Text(predictionStatus == .predicting ? "predicting..." : predictionStatus == .processingData ? "processing data..." : "Run Prediction").frame(maxWidth: .infinity).padding(6)
+                        Text(predictionStatus == .predicting ? "pipeline.ml.progress.predicting" : predictionStatus == .processingData ? "pipeline.ml.progress.processing" : "pipeline.ml.button.start.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedProminentButtonStyle())
                         .padding()
                         .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count != 0 || isCalculating)
@@ -85,17 +87,25 @@ struct SelectMLLayersView: View {
                     NavigationLink(destination: {
                         SelectRDMMetricView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
                     }, label: {
-                        Text("Next").frame(maxWidth: .infinity).padding(6)
+                        Text("button.next.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedProminentButtonStyle())
                         .padding()
                         .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count == 0)
                 }
                 
             }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Select ML Model Layers")
+            .navigationTitle("view.pipeline.model.layer.title")
+            .toolbar {
+                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                    ExplanationMenuButton(title: "explanation.model.layer.title", description: "explanation.model.layer", currentExplanation: $currentExplanation)
+                })
+            }
             .onChange(of: pipelineParameters.mlModelLayers) {
                 pipelineData.resetPredictionOutputs()
                 pipelineData.resetDistanceMatrices()
+            }.sheet(isPresented: $currentExplanation.show) {
+                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
             }
         }
     }
@@ -110,32 +120,44 @@ struct SelectMLLayersView: View {
         case "AlexNet":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictAlexNet(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         case "ResNet18":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet18(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         case "ResNet34":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet34(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         case "ResNet50":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet50(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         case "VGG11":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg11(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         case "VGG13":
             self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg13(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
-                self.predictionProgress = progress
+                withAnimation {
+                    self.predictionProgress = progress
+                }
             })
         default:
             break

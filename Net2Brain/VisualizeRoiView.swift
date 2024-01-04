@@ -28,24 +28,23 @@ struct VisualizeRoiView: View {
         scene.rootNode.childNode(withName: "camera", recursively: false)
     }
     
-    
-    @State private var showExplaination = false
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
         
     var body: some View {
         NavigationStack {
             VStack {
-                // https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-two-views-the-same-width-or-height#:~:text=SwiftUI%20makes%20it%20easy%20to,for%20a%20GeometryReader%20or%20similar.; 16.10.23 16:05
+                // https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-two-views-the-same-width-or-height#; 16.10.23 16:05
                 HStack {
                     VStack {
-                        Text("Region of Interest").font(.headline)
-                        Picker("ROI", selection: $selectedRoi) {
-                            Label("All ROIs", systemImage: "brain").tag(ROI.all)
-                            Label("Visual", systemImage: "eyes").tag(ROI.visual)
-                            Label("Body", systemImage: "figure.stand").tag(ROI.body)
-                            Label("Face", systemImage: "face.smiling").tag(ROI.face)
-                            Label("Place", systemImage: "map").tag(ROI.place)
-                            Label("Word", systemImage: "text.bubble").tag(ROI.word)
-                            Label("Anatomical", systemImage: "figure.run").tag(ROI.anatomical)
+                        Text("roi.title.long").font(.headline)
+                        Picker("roi.title", selection: $selectedRoi) {
+                            Label("roi.all", systemImage: "brain").tag(ROI.all)
+                            Label("roi.visual", systemImage: "eyes").tag(ROI.visual)
+                            Label("roi.body", systemImage: "figure.stand").tag(ROI.body)
+                            Label("roi.face", systemImage: "face.smiling").tag(ROI.face)
+                            Label("roi.place", systemImage: "map").tag(ROI.place)
+                            Label("roi.word", systemImage: "text.bubble").tag(ROI.word)
+                            Label("roi.anatomical", systemImage: "figure.run").tag(ROI.anatomical)
                         }
                     }.padding(.vertical)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -53,10 +52,10 @@ struct VisualizeRoiView: View {
                     .clipShape(.rect(cornerRadius: 16))
                     
                     VStack {
-                        Text("Hemisphere").font(.headline)
-                        Picker("Hemisphere", selection: $selectedHemisphere) {
-                            Text("Left").tag("left")
-                            Text("Right").tag("right")
+                        Text("hemisphere.title").font(.headline)
+                        Picker("hemisphere.title", selection: $selectedHemisphere) {
+                            Text("hemisphere.left").tag("left")
+                            Text("hemisphere.right").tag("right")
                         }.pickerStyle(.segmented)
                         .fixedSize()
                     }.padding()
@@ -80,7 +79,7 @@ struct VisualizeRoiView: View {
                         VStack {
                             ProgressView()
                             Spacer().frame(height: 8.0)
-                            Text("3D model is being generated").font(.callout)
+                            Text("3d.model.generation.running").font(.callout)
                         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         .background()
                         .zIndex(2.0)
@@ -90,13 +89,13 @@ struct VisualizeRoiView: View {
                 .background()
                 .clipShape(.rect(cornerRadius: 16))
                 
-                Button("Explain what I see here", systemImage: "questionmark.circle", action: {
-                    showExplaination.toggle()
+                Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
+                    explanation.show.toggle()
                 }).padding([.top])
             }
             .padding()
             .background(Color(uiColor: UIColor.secondarySystemBackground))
-                .navigationTitle("Visualize vertices")
+                .navigationTitle("view.roi.visualize.title")
                 .navigationBarTitleDisplayMode(.inline)
         }.onAppear {
             scene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
@@ -116,11 +115,9 @@ struct VisualizeRoiView: View {
                     loadingBrain = false
                 }
             }
-        }
-        .alert("What do you see here", isPresented: $showExplaination) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, in aut soluta blanditiis fuga doloribus voluptatem, tenetur possimus, earum fugit consequuntur. Quam maiores enim nemo? Mollitia suscipit officiis unde nobis.")
+        }.sheet(isPresented: $explanation.show) {
+            /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+            ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
         }
     }
 }

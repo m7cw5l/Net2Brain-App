@@ -14,9 +14,9 @@ struct PipelineSelectionRow: View {
     
     var body: some View {
         HStack {
-            Text(title).font(.headline)
+            Text(LocalizedStringKey(title)).font(.headline)
             Spacer()
-            Text(description)
+            Text(LocalizedStringKey(description))
         }
     }
 }

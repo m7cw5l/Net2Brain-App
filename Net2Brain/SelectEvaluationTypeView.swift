@@ -19,13 +19,15 @@ struct SelectEvaluationTypeView: View {
     @State var rsaStatus = RSAStatus.none
     @State var rsaProgress = 0.0
     
+    @State var currentExplanation = Explanation(title: "", description: "", show: false)
+    
     var body: some View {
         NavigationStack {
             VStack {
                 PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .evaluationType)
                 
                 Form {
-                    Picker("Available Evaluation Types", selection: $pipelineParameters.evaluationType) {
+                    Picker("pipeline.available.evaluation.types.title", selection: $pipelineParameters.evaluationType) {
                         ForEach(availableEvaluationTypes, id: \.self) { evalType in
                             VStack(alignment: .leading) {
                                 Text(evalType.name)
@@ -35,7 +37,7 @@ struct SelectEvaluationTypeView: View {
                     }.pickerStyle(.inline)
                     
                     if pipelineParameters.evaluationType.name != "" {
-                        Picker("Available Parameters for selected Evaluation Type", selection: $pipelineParameters.evaluationParameter) {
+                        Picker("pipeline.available.evaluation.parameters.title", selection: $pipelineParameters.evaluationParameter) {
                             ForEach(pipelineParameters.evaluationType.parameters, id: \.self) { parameter in
                                 VStack(alignment: .leading) {
                                     Text(parameter.name)
@@ -57,13 +59,16 @@ struct SelectEvaluationTypeView: View {
                             rsaStatus = .loadingData
                             let rsa = RSA()
                             let brainRdms = await rsa.loadBrainRdms(dataset: pipelineParameters.dataset.name, images: pipelineParameters.datasetImages, progressCallback: { progress in
-                                rsaProgress = progress
+                                withAnimation {
+                                    rsaProgress = progress
+                                }
                             })
                             rsaStatus = .calculatingRSA
                             rsaProgress = 0.0
                             allRoisOutput = await rsa.evaluate(brainRdms: brainRdms, modelName: pipelineParameters.mlModel.name, modelRdms: pipelineData.distanceMatrices, progressCallback: { progress in
-                                print("RSA Progress: \(progress)")
-                                rsaProgress = progress
+                                withAnimation {
+                                    rsaProgress = progress
+                                }
                             })
                             
                             isCalculating = false
@@ -80,7 +85,7 @@ struct SelectEvaluationTypeView: View {
                             //print(allRoisOutput)
                         }
                     }, label: {
-                        Text(rsaStatus == .loadingData ? "loading Brain RDMs..." : rsaStatus == .calculatingRSA ? "calculating RSA..." : "Calculate RSA").frame(maxWidth: .infinity).padding(6)
+                        Text(rsaStatus == .loadingData ? "pipeline.evaluation.progress.loading" : rsaStatus == .calculatingRSA ? "pipeline.evaluation.progress.calculating" : "pipeline.evaluation.button.start.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedProminentButtonStyle())
                         .padding([.leading, .trailing, .bottom])
                         .disabled(pipelineParameters.evaluationType.name == "" || pipelineParameters.evaluationParameter.name == "" || isCalculating)
@@ -88,7 +93,7 @@ struct SelectEvaluationTypeView: View {
                     NavigationLink(destination: {
                         RSAChartView(pipelineParameters: pipelineParameters, allRoisOutput: allRoisOutput)
                     }, label: {
-                        Text("Show RSA Chart").frame(maxWidth: .infinity).padding(6)
+                        Text("pipeline.evaluation.button.chart.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedProminentButtonStyle())
                         .padding([.leading, .trailing, .bottom])
                         .disabled(pipelineParameters.evaluationType.name == "" || pipelineParameters.evaluationParameter.name == "")
@@ -97,7 +102,15 @@ struct SelectEvaluationTypeView: View {
                     
                 
             }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Select Evaluation Type")
+            .navigationTitle("view.pipeline.evaluation.title")
+            .toolbar {
+                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                    ExplanationMenuButton(title: "explanation.evaluation.type.title", description: "explanation.evaluation.type", currentExplanation: $currentExplanation)
+                })
+            }.sheet(isPresented: $currentExplanation.show) {
+                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
+            }
         }.onAppear {
             let firstEvaluationType = availableEvaluationTypes.first ?? N2BEvaluationType(name: "", description: "", parameters: [])
             pipelineParameters.evaluationType = firstEvaluationType

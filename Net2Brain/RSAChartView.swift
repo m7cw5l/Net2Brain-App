@@ -13,6 +13,8 @@ struct RSAChartView: View {
     
     var allRoisOutput: [RSAOutput]
     
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    
     var body: some View {
         VStack {
             PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
@@ -20,23 +22,31 @@ struct RSAChartView: View {
             Chart {
                 ForEach(allRoisOutput, id: \.self) { rsaOutput in
                     BarMark(
-                        x: .value("R2", rsaOutput.r2),
-                        y: .value("ROI", rsaOutput.roi)
-                    ).foregroundStyle(by: .value("Layer", rsaOutput.layer))
-                        .position(by: .value("Layer", rsaOutput.layer))
+                        x: .value("pipeline.evaluation.chart.r2", rsaOutput.r2),
+                        y: .value("pipeline.evaluation.chart.roi", rsaOutput.roi)
+                    ).foregroundStyle(by: .value("pipeline.evaluation.chart.layer", rsaOutput.layer))
+                        .position(by: .value("pipeline.evaluation.chart.layer", rsaOutput.layer))
                 }
             }
-            .chartXAxisLabel("R2")
+            .chartXAxisLabel(String(localized: "pipeline.evaluation.chart.r2"))
             //.chartXScale(domain: 0...1)
-            .chartYAxisLabel("ROIs")
+            .chartYAxisLabel(String(localized: "pipeline.evaluation.chart.rois"))
             /*.chartForegroundStyleScale([
              "left": .blue,
              "right": .orange
              ])*/
             .padding()
             
+            Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
+                explanation.show.toggle()
+            }).padding([.top])
+            
         }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("RSA Chart")
+            .navigationTitle("view.pipeline.evaluation.chart.title")
+            .sheet(isPresented: $explanation.show) {
+                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+                ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
+            }
     }
 }
 

@@ -10,13 +10,6 @@ import Matft
 
 struct SelectRDMMetricView: View {
     
-    /*let metrics = ["Euclidian", "Manhattan", "Cosine", "Correlation"]
-    
-    @Binding var selectedDataset: String
-    @Binding var selectedMLModel: String
-    @Binding var selectedLayer: String
-    @State var selectedMetric = ""*/
-    
     @State var pipelineParameters: PipelineParameters
     @StateObject var pipelineData: PipelineData
     
@@ -24,13 +17,15 @@ struct SelectRDMMetricView: View {
     
     @State var showHeatmap = false
     
+    @State var currentExplanation = Explanation(title: "", description: "", show: false)
+    
     var body: some View {
         NavigationStack {
             VStack {
                 PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .rdmMetric)
                 
                 Form {
-                    Picker("Available distance metrics", selection: $pipelineParameters.rdmMetric) {
+                    Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
                         ForEach(availableRDMMetrics, id: \.self) { metric in
                             VStack(alignment: .leading) {
                                 Text(metric.name)
@@ -45,7 +40,7 @@ struct SelectRDMMetricView: View {
                         await calculateDistanceMatrices()
                     }
                 }, label: {
-                    Text(isCalculating ? "calculating..." : "Calculate Distance Matrix").frame(maxWidth: .infinity).padding(6)
+                    Text(isCalculating ? "pipeline.rdm.calculating" : "pipeline.rdm.button.start.title").frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedProminentButtonStyle())
                     .padding()
                     .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count != 0 || isCalculating)
@@ -55,39 +50,47 @@ struct SelectRDMMetricView: View {
                 Button(action: {
                     showHeatmap.toggle()
                 }, label: {
-                    Text("Show Heatmap of Metric").frame(maxWidth: .infinity).padding(6)
+                    Text("pipeline.rdm.button.heatmap.title").frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedButtonStyle())
                     .padding([.top, .leading, .trailing])
-                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0)
+                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
                 
                 NavigationLink(destination: {
                     SelectEvaluationTypeView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
                 }, label: {
-                    Text("Next").frame(maxWidth: .infinity).padding(6)
+                    Text("button.next.title").frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedProminentButtonStyle())
                     .padding([.leading, .trailing, .bottom])
-                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0)
+                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
                 
             }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Select Distance Metric")
+            .navigationTitle("view.pipeline.rdm.title")
+            .toolbar {
+                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                    ExplanationMenuButton(title: "explanation.rdm.title", description: "explanation.rdm", currentExplanation: $currentExplanation)
+                })
+            }
             .onChange(of: pipelineParameters.rdmMetric) {
                 pipelineData.resetDistanceMatrices()
             }
             .sheet(isPresented: $showHeatmap) {
                 HeatmapChartView(pipelineParameters: $pipelineParameters, matrices: pipelineData.distanceMatrices)
+            }.sheet(isPresented: $currentExplanation.show) {
+                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
             }
         }
     }
     
     func calcDistanceMatrix(input: MfArray) async -> MfArray {
         switch pipelineParameters.rdmMetric.name {
-        case "Euclidean":
+        case String(localized: "pipeline.rdm.metric.euclidean.title"):
             return await euclidean(x: input) ?? MfArray([-1])
-        case "Manhattan":
+        case String(localized: "pipeline.rdm.metric.manhattan.title"):
             return await manhattan(x: input) ?? MfArray([-1])
-        case "Cosine":
+        case String(localized: "pipeline.rdm.metric.cosine.title"):
             return await cosine(x: input) ?? MfArray([-1])
-        case "Correlation":
+        case String(localized: "pipeline.rdm.metric.correlation.title"):
             return await correlation(x: input) ?? MfArray([-1])
         default:
             break

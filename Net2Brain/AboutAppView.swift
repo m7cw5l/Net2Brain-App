@@ -14,9 +14,9 @@ struct AboutAppView: View {
         NavigationStack {
             List {
                 Text("Hello, World!")
-            }.navigationTitle("About this app")
+            }.navigationTitle("view.about.title")
                 .toolbar {
-                    Button("Dismiss", systemImage: "xmark") {
+                    Button("button.dismiss.title", systemImage: "xmark") {
                         dismiss()
                     }
                 }

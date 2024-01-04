@@ -51,7 +51,7 @@ struct ImageSelectorView: View {
                         }
                     }
                 }.padding(.horizontal)
-            }.navigationTitle("Please select an image")
+            }.navigationTitle("view.image.select.title")
                 .navigationBarTitleDisplayMode(.inline)
         }
             

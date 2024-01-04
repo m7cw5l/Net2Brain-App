@@ -1,609 +1,1983 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lld" : {
 
     },
     "0" : {
 
     },
-    "3D model is being generated" : {
+    "3d.model.generation.running" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3D-Modell wird generiert"
+            "value" : "3D Modell wird generiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3D model is being generated"
           }
         }
       }
     },
-    "3D not implemented yet" : {
+    "button.deselect.all.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3D noch nicht implementiert"
+            "value" : "Alle abwählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deselect All"
           }
         }
       }
     },
-    "5" : {
-
-    },
-    "10" : {
-
-    },
-    "15" : {
-
-    },
-    "20" : {
-
-    },
-    "25" : {
-
-    },
-    "About" : {
-
-    },
-    "About this app" : {
+    "button.dismiss.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Über diese App"
+            "value" : "Schließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
           }
         }
       }
     },
-    "All" : {
-      "extractionState" : "stale",
+    "button.done.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle"
+            "value" : "Fertig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         }
       }
     },
-    "All ROIs" : {
-
-    },
-    "Anatomical" : {
+    "button.next.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anatomie"
+            "value" : "Weiter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
           }
         }
       }
     },
-    "Anatomical streams" : {
-      "extractionState" : "stale",
+    "button.ok.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anatomische Ströme"
+            "value" : "OK"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "Available Datasets" : {
-
-    },
-    "Available distance metrics" : {
-
-    },
-    "Available Evaluation Types" : {
-
-    },
-    "Available Layers for selected ML Model" : {
-
-    },
-    "Available Machine Learning Models" : {
-
-    },
-    "Available Parameters for selected Evaluation Type" : {
-
-    },
-    "available stimulus images" : {
+    "button.select.all.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "verfügbare"
+            "value" : "Alle wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select All"
           }
         }
       }
     },
-    "Body" : {
+    "explanation.evaluation.type.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Körper"
+            "value" : "Was ist die Auswertungsart?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is the Evaluation Type?"
           }
         }
       }
     },
-    "Body-selective regions" : {
-      "extractionState" : "stale",
+    "explanation.filler" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Körperselektive Bereiche"
+            "value" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, in aut soluta blanditiis fuga doloribus voluptatem, tenetur possimus, earum fugit consequuntur. Quam maiores enim nemo? Mollitia suscipit officiis unde nobis."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, in aut soluta blanditiis fuga doloribus voluptatem, tenetur possimus, earum fugit consequuntur. Quam maiores enim nemo? Mollitia suscipit officiis unde nobis."
           }
         }
       }
     },
-    "Calculate Distance Matrix" : {
-
-    },
-    "Calculate RSA" : {
-
-    },
-    "calculating RSA..." : {
-
-    },
-    "calculating..." : {
-
-    },
-    "Deselect All" : {
-
-    },
-    "Dismiss" : {
-
-    },
-    "Done" : {
-
-    },
-    "Early retinotopic visual regions" : {
-      "extractionState" : "stale",
+    "explanation.general.alert.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frühe retinotopische Sehbereiche"
+            "value" : "Was Du hier siehst"
           }
-        }
-      }
-    },
-    "Encoding accuracy" : {
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kodiergenauigkeit"
+            "value" : "What you see here"
           }
         }
       }
     },
-    "Explain what I see here" : {
+    "explanation.general.button.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erklär mir, was ich hier sehe"
           }
-        }
-      }
-    },
-    "Face" : {
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesicht"
+            "value" : "Explain what I see here"
           }
         }
       }
     },
-    "Face-selective regions" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gesichtsselektive Bereiche"
-          }
-        }
-      }
+    "explanation.main.compare.data" : {
+      "extractionState" : "manual"
     },
-    "Heatmap of Metric" : {
-
-    },
-    "Hello, World!" : {
-
-    },
-    "Hemisphere" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hemisphäre"
-          }
-        }
-      }
-    },
-    "Here you will see an interactive SceneView when implemented\n\nSelected Hemisphere: %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hier wird eine interaktive SceneView erscheinen, wenn Sie implementiert wurde.\n\nausgewählte Hemisphäre: %@"
-          }
-        }
-      }
-    },
-    "How the brain data was generated" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wie die Gehirndaten erzeugt wurden"
-          }
-        }
-      }
-    },
-    "How to's and explanations" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anleitungen und Erklärungen"
-          }
-        }
-      }
-    },
-    "individual ROIs" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "einzelne ROIs"
-          }
-        }
-      }
-    },
-    "Layer" : {
-
-    },
-    "Left" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Links"
-          }
-        }
-      }
-    },
-    "loading Brain RDMs..." : {
-
-    },
-    "loading data..." : {
-
-    },
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, in aut soluta blanditiis fuga doloribus voluptatem, tenetur possimus, earum fugit consequuntur. Quam maiores enim nemo? Mollitia suscipit officiis unde nobis." : {
-
-    },
-    "Mean Pearson's r" : {
-
-    },
-    "Next" : {
-
-    },
-    "OK" : {
-
-    },
-    "Place" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ort"
-          }
-        }
-      }
-    },
-    "Place-selective regions" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ortsselektive Bereiche"
-          }
-        }
-      }
-    },
-    "Please select an image" : {
-
-    },
-    "Please select ROI" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitte ROI auswählen"
-          }
-        }
-      }
-    },
-    "Predict fMRI response with ML model" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorhersage der fMRI-Reaktion mit ML-Modell"
-          }
-        }
-      }
-    },
-    "Predict fMRI responses with ML model" : {
+    "explanation.main.compare.data.title" : {
       "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorhersage der fMRI-Reaktionen mit ML-Modell"
-          }
-        }
-      }
-    },
-    "predicting..." : {
-
-    },
-    "processing data..." : {
-
-    },
-    "R2" : {
-
-    },
-    "Region of Interest" : {
-
-    },
-    "Right" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rechts"
-          }
-        }
-      }
-    },
-    "ROI" : {
-
-    },
-    "RSA Chart" : {
-
-    },
-    "Run Prediction" : {
-
-    },
-    "Select All" : {
-
-    },
-    "Select Dataset" : {
-
-    },
-    "Select Distance Metric" : {
-
-    },
-    "Select Evaluation Type" : {
-
-    },
-    "Select ML Model" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ML Modell auswählen"
-          }
-        }
-      }
-    },
-    "Select ML Model Layers" : {
-
-    },
-    "Select the ROI you want visualized" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wähle die ROI aus, welche visualisiert werden soll"
-          }
-        }
-      }
-    },
-    "Show available stimulus images" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verfügbare Stimulusbilder anzeigen"
-          }
-        }
-      }
-    },
-    "Show Heatmap of Metric" : {
-
-    },
-    "Show RSA Chart" : {
-
-    },
-    "The different models explained" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die verschiedenen Modelle erläutert"
-          }
-        }
-      }
-    },
-    "The different regions explained" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die verschiedenen Regionen erläutert"
-          }
-        }
-      }
-    },
-    "the following models are just examples" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "die folgenden Modelle sind nur Beispiele"
-          }
-        }
-      }
-    },
-    "Total Count" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gesamt"
-          }
-        }
-      }
-    },
-    "Value" : {
-
-    },
-    "Visual" : {
-
-    },
-    "Visualize fMRI data with image" : {
-
-    },
-    "Visualize fMRI data with selected image" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fMRI Daten mit gewähltem Bild visualisieren"
-          }
-        }
-      }
-    },
-    "Visualize vertices" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hirnbereiche visualisieren"
-          }
-        }
-      }
-    },
-    "Visualize vertices on brain surface map" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hirnbereiche visualisieren"
-          }
-        }
-      }
-    },
-    "Welcome" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Willkommen"
-          }
-        }
-      }
-    },
-    "What are \"Stimulus images\"?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Was sind \"Stimulusbilder\"?"
-          }
-        }
-      }
-    },
-    "What do you see here" : {
-
-    },
-    "What is a ROI?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Was ist ein ROI?"
-          }
-        }
-      }
-    },
-    "What is fMRI data?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Was sind fMRI Daten?"
-          }
-        }
-      }
-    },
-    "Why compare brain data with ML models?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Warum vergleicht man Hirndaten mit ML Modellen?"
           }
-        }
-      }
-    },
-    "Word" : {
-
-    },
-    "Word-selective regions" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wortselektive Bereiche"
+            "value" : "Why compare brain data with ML models?"
           }
         }
       }
     },
-    "xEnd" : {
+    "explanation.main.data.generation" : {
+      "extractionState" : "manual"
+    },
+    "explanation.main.data.generation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie die Hirndaten erzeugt wurden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How the brain data was generated"
+          }
+        }
+      }
+    },
+    "explanation.main.fmri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRI (Functional Magnetic Resonance Imaging) measures brain activity by detecting changes associated with blood flow."
+          }
+        }
+      }
+    },
+    "explanation.main.fmri.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was sind fMRT Daten?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is fMRI data?"
+          }
+        }
+      }
+    },
+    "explanation.main.images" : {
+      "extractionState" : "manual"
+    },
+    "explanation.main.images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was sind \"Stimulusbilder\"?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What are \"Stimulus images\"?"
+          }
+        }
+      }
+    },
+    "explanation.main.roi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ROI (Region of Interest) describes a brain region that corresponds to specific activity."
+          }
+        }
+      }
+    },
+    "explanation.main.roi.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was sind ROIs?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What are ROIs?"
+          }
+        }
+      }
+    },
+    "explanation.menu.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erklärungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explanations"
+          }
+        }
+      }
+    },
+    "explanation.model.cnn.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is a Convolutional Neural Network (CNN)?"
+          }
+        }
+      }
+    },
+    "explanation.model.layer.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist eine ML Modell Ebene?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is a ML Model Layer?"
+          }
+        }
+      }
+    },
+    "explanation.model.pytorch.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist pytorch?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is pytorch?"
+          }
+        }
+      }
+    },
+    "explanation.model.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist ein ML Modell?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is a ML Model?"
+          }
+        }
+      }
+    },
+    "explanation.rdm.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist eine Distanzmetrik?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is the RDM Metric?"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
 
     },
-    "xStart" : {
+    "hemisphere.left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left"
+          }
+        }
+      }
+    },
+    "hemisphere.right" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right"
+          }
+        }
+      }
+    },
+    "hemisphere.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemisphäre"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemisphere"
+          }
+        }
+      }
+    },
+    "images.set.fmri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRT Bilder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRI images"
+          }
+        }
+      }
+    },
+    "images.set.selection.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein Bildset"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select image set"
+          }
+        }
+      }
+    },
+    "loading.data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten werden geladen..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "loading data..."
+          }
+        }
+      }
+    },
+    "mainmenu.about.button.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "mainmenu.menu.fmri.visualize" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hirnaktivität basierend auf Bild visualisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize brain activity based on image"
+          }
+        }
+      }
+    },
+    "mainmenu.menu.images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "verfügbare Bilder anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "show available images"
+          }
+        }
+      }
+    },
+    "mainmenu.menu.predict" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhersage der fMRT-Reaktion mit ML Modell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predict fMRI response with ML model"
+          }
+        }
+      }
+    },
+    "mainmenu.menu.roi.visualize" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "verschiedene ROIs visualisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize different ROIs"
+          }
+        }
+      }
+    },
+    "pipeline.available.datasets.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Datensätze"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Datasets"
+          }
+        }
+      }
+    },
+    "pipeline.available.evaluation.parameters.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Parameter für ausgewählte Auswertungsart"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Parameters for selected Evaluation Type"
+          }
+        }
+      }
+    },
+    "pipeline.available.evaluation.types.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Auswertungsarten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Evaluation Types"
+          }
+        }
+      }
+    },
+    "pipeline.available.metrics.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Abstandsmetriken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available distance metrics"
+          }
+        }
+      }
+    },
+    "pipeline.available.model.layers.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Ebenen für das ausgewählte ML Modell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Layers for selected ML Model"
+          }
+        }
+      }
+    },
+    "pipeline.available.models.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Machine Learning Modelle"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Machine Learning Models"
+          }
+        }
+      }
+    },
+    "pipeline.dataset.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datensatz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dataset"
+          }
+        }
+      }
+    },
+    "pipeline.datasets.78images.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A dataset consisting out of 78 images and the distance matrices from brain responses for all 78 images and 15 subjects"
+          }
+        }
+      }
+    },
+    "pipeline.datasets.78images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "78images"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "78images"
+          }
+        }
+      }
+    },
+    "pipeline.datasets.92images.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A dataset consisting out of 92 images and the distance matrices from brain responses for all 92 images and 15 subjects"
+          }
+        }
+      }
+    },
+    "pipeline.datasets.92images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "92images"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "92images"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.button.chart.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA Diagramm anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show RSA Chart"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.button.start.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA berechnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate RSA"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.chart.layer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ebene"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Layer"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.chart.r2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R2"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R2"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.chart.roi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROI"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROI"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.chart.rois" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROIs"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROIs"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.parameters.spearman.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "correlation between values based on their rank"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.parameters.spearman.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spearman"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spearman"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.progress.calculating" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA wird berechnet..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "calculating RSA..."
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.progress.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hirn RDMs werden geladen..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "loading Brain RDMs..."
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswertungsart"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluation Type"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.types.rsa.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A descriptive text for that type"
+          }
+        }
+      }
+    },
+    "pipeline.evaluation.types.rsa.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA"
+          }
+        }
+      }
+    },
+    "pipeline.heatmap.available.layers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbare Ebenen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available layers"
+          }
+        }
+      }
+    },
+    "pipeline.heatmap.layer.select.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heatmap für Ebene:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heatmap for layer:"
+          }
+        }
+      }
+    },
+    "pipeline.images.%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Bild"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Bilder"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld image"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld images"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pipeline.images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Images"
+          }
+        }
+      }
+    },
+    "pipeline.ml.button.start.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prediction ausführen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run Prediction"
+          }
+        }
+      }
+    },
+    "pipeline.ml.progress.predicting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "predicting..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "predicting..."
+          }
+        }
+      }
+    },
+    "pipeline.ml.progress.processing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten werden verarbeitet...."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "processing data..."
+          }
+        }
+      }
+    },
+    "pipeline.model.layer.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell Ebene"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Model Layer"
+          }
+        }
+      }
+    },
+    "pipeline.model.layers.%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Ebenen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld layers"
+          }
+        }
+      }
+    },
+    "pipeline.model.layers.available.title" : {
 
     },
-    "yEnd" : {
-
+    "pipeline.model.layers.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell Ebenen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Model Layers"
+          }
+        }
+      }
     },
-    "yStart" : {
-
+    "pipeline.model.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Model"
+          }
+        }
+      }
+    },
+    "pipeline.models.alexnet.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) designed by Alex Krizhevsky in collaboration with Ilya Sutskever and Geoffrey Hinton, who was Krizhevsky's Ph.D. advisor at the University of Toronto.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.models.resnet18.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) consisting out of 18 layers.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.models.resnet34.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) consisting out of 34 layers.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.models.resnet50.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) consisting out of 50 layers.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.models.vgg11.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) consisting out of 11 layers.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.models.vgg13.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A convolutional neural network (CNN) consisting out of 13 layers.\\nPretrained network from pytorch."
+          }
+        }
+      }
+    },
+    "pipeline.parameter.dataset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datensatz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dataset"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.evaluation.parameter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswertungsparameter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluation Parameter"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.evaluation.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswertungsart"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluation Type"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Images"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Model"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.model.layer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell Ebenen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model Layer"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.none" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "pipeline.parameter.rdm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstandsmetrik"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RDM Metric"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.button.heatmap.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heatmap für Metrik anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Heatmap of Metric"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.button.start.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstandsmatrix berechnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate Distance Matrix"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.calculating" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "berechne..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "calculating..."
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.correlation.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A descriptive text for that metric"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.correlation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correlation"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.cosine.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A descriptive text for that metric"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.cosine.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosine"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.euclidean.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "length of the line segment between two points"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.euclidean.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euclidean"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.manhattan.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "distance between two points defined by the sum of the absolute differences of their cartesian coordinates"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.metric.manhattan.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manhattan"
+          }
+        }
+      }
+    },
+    "pipeline.rdm.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstandsmetrik"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RDM Metric"
+          }
+        }
+      }
+    },
+    "pipeline.select.parameter.%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wähle %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "select %@"
+          }
+        }
+      }
+    },
+    "pipeline.selected.later" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wird später gewählt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "will be selected later"
+          }
+        }
+      }
+    },
+    "roi.all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle ROIs"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All ROIs"
+          }
+        }
+      }
+    },
+    "roi.anatomical" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anatomisch"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anatomical"
+          }
+        }
+      }
+    },
+    "roi.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körper"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body"
+          }
+        }
+      }
+    },
+    "roi.face" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesicht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Face"
+          }
+        }
+      }
+    },
+    "roi.place" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place"
+          }
+        }
+      }
+    },
+    "roi.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROI"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROI"
+          }
+        }
+      }
+    },
+    "roi.title.long" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region of Interest"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region of Interest"
+          }
+        }
+      }
+    },
+    "roi.visual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visuell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visual"
+          }
+        }
+      }
+    },
+    "roi.word" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word"
+          }
+        }
+      }
+    },
+    "view.about.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über diese App"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About this app"
+          }
+        }
+      }
+    },
+    "view.fmri.visualize.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRT Daten mit Bild visualisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize fMRI data with image"
+          }
+        }
+      }
+    },
+    "view.image.select.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle bitte in Bild"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select an image"
+          }
+        }
+      }
+    },
+    "view.images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "verfügbare Bilder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "available images"
+          }
+        }
+      }
+    },
+    "view.main.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        }
+      }
+    },
+    "view.pipeline.dataset.images.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle bitte Bilder aus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select images"
+          }
+        }
+      }
+    },
+    "view.pipeline.dataset.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datensatz wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Dataset"
+          }
+        }
+      }
+    },
+    "view.pipeline.evaluation.chart.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA Diagramm"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA Chart"
+          }
+        }
+      }
+    },
+    "view.pipeline.evaluation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswertungsart wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Evaluation Type"
+          }
+        }
+      }
+    },
+    "view.pipeline.heatmap.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heatmap der Metrik"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heatmap of Metric"
+          }
+        }
+      }
+    },
+    "view.pipeline.model.layer.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ebenen des ML Modells wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select ML Model Layers"
+          }
+        }
+      }
+    },
+    "view.pipeline.model.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select ML Model"
+          }
+        }
+      }
+    },
+    "view.pipeline.rdm.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstandsmetrik wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Distance Metric"
+          }
+        }
+      }
+    },
+    "view.roi.visualize.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hirnbereiche visualisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize vertices"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
