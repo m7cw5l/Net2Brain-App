@@ -185,8 +185,10 @@ struct BrainConverter {
             cameraNode.camera = camera
             
             if image != "" {
+                // fmri visualization
                 cameraNode.position = SCNVector3Make(0.0, 0.0, 2.0)
             } else {
+                // roi visualization
                 cameraNode.position = SCNVector3Make(0.0, 0.0, 3.0)
             }
             

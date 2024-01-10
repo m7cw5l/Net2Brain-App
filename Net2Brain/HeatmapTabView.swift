@@ -15,7 +15,7 @@ struct HeatmapTabView: View {
     var body: some View {
         TabView {
             ForEach(0..<matrices.count, id: \.self) { index in
-                HeatmapChart(matrix: matrices[index])
+                HeatmapChart(matrix: matrices[index], images: [])
             }
         }.tabViewStyle(.automatic)
             .padding()

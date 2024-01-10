@@ -27,9 +27,9 @@ struct SelectRDMMetricView: View {
                 Form {
                     Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
                         ForEach(availableRDMMetrics, id: \.self) { metric in
-                            VStack(alignment: .leading) {
+                            HStack {
+                                ExplanationInfoButton(title: metric.name, description: metric.description, currentExplanation: $currentExplanation)
                                 Text(metric.name)
-                                Text(metric.description).font(.caption)
                             }.tag(metric)
                         }
                     }.pickerStyle(.inline)

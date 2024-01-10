@@ -25,9 +25,9 @@ struct ExplanationSheet: View {
         /// https://stackoverflow.com/a/74495460 ; 04.01.24 12:31
         VStack(alignment: .leading) {
             Text(String(localized: String.LocalizationValue(sheetTitle))).font(.title2).padding(.bottom, 6).fixedSize(horizontal: false, vertical: true)
-            Text(String(localized: String.LocalizationValue(sheetDescription))).fixedSize(horizontal: false, vertical: true)
+            Text(.init(String(localized: String.LocalizationValue(sheetDescription)))).fixedSize(horizontal: false, vertical: true)
         }.padding()
-            //.frame(minWidth: .infinity)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             .overlay {
                 GeometryReader { geometry in
                     Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
@@ -37,6 +37,8 @@ struct ExplanationSheet: View {
                 sheetHeight = newHeight
             }
             .presentationDetents([.height(sheetHeight)])
+            .presentationBackground(.thinMaterial)
+            .presentationCornerRadius(16.0)
     }
 }
 

@@ -48,7 +48,7 @@ struct VisualizeRoiImageView: View {
         selectedImage
     ]}
     
-    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.visualization.fmri", show: false)
     
     var body: some View {
         NavigationStack {
@@ -111,7 +111,7 @@ struct VisualizeRoiImageView: View {
                         pointOfView: nil,
                         options: [.allowsCameraControl, .autoenablesDefaultLighting],
                         delegate: nil
-                    ).scaledToFill()
+                    ).scaledToFit()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .zIndex(1.0)
                     if loadingBrain {

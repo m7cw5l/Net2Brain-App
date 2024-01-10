@@ -78,6 +78,17 @@
         }
       }
     },
+    "button.info.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        }
+      }
+    },
     "button.next.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -198,7 +209,15 @@
       }
     },
     "explanation.main.compare.data" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We compare brain data with ML models to determine how neural networks \"see\" images and if there is a relationship between Computer Vision and Human Vision."
+          }
+        }
+      }
     },
     "explanation.main.compare.data.title" : {
       "extractionState" : "manual",
@@ -218,7 +237,15 @@
       }
     },
     "explanation.main.data.generation" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The subject's brain activity in response to the \"Stimulus images\" was measured with a MRI (Magnetic resonance imaging) scan."
+          }
+        }
+      }
     },
     "explanation.main.data.generation.title" : {
       "extractionState" : "manual",
@@ -266,7 +293,15 @@
       }
     },
     "explanation.main.images" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Stimulus images\" are the images that were shown to the subjects and the brain activity was measured.\nThe app contains a subset of 20 images which are used in the \"Visualize brain activity based on image\" view.\n"
+          }
+        }
+      }
     },
     "explanation.main.images.title" : {
       "extractionState" : "manual",
@@ -330,6 +365,26 @@
         }
       }
     },
+    "explanation.model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Machine Learning-Modell ist eine Datei, die darauf trainiert wurde, bestimmte Arten von Mustern zu erkennen. Sie trainieren ein Modell anhand von Daten, indem Sie einen Algorithmus bereitstellen, mit dem diese Daten analysiert und zum Lernen verwendet werden können.\n\nNachdem Sie das Modell trainiert haben, können Sie es verwenden, um Daten zu analysieren, die es zuvor noch nicht gekannt hat, und um Vorhersagen über diese Daten zu treffen.\n\n[learn.microsoft.com](https://learn.microsoft.com/de-de/windows/ai/windows-ml/what-is-a-machine-learning-model)\n04.01.2024 13:46"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A machine learning model is a file that has been trained to recognize certain types of patterns. You train a model over a set of data, providing it an algorithm that it can use to reason over and learn from those data.\n\nOnce you have trained the model, you can use it to reason over data that it hasn't seen before, and make predictions about those data.\n\n[learn.microsoft.com](https://learn.microsoft.com/en-us/windows/ai/windows-ml/what-is-a-machine-learning-model)\n04.01.2024 13:44"
+          }
+        }
+      }
+    },
+    "explanation.model.cnn" : {
+      "extractionState" : "manual"
+    },
     "explanation.model.cnn.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -354,6 +409,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "What is a ML Model Layer?"
+          }
+        }
+      }
+    },
+    "explanation.model.pytorch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PyTorch ist eine auf Maschinelles Lernen ausgerichtete Open-Source-Programmbibliothek für die Programmiersprache Python, basierend auf der in Lua geschriebenen Bibliothek Torch, die bereits seit 2002 existiert.\n\nEntwickelt wurde PyTorch von dem Facebook-Forschungsteam für künstliche Intelligenz.\n\n[wikipedia.org](https://de.wikipedia.org/wiki/PyTorch)\n04.01.2024 13:50"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PyTorch is a machine learning framework based on the Torch library, used for applications such as computer vision and natural language processing, originally developed by Meta AI and now part of the Linux Foundation umbrella.\n\nIt is free and open-source software released under the modified BSD license.\nAlthough the Python interface is more polished and the primary focus of development, PyTorch also has a C++ interface.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/PyTorch)\n04.01.2024 13:52"
           }
         }
       }
@@ -405,6 +477,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "What is the RDM Metric?"
+          }
+        }
+      }
+    },
+    "explanation.visualization.fmri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You see a 3D model of a brain on which the subject's response to the selected image and ROI (Region of Interest) is shown as a heatmap."
+          }
+        }
+      }
+    },
+    "explanation.visualization.roi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You see a 3D model of a brain on which the selected ROI (Region of Interest) is highlighted."
           }
         }
       }
@@ -881,7 +975,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "correlation between values based on their rank"
+            "value" : "correlation between values based on their rank\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)\n29.12.2023 15:51"
           }
         }
       }
@@ -1012,6 +1106,227 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heatmap for layer:"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.animals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiere"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animals"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körper"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.city" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stadt % Architektur"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "City & Architecture"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.everyday.items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alltagsgegenstände"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everyday Items"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.faces" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesichter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faces"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.food" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.landscape" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landschaft"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landscape"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.nature.food" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Natur & Essen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nature & Food"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.office" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büro"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Office"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.plants" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plants"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.rooms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Räume"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rooms"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.sports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sport"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sports"
+          }
+        }
+      }
+    },
+    "pipeline.image.category.unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
           }
         }
       }
@@ -1202,7 +1517,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) designed by Alex Krizhevsky in collaboration with Ilya Sutskever and Geoffrey Hinton, who was Krizhevsky's Ph.D. advisor at the University of Toronto.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) designed by Alex Krizhevsky in collaboration with Ilya Sutskever and Geoffrey Hinton, who was Krizhevsky's Ph.D. advisor at the University of Toronto.\nPretrained network from pytorch.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/AlexNet)\n13.12.2023 09:42"
           }
         }
       }
@@ -1213,7 +1528,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) consisting out of 18 layers.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) consisting out of 18 layers.\nPretrained network from pytorch.\n\n[mathworks.com](https://www.mathworks.com/help/deeplearning/ref/resnet18.html)\n13.12.2023 09:45"
           }
         }
       }
@@ -1224,7 +1539,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) consisting out of 34 layers.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) consisting out of 34 layers.\nPretrained network from pytorch."
           }
         }
       }
@@ -1235,7 +1550,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) consisting out of 50 layers.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) consisting out of 50 layers.\nPretrained network from pytorch."
           }
         }
       }
@@ -1246,7 +1561,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) consisting out of 11 layers.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) consisting out of 11 layers.\nPretrained network from pytorch.\n\n[arxiv.org](https://arxiv.org/abs/1409.1556)\n13.12.2023 09:49"
           }
         }
       }
@@ -1257,7 +1572,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A convolutional neural network (CNN) consisting out of 13 layers.\\nPretrained network from pytorch."
+            "value" : "A convolutional neural network (CNN) consisting out of 13 layers.\nPretrained network from pytorch.\n\n[arxiv.org](https://arxiv.org/abs/1409.1556)\n13.12.2023 09:49"
           }
         }
       }
@@ -1499,7 +1814,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "length of the line segment between two points"
+            "value" : "length of the line segment between two points\n\n[wikpedia.org](https://en.wikipedia.org/wiki/Euclidean_distance)\n29.12.2023 15:44"
           }
         }
       }
@@ -1521,7 +1836,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "distance between two points defined by the sum of the absolute differences of their cartesian coordinates"
+            "value" : "distance between two points defined by the sum of the absolute differences of their cartesian coordinates\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Taxicab_geometry)\n29.12.2023 15:45"
           }
         }
       }
@@ -1978,6 +2293,18 @@
           }
         }
       }
+    },
+    "xEnd" : {
+
+    },
+    "xStart" : {
+
+    },
+    "yEnd" : {
+
+    },
+    "yStart" : {
+
     }
   },
   "version" : "1.0"

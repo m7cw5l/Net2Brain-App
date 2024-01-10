@@ -12,11 +12,11 @@ struct SelectDatasetImagesView: View {
     @State var pipelineParameters: PipelineParameters
     @StateObject var pipelineData: PipelineData
     
-    let pathImages = Bundle.main.resourcePath!
-    
     let columns = [
         GridItem(.adaptive(minimum: 100), spacing: 2)
     ]
+    
+    let pathImages = Bundle.main.resourcePath!
     
     var body: some View {
         NavigationStack {
@@ -26,54 +26,21 @@ struct SelectDatasetImagesView: View {
                 HStack {
                     Button(action: {
                         pipelineParameters.datasetImages.removeAll()
-                        pipelineParameters.datasetImages.append(contentsOf: pipelineParameters.dataset.images)
-                    }, label: {
-                        Text("button.select.all.title").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                        .padding(.leading)
-                        .disabled(pipelineParameters.datasetImages.count == pipelineParameters.dataset.images.count)
-                    
-                    Button(action: {
-                        pipelineParameters.datasetImages.removeAll()
                     }, label: {
                         Text("button.deselect.all.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
-                        .padding(.trailing)
+                        .padding(.horizontal)
                         .disabled(pipelineParameters.datasetImages.count == 0)
                 }
-                //Text("Select random images:").font(.headline)
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach([5, 10, 15, 20, 25, 30, 35, 40], id: \.self) { number in
-                            Button(action: {
-                                selectRandomImages(number)
-                            }, label: {
-                                Text("\(number)").frame(maxWidth: .infinity).padding(6)
-                            }).buttonStyle(BorderedButtonStyle())
-                        }
-                    }.padding(.horizontal)
-                }
+                
+                RandomImagePicker(pipelineParameters: pipelineParameters)
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 2) {
-                        ForEach(pipelineParameters.dataset.images, id: \.self) { name in
-                            ZStack(alignment: .topTrailing) {
-                                Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()).resizable()
-                                    .scaledToFill()
-                                if pipelineParameters.datasetImages.contains(name) {
-                                 Button {
-                                 
-                                 } label: {
-                                 Image(systemName: "checkmark.circle.fill")
-                                 .imageScale(.large)
-                                 }.padding(2)
-                                 .tint(Color.accentColor)
-                                 }
-                            }.onTapGesture {
-                                if pipelineParameters.datasetImages.contains(name) {
-                                    pipelineParameters.datasetImages.removeAll { $0 == name }
-                                } else {
-                                    pipelineParameters.datasetImages.append(name)
+                    LazyVGrid(columns: columns, spacing: 2, pinnedViews: .sectionHeaders) {
+                        ForEach(pipelineParameters.dataset.images, id: \.name) { imageCategory in
+                            Section(header: ImageGridHeaderSelectable(pipelineParameters: pipelineParameters, category: imageCategory)) {
+                                ForEach(imageCategory.images, id: \.self) { name in
+                                    ImageGridItemSelectable(pipelineParameters: pipelineParameters, basePath: pathImages, name: name)
                                 }
                             }
                         }
@@ -97,13 +64,7 @@ struct SelectDatasetImagesView: View {
         }
     }
     
-    func selectRandomImages(_ count: Int) {
-        pipelineParameters.datasetImages.removeAll()
-        for _ in 0..<count {
-            let index = Int.random(in: 0..<pipelineParameters.dataset.images.count)
-            pipelineParameters.datasetImages.append(pipelineParameters.dataset.images[index])
-        }
-    }
+    
 }
 
 #Preview {

@@ -12,6 +12,8 @@ struct SelectDatasetView: View {
     @State var pipelineParameters = PipelineParameters()
     @StateObject var pipelineData = PipelineData()
     
+    @State var currentExplanation = Explanation(title: "", description: "", show: false)
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -21,9 +23,9 @@ struct SelectDatasetView: View {
                 Form {
                     Picker("pipeline.available.datasets.title", selection: $pipelineParameters.dataset) {
                         ForEach(availableDatasets, id: \.name) { dataset in
-                            VStack(alignment: .leading) {
+                            HStack {
+                                ExplanationInfoButton(title: dataset.name, description: dataset.description, currentExplanation: $currentExplanation)
                                 Text(dataset.name)
-                                Text(dataset.description).font(.caption)
                             }.tag(dataset)
                         }
                     }.pickerStyle(.inline)
@@ -41,6 +43,9 @@ struct SelectDatasetView: View {
                 pipelineParameters.resetDatasetImages()
                 pipelineData.resetPredictionOutputs()
                 pipelineData.resetDistanceMatrices()
+            }.sheet(isPresented: $currentExplanation.show) {
+                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
             }
         }
     }

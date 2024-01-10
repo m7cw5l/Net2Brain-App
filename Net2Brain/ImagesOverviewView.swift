@@ -11,33 +11,23 @@ struct ImagesOverviewView: View {
     //https://www.hackingwithswift.com/quick-start/swiftui/how-to-position-views-in-a-grid-using-lazyvgrid-and-lazyhgrid; 16.10.23 14:52
     
     let data = (1...20).map { String(format: "image%05d.png", $0) }
-    let images78 = (1...78).map { String(format: "78images_%05d.jpg", $0) }
-    let images92 = (1...92).map { String(format: "92images_%05d.jpg", $0) }
 
     let columns = [
         GridItem(.adaptive(minimum: 100), spacing: 2)
     ]
     
-    /*let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]*/
-    
     @State var imageSet = "trainingImages"
     
     let pathImages = Bundle.main.resourcePath!
     
-    var imageData: [String] {
+    var imageData: [N2BImageCategory] {
         switch imageSet {
-        case "trainingImages":
-            return data
         case "78images":
             return images78
         case "92images":
             return images92
         default:
-            return data
+            return images78
         }
     }
     
@@ -52,12 +42,25 @@ struct ImagesOverviewView: View {
                     .padding(.horizontal)
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 2) {
-                        ForEach(imageData, id: \.self) { name in
-                            Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(name)") ?? UIImage()).resizable()
-                                .scaledToFill()
-                        }
-                    }.padding(.horizontal)
+                    if imageSet == "trainingImages" {
+                        LazyVGrid(columns: columns, spacing: 2) {
+                            ForEach(data, id: \.self) { name in
+                                Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(name).png") ?? UIImage()).resizable()
+                                    .scaledToFill()
+                            }
+                        }.padding(.horizontal)
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 2, pinnedViews: .sectionHeaders) {
+                            ForEach(imageData, id: \.name) { imageCategory in
+                                Section(header: ImageGridHeader(category: imageCategory)) {
+                                    ForEach(imageCategory.images, id: \.self) { name in
+                                        Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()).resizable()
+                                            .scaledToFill()
+                                    }
+                                }
+                            }
+                        }.padding(.horizontal)
+                    }
                 }
             }
             .navigationTitle("view.images.title")

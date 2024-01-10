@@ -29,9 +29,9 @@ struct SelectEvaluationTypeView: View {
                 Form {
                     Picker("pipeline.available.evaluation.types.title", selection: $pipelineParameters.evaluationType) {
                         ForEach(availableEvaluationTypes, id: \.self) { evalType in
-                            VStack(alignment: .leading) {
+                            HStack {
+                                ExplanationInfoButton(title: evalType.name, description: evalType.description, currentExplanation: $currentExplanation)
                                 Text(evalType.name)
-                                Text(evalType.description).font(.caption)
                             }.tag(evalType)
                         }
                     }.pickerStyle(.inline)
@@ -39,9 +39,9 @@ struct SelectEvaluationTypeView: View {
                     if pipelineParameters.evaluationType.name != "" {
                         Picker("pipeline.available.evaluation.parameters.title", selection: $pipelineParameters.evaluationParameter) {
                             ForEach(pipelineParameters.evaluationType.parameters, id: \.self) { parameter in
-                                VStack(alignment: .leading) {
+                                HStack {
+                                    ExplanationInfoButton(title: parameter.name, description: parameter.description, currentExplanation: $currentExplanation)
                                     Text(parameter.name)
-                                    Text(parameter.description).font(.caption)
                                 }.tag(parameter)
                             }
                         }.pickerStyle(.inline)
@@ -49,8 +49,6 @@ struct SelectEvaluationTypeView: View {
                 }
                 
                 ProgressView(value: rsaProgress, total: 1.0).padding(.horizontal)
-                
-                
                 
                 if allRoisOutput.count == 0 {
                     Button(action: {

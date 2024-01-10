@@ -10,26 +10,21 @@ import SwiftUI
 struct WelcomeGridItemView: View {
     var icon: String
     var title: String
-    
-    @State private var pressed = false
-    
+        
     var body: some View {
-        ZStack {
-            VStack {
-                Image(systemName: icon)
-                    .font(.system(size: 60))
-                    .aspectRatio(contentMode: .fit)
-                    .fontWeight(.light)
-                    .foregroundColor(.accentColor)
-                Spacer()
-                Text(LocalizedStringKey(title))/*.font(.headline)*/
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.primary)
-            }
+        VStack {
+            Image(systemName: icon)
+                .font(.system(size: 60))
+                .aspectRatio(contentMode: .fit)
+                .fontWeight(.light)
+                .foregroundColor(.accentColor)
+            Spacer()
+            Text(LocalizedStringKey(title))/*.font(.headline)*/
+                .multilineTextAlignment(.center)
+                .foregroundColor(.primary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
-            //.background(pressed ? Color.accentColor : Color(uiColor: .systemBackground))
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }

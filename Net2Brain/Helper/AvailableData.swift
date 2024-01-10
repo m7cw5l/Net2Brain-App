@@ -7,11 +7,32 @@
 
 import Foundation
 
-let availableDatasets = [
-    N2BDataset(name: String(localized: "pipeline.datasets.78images.title"), description: String(localized: "pipeline.datasets.78images.description"), images: (1...78).map { String(format: "78images_%05d", $0) }),
-    N2BDataset(name: String(localized: "pipeline.datasets.92images.title"), description: String(localized: "pipeline.datasets.92images.description"), images: (1...92).map { String(format: "92images_%05d", $0) })
+
+let images78 = [
+    N2BImageCategory(name: "pipeline.image.category.animals", images: (1...13).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.plants", images: (14...21).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.food", images: (22...29).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.office", images: (30...32).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.rooms", images: (33...38).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.city", images: (39...45).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.landscape", images: (46...50).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.sports", images: (51...61).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.unknown", images: (62...62).map { String(format: "78images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.faces", images: (63...78).map { String(format: "78images_%05d", $0) })
 ]
 
+let images92 = [
+    N2BImageCategory(name: "pipeline.image.category.body", images: (1...12).map { String(format: "92images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.faces", images: (13...24).map { String(format: "92images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.animals", images: (25...48).map { String(format: "92images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.nature.food", images: (49...72).map { String(format: "92images_%05d", $0) }),
+    N2BImageCategory(name: "pipeline.image.category.everyday.items", images: (73...92).map { String(format: "92images_%05d", $0) })
+]
+
+let availableDatasets = [
+    N2BDataset(name: String(localized: "pipeline.datasets.78images.title"), description: String(localized: "pipeline.datasets.78images.description"), images: images78),
+    N2BDataset(name: String(localized: "pipeline.datasets.92images.title"), description: String(localized: "pipeline.datasets.92images.description"), images: images92)
+]
 
 let alexnetLayers = [
     N2BMLLayer(name: "features.0", description: "1 x 64 x 55 x 55", coremlKey: "features_0"),
@@ -50,14 +71,14 @@ private let vgg13Layers = [
 
 let availableMLModels = [
     /// https://en.wikipedia.org/wiki/AlexNet ; 13.12.2023 09:42
-    N2BMLModel(key: "alexnet", name: "AlexNet", description: String(localized: "pipeline.models.alexnet.description"), layers: alexnetLayers),
+    N2BMLModel(key: "alexnet", name: "AlexNet", description: String(localized: "pipeline.models.alexnet.description"), layers: alexnetLayers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0]),
     /// https://www.mathworks.com/help/deeplearning/ref/resnet18.html ; 13.12.2023 09:45
-    N2BMLModel(key: "resnet18", name: "ResNet18", description: String(localized: "pipeline.models.resnet18.description"), layers: resnetLayers),
-    N2BMLModel(key: "resnet34", name: "ResNet34", description: String(localized: "pipeline.models.resnet34.description"), layers: resnetLayers),
-    N2BMLModel(key: "resnet50", name: "ResNet50", description: String(localized: "pipeline.models.resnet50.description"), layers: resnet50Layers),
+    N2BMLModel(key: "resnet18", name: "ResNet18", description: String(localized: "pipeline.models.resnet18.description"), layers: resnetLayers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0]),
+    N2BMLModel(key: "resnet34", name: "ResNet34", description: String(localized: "pipeline.models.resnet34.description"), layers: resnetLayers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0]),
+    N2BMLModel(key: "resnet50", name: "ResNet50", description: String(localized: "pipeline.models.resnet50.description"), layers: resnet50Layers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0]),
     /// https://arxiv.org/abs/1409.1556 ; 13.12.2023 09:49
-    N2BMLModel(key: "vgg11", name: "VGG11", description: String(localized: "pipeline.models.vgg11.description"), layers: vgg11Layers),
-    N2BMLModel(key: "vgg13", name: "VGG13", description: String(localized: "pipeline.models.vgg13.description"), layers: vgg13Layers)
+    N2BMLModel(key: "vgg11", name: "VGG11", description: String(localized: "pipeline.models.vgg11.description"), layers: vgg11Layers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0]),
+    N2BMLModel(key: "vgg13", name: "VGG13", description: String(localized: "pipeline.models.vgg13.description"), layers: vgg13Layers, bias: [0.485, 0.456, 0.406, 0.0], scale: [0.229, 0.224, 0.225, 1.0])
 ]
 
 let availableRDMMetrics = [

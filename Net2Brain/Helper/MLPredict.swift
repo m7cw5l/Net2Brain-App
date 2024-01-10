@@ -38,13 +38,23 @@ extension UIImage {
 
 struct MLPredict {
     private let pathImages = Bundle.main.resourcePath!
-    
+        
     func loadImage(_ name: String) -> UIImage {
         return UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()
     }
     
-    func loadCGImage(_ name: String, width: Int = 224, height: Int = 224) -> CGImage {
-        return (UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()).resize(targetSize: CGSize(width: width, height: height)).cgImage!
+    func loadCGImage(_ name: String, width: Int = 224, height: Int = 224, bias: [Float], scale: [Float]) -> CGImage {
+        //let cgImage = (UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()).resize(targetSize: CGSize(width: width, height: height)).cgImage!
+        let cgImage = (UIImage(contentsOfFile: "\(pathImages)/\(name).jpg") ?? UIImage()).cgImage!
+        let image = Matft.image.cgimage2mfarray(cgImage, mftype: .Float)
+        let resizedImage = Matft.image.resize(image, width: width, height: height)
+                
+        let bias = Matft.broadcast_to(MfArray([0.485, 0.456, 0.406, 0.0], mftype: .Float), shape: resizedImage.shape)
+        let scale = Matft.broadcast_to(MfArray([0.229, 0.224, 0.225, 1.0], mftype: .Float), shape: resizedImage.shape)
+        
+        let scaledImage = (resizedImage - bias) / scale
+                        
+        return Matft.image.mfarray2cgimage(scaledImage)
     }
     
     func loadImageFromUrl(_ urlString: String, completionHandler: @escaping (UIImage?) -> ()) {
@@ -91,13 +101,14 @@ struct MLPredict {
         return MfArray(base: &featureMultiArray).flatten().expand_dims(axis: 0)
     }
     
-    func predictAlexNet(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictAlexNet(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? alexnet() else {
             fatalError()
         }
+        
         progressCallback(.predicting, 0.1)
         let inputArray: [alexnetInput] = imageNames.map { imageName in
-            guard let input = try? alexnetInput(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? alexnetInput(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)
@@ -120,13 +131,14 @@ struct MLPredict {
         return layerOutput
     }
     
-    func predictResNet18(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictResNet18(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? resnet18() else {
             fatalError()
         }
+        
         progressCallback(.predicting, 0.1)
         let inputArray: [resnet18Input] = imageNames.map { imageName in
-            guard let input = try? resnet18Input(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? resnet18Input(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)
@@ -149,13 +161,14 @@ struct MLPredict {
         return layerOutput
     }
     
-    func predictResNet34(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictResNet34(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? resnet34() else {
             fatalError()
         }
+        
         progressCallback(.predicting, 0.1)
         let inputArray: [resnet34Input] = imageNames.map { imageName in
-            guard let input = try? resnet34Input(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? resnet34Input(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)
@@ -178,13 +191,14 @@ struct MLPredict {
         return layerOutput
     }
     
-    func predictResNet50(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictResNet50(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? resnet50() else {
             fatalError()
         }
+        
         progressCallback(.predicting, 0.1)
         let inputArray: [resnet50Input] = imageNames.map { imageName in
-            guard let input = try? resnet50Input(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? resnet50Input(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)
@@ -207,13 +221,14 @@ struct MLPredict {
         return layerOutput
     }
     
-    func predictVgg11(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictVgg11(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? vgg11() else {
             fatalError()
         }
+        
         progressCallback(.predicting, 0.1)
         let inputArray: [vgg11Input] = imageNames.map { imageName in
-            guard let input = try? vgg11Input(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? vgg11Input(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)
@@ -236,13 +251,13 @@ struct MLPredict {
         return layerOutput
     }
     
-    func predictVgg13(imageNames: [String], layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+    func predictVgg13(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
         guard let model = try? vgg13() else {
             fatalError()
         }
         progressCallback(.predicting, 0.1)
         let inputArray: [vgg13Input] = imageNames.map { imageName in
-            guard let input = try? vgg13Input(imageWith: loadCGImage(imageName)) else { fatalError() }
+            guard let input = try? vgg13Input(imageWith: loadCGImage(imageName, bias: selectedModel.bias, scale: selectedModel.scale)) else { fatalError() }
             return input
         }
         progressCallback(.predicting, 0.2)

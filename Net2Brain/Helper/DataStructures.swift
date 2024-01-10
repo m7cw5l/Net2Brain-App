@@ -10,7 +10,7 @@ import SwiftUI
 import Matft
 
 enum MenuTargetView {
-    case visualizeRoi, visualizeRoiImage, imageOverview, modelAccuracy
+    case visualizeRoi, visualizeFmri, imageOverview, prediction
 }
 
 enum VisualizationType {
@@ -57,7 +57,7 @@ class PipelineParameters {
     init() {
         self.dataset = N2BDataset(name: "", description: "", images: [])
         self.datasetImages = []
-        self.mlModel = N2BMLModel(key: "", name: "", description: "", layers: [])
+        self.mlModel = N2BMLModel(key: "", name: "", description: "", layers: [], bias: [], scale: [])
         self.mlModelLayers = []
         self.rdmMetric = N2BRDMMetric(name: "", description: "")
         self.evaluationType = N2BEvaluationType(name: "", description: "", parameters: [])
@@ -92,10 +92,15 @@ enum PipelineParameter: String {
     }
 }
 
+struct N2BImageCategory: Hashable {
+    var name: String
+    var images: [String]
+}
+
 struct N2BDataset: Hashable {
     var name: String
     var description: String
-    var images: [String]
+    var images: [N2BImageCategory]
 }
 
 struct N2BMLModel: Hashable {
@@ -103,6 +108,8 @@ struct N2BMLModel: Hashable {
     var name: String
     var description: String
     var layers: [N2BMLLayer]
+    var bias: [Float]
+    var scale: [Float]
 }
 
 struct N2BMLLayer: Hashable {    

@@ -24,7 +24,7 @@ struct HeatmapChartView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
+                //PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
                 
                 if matrices.count > 1 {
                     HStack {
@@ -36,7 +36,7 @@ struct HeatmapChartView: View {
                         }//.pickerStyle(.segmented)
                     }.padding(.horizontal)
                 }
-                HeatmapChart(matrix: currentMatrix)
+                HeatmapChart(matrix: currentMatrix, images: pipelineParameters.datasetImages).padding(.horizontal)
                 Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
                     explanation.show.toggle()
                 }).padding([.top])
@@ -64,6 +64,7 @@ struct HeatmapChartView: View {
         }
         .onChange(of: currentLayer, initial: true, {
             currentMatrix = matrices[currentLayer.coremlKey] ?? MfArray([-1])
+            //print(currentMatrix)
         })
         .sheet(isPresented: $explanation.show) {
             /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16

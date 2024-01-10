@@ -26,7 +26,7 @@ final class Net2BrainTests: XCTestCase {
                                               [[1e-15, 2.828427],
                                               [2.828427, 1e-15]]], mftype: .Float)
         
-        let result = await euclidian(x: testMatrix)
+        let result = await euclidean(x: testMatrix)
                         
         XCTAssertEqual(result, correctDistanceMatrix)
     }

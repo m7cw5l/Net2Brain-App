@@ -81,7 +81,7 @@ struct SelectMLLayersView: View {
                     }, label: {
                         Text(predictionStatus == .predicting ? "pipeline.ml.progress.predicting" : predictionStatus == .processingData ? "pipeline.ml.progress.processing" : "pipeline.ml.button.start.title").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedProminentButtonStyle())
-                        .padding()
+                        .padding([.leading, .trailing, .bottom])
                         .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count != 0 || isCalculating)
                 } else {
                     NavigationLink(destination: {
@@ -118,42 +118,42 @@ struct SelectMLLayersView: View {
         
         switch pipelineParameters.mlModel.name {
         case "AlexNet":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictAlexNet(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictAlexNet(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress
                 }
             })
         case "ResNet18":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet18(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet18(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress
                 }
             })
         case "ResNet34":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet34(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet34(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress
                 }
             })
         case "ResNet50":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet50(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictResNet50(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress
                 }
             })
         case "VGG11":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg11(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg11(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress
                 }
             })
         case "VGG13":
-            self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg13(imageNames: pipelineParameters.datasetImages, layers: layers, progressCallback: { status, progress in
+            self.pipelineData.mlPredictionOutputs = await mlPredict.predictVgg13(imageNames: pipelineParameters.datasetImages, selectedModel: pipelineParameters.mlModel, layers: layers, progressCallback: { status, progress in
                 self.predictionStatus = status
                 withAnimation {
                     self.predictionProgress = progress

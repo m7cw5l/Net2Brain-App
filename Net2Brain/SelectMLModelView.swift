@@ -28,9 +28,9 @@ struct SelectMLModelView: View {
                 Form {
                     Picker("pipeline.available.models.title", selection: $pipelineParameters.mlModel) {
                         ForEach(Array(availableMLModels), id: \.key) { model in
-                            VStack(alignment: .leading) {
+                            HStack {
+                                ExplanationInfoButton(title: model.name, description: model.description, currentExplanation: $currentExplanation)
                                 Text(model.name)
-                                Text(model.description).font(.caption)
                             }.tag(model)
                         }
                     }.pickerStyle(.inline)

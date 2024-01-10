@@ -7,6 +7,8 @@
 
 import Foundation
 import Matft
+import Numerics
+//import RealModule
 
 struct Statistic {
     /*func variance(_ array: MfArray, axis: Int) -> Double {
@@ -24,6 +26,12 @@ struct Statistic {
     
     let big = 4.503599627370496e15
     let biginv = 2.22044604925031308085e-16
+    
+    
+    func gammaSign<T: Real>(_ x: T) -> T {
+        let sign = .signGamma(x)
+    }
+    
     
     /// based on https://github.com/scipy/scipy/blob/main/scipy/special/cephes/beta.c ; 06.12.23 11:36
     func beta(_ a: Double, _ b: Double) -> Double {
@@ -58,7 +66,7 @@ struct Statistic {
         y = a + b
         if fabs(y) > MAXGAM || fabs(a) > MAXGAM || fabs(b) > MAXGAM {
             var sgngam: Int
-            //signGamma()
+            let realY = Real(Int(y))
             
         }
         

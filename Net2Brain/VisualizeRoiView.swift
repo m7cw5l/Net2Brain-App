@@ -28,7 +28,7 @@ struct VisualizeRoiView: View {
         scene.rootNode.childNode(withName: "camera", recursively: false)
     }
     
-    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.visualization.roi", show: false)
         
     var body: some View {
         NavigationStack {

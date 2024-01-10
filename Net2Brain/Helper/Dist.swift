@@ -52,7 +52,7 @@ func euclidean(x: MfArray, y: MfArray? = nil) async -> MfArray? {
         y = x
         yNorm = xNorm
     }
-    
+        
     if let y = y {
         if let yNorm = yNorm {
             if x.ndim == 3 {
