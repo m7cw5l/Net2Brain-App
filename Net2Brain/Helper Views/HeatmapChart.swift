@@ -9,12 +9,6 @@ import SwiftUI
 import Charts
 import Matft
 
-struct HeatmapEntry: Hashable {
-    var imageHorizontal: Int
-    var imageVertical: Int
-    var value: Float
-}
-
 struct HeatmapChart: View {
     /// heatmap from matplotlib/nilearn ("cold_hot")
     let heatmap = [

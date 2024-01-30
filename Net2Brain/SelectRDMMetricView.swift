@@ -13,6 +13,8 @@ struct SelectRDMMetricView: View {
     @State var pipelineParameters: PipelineParameters
     @StateObject var pipelineData: PipelineData
     
+    @Binding var path: NavigationPath
+    
     @State var isCalculating = false
     
     @State var showHeatmap = false
@@ -20,65 +22,65 @@ struct SelectRDMMetricView: View {
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .rdmMetric)
-                
-                Form {
-                    Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
-                        ForEach(availableRDMMetrics, id: \.self) { metric in
-                            HStack {
-                                ExplanationInfoButton(title: metric.name, description: metric.description, currentExplanation: $currentExplanation)
-                                Text(metric.name)
-                            }.tag(metric)
-                        }
-                    }.pickerStyle(.inline)
-                }
-                
-                Button(action: {
-                    Task {
-                        await calculateDistanceMatrices()
+        VStack {
+            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .rdmMetric)
+            
+            Form {
+                Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
+                    ForEach(availableRDMMetrics, id: \.self) { metric in
+                        HStack {
+                            ExplanationInfoButton(title: metric.name, description: metric.description, currentExplanation: $currentExplanation)
+                            Text(metric.name)
+                        }.tag(metric)
                     }
-                }, label: {
-                    Text(isCalculating ? "pipeline.rdm.calculating" : "pipeline.rdm.button.start.title").frame(maxWidth: .infinity).padding(6)
-                }).buttonStyle(BorderedProminentButtonStyle())
-                    .padding()
-                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count != 0 || isCalculating)
-                    
-                Divider()
-                
-                Button(action: {
-                    showHeatmap.toggle()
-                }, label: {
-                    Text("pipeline.rdm.button.heatmap.title").frame(maxWidth: .infinity).padding(6)
-                }).buttonStyle(BorderedButtonStyle())
-                    .padding([.top, .leading, .trailing])
-                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
-                
-                NavigationLink(destination: {
-                    SelectEvaluationTypeView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
-                }, label: {
-                    Text("button.next.title").frame(maxWidth: .infinity).padding(6)
-                }).buttonStyle(BorderedProminentButtonStyle())
-                    .padding([.leading, .trailing, .bottom])
-                    .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
-                
-            }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("view.pipeline.rdm.title")
-            .toolbar {
-                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
-                    ExplanationMenuButton(title: "explanation.rdm.title", description: "explanation.rdm", currentExplanation: $currentExplanation)
-                })
+                }.pickerStyle(.inline)
             }
-            .onChange(of: pipelineParameters.rdmMetric) {
-                pipelineData.resetDistanceMatrices()
-            }
-            .sheet(isPresented: $showHeatmap) {
-                HeatmapChartView(pipelineParameters: $pipelineParameters, matrices: pipelineData.distanceMatrices)
-            }.sheet(isPresented: $currentExplanation.show) {
-                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
-                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
-            }
+            
+            Button(action: {
+                Task {
+                    await calculateDistanceMatrices()
+                }
+            }, label: {
+                Text(isCalculating ? "pipeline.rdm.calculating" : "pipeline.rdm.button.start.title").frame(maxWidth: .infinity).padding(6)
+            }).buttonStyle(BorderedProminentButtonStyle())
+                .padding()
+                .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count != 0 || isCalculating)
+                
+            Divider()
+            
+            Button(action: {
+                showHeatmap.toggle()
+            }, label: {
+                Text("pipeline.rdm.button.heatmap.title").frame(maxWidth: .infinity).padding(6)
+            }).buttonStyle(BorderedButtonStyle())
+                .padding([.top, .leading, .trailing])
+                .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
+            
+            Button(action: {
+                path.append(PipelineView.evaluationType)
+            }, label: {
+                Text("button.next.title").frame(maxWidth: .infinity).padding(6)
+            }).buttonStyle(BorderedProminentButtonStyle())
+                .padding([.leading, .trailing, .bottom])
+                .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)
+            
+        }.background(Color(uiColor: .systemGroupedBackground))
+        .navigationTitle("view.pipeline.rdm.title")
+        .toolbar {
+            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                ExplanationMenuButton(title: "explanation.rdm.title", description: "explanation.rdm", currentExplanation: $currentExplanation)
+            })
+        }
+        .onChange(of: pipelineParameters.rdmMetric) {
+            pipelineData.resetDistanceMatrices()
+            pipelineData.resetRoiOutputs()
+        }
+        .sheet(isPresented: $showHeatmap) {
+            HeatmapChartView(pipelineParameters: $pipelineParameters, matrices: pipelineData.distanceMatrices)
+        }.sheet(isPresented: $currentExplanation.show) {
+            /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+            ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
         }
     }
     
@@ -132,5 +134,5 @@ struct SelectRDMMetricView: View {
 }
 
 #Preview {
-    SelectRDMMetricView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData())
+    SelectRDMMetricView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
 }

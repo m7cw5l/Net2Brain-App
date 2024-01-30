@@ -11,10 +11,12 @@ import Matft
 
 struct SelectMLLayersView: View {
     
-    @Environment(\.modelContext) var modelContext
+    //@Environment(\.modelContext) var modelContext
         
     @State var pipelineParameters: PipelineParameters
     @StateObject var pipelineData: PipelineData
+    
+    @Binding var path: NavigationPath
     
     @State var isCalculating = false
     @State var predictionStatus = PredictionStatus.none
@@ -23,90 +25,88 @@ struct SelectMLLayersView: View {
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
     var body: some View {
-        NavigationStack {
-            VStack {
+        VStack {
+            
+            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .mlModelLayer)
+            
+            HStack {
+                Button(action: {
+                    pipelineParameters.mlModelLayers.removeAll()
+                    pipelineParameters.mlModelLayers.append(contentsOf: pipelineParameters.mlModel.layers)
+                }, label: {
+                    Text("button.select.all.title").frame(maxWidth: .infinity).padding(6)
+                }).buttonStyle(BorderedButtonStyle())
+                    .padding(.leading)
+                    .disabled(pipelineParameters.mlModelLayers.count == pipelineParameters.mlModel.layers.count)
                 
-                PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .mlModelLayer)
-                
-                HStack {
-                    Button(action: {
-                        pipelineParameters.mlModelLayers.removeAll()
-                        pipelineParameters.mlModelLayers.append(contentsOf: pipelineParameters.mlModel.layers)
-                    }, label: {
-                        Text("button.select.all.title").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                        .padding(.leading)
-                        .disabled(pipelineParameters.mlModelLayers.count == pipelineParameters.mlModel.layers.count)
-                    
-                    Button(action: {
-                        pipelineParameters.mlModelLayers.removeAll()
-                    }, label: {
-                        Text("button.deselect.all.title").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedButtonStyle())
-                        .padding(.trailing)
-                        .disabled(pipelineParameters.mlModelLayers.count == 0)
-                }
-                List {
-                    Section("pipeline.model.layers.available.title") {
-                        ForEach(pipelineParameters.mlModel.layers, id: \.name) { layer in
-                            Button(action: {
+                Button(action: {
+                    pipelineParameters.mlModelLayers.removeAll()
+                }, label: {
+                    Text("button.deselect.all.title").frame(maxWidth: .infinity).padding(6)
+                }).buttonStyle(BorderedButtonStyle())
+                    .padding(.trailing)
+                    .disabled(pipelineParameters.mlModelLayers.count == 0)
+            }
+            List {
+                Section("pipeline.model.layers.available.title") {
+                    ForEach(pipelineParameters.mlModel.layers, id: \.name) { layer in
+                        Button(action: {
+                            if pipelineParameters.mlModelLayers.contains(layer) {
+                                pipelineParameters.mlModelLayers.removeAll { $0 == layer }
+                            } else {
+                                pipelineParameters.mlModelLayers.append(layer)
+                            }
+                        }, label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(layer.name).foregroundColor(.primary)
+                                    Text(layer.description).font(.caption).fontDesign(.monospaced).foregroundColor(.primary)
+                                }
                                 if pipelineParameters.mlModelLayers.contains(layer) {
-                                    pipelineParameters.mlModelLayers.removeAll { $0 == layer }
-                                } else {
-                                    pipelineParameters.mlModelLayers.append(layer)
+                                    Spacer()
+                                    Image(systemName: "checkmark").fontWeight(.semibold)//.foregroundStyle(.accent)
                                 }
-                            }, label: {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(layer.name).foregroundColor(.primary)
-                                        Text(layer.description).font(.caption).fontDesign(.monospaced).foregroundColor(.primary)
-                                    }
-                                    if pipelineParameters.mlModelLayers.contains(layer) {
-                                        Spacer()
-                                        Image(systemName: "checkmark").fontWeight(.semibold)//.foregroundStyle(.accent)
-                                    }
-                                }
-                            })
-                        }
+                            }
+                        })
                     }
                 }
-                
-                ProgressView(value: predictionProgress, total: 1.0).padding(.horizontal)
-                
-                if pipelineData.mlPredictionOutputs.count == 0 {
-                    Button(action: {
-                        Task {
-                            await predict()
-                        }
-                    }, label: {
-                        Text(predictionStatus == .predicting ? "pipeline.ml.progress.predicting" : predictionStatus == .processingData ? "pipeline.ml.progress.processing" : "pipeline.ml.button.start.title").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedProminentButtonStyle())
-                        .padding([.leading, .trailing, .bottom])
-                        .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count != 0 || isCalculating)
-                } else {
-                    NavigationLink(destination: {
-                        SelectRDMMetricView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
-                    }, label: {
-                        Text("button.next.title").frame(maxWidth: .infinity).padding(6)
-                    }).buttonStyle(BorderedProminentButtonStyle())
-                        .padding()
-                        .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count == 0)
-                }
-                
-            }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("view.pipeline.model.layer.title")
-            .toolbar {
-                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
-                    ExplanationMenuButton(title: "explanation.model.layer.title", description: "explanation.model.layer", currentExplanation: $currentExplanation)
-                })
             }
-            .onChange(of: pipelineParameters.mlModelLayers) {
-                pipelineData.resetPredictionOutputs()
-                pipelineData.resetDistanceMatrices()
-            }.sheet(isPresented: $currentExplanation.show) {
-                /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
-                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
+            
+            ProgressView(value: predictionProgress, total: 1.0).padding(.horizontal)
+            
+            if pipelineData.mlPredictionOutputs.count == 0 {
+                Button(action: {
+                    Task {
+                        await predict()
+                    }
+                }, label: {
+                    Text(predictionStatus == .predicting ? "pipeline.ml.progress.predicting" : predictionStatus == .processingData ? "pipeline.ml.progress.processing" : "pipeline.ml.button.start.title").frame(maxWidth: .infinity).padding(6)
+                }).buttonStyle(BorderedProminentButtonStyle())
+                    .padding([.leading, .trailing, .bottom])
+                    .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count != 0 || isCalculating)
+            } else {
+                Button(action: {
+                    path.append(PipelineView.rdmMetric)
+                }, label: {
+                    Text("button.next.title").frame(maxWidth: .infinity).padding(6)
+                }).buttonStyle(BorderedProminentButtonStyle())
+                    .padding([.leading, .trailing, .bottom])
+                    .disabled(pipelineParameters.mlModelLayers.count == 0 || pipelineData.mlPredictionOutputs.count == 0)
             }
+            
+        }.background(Color(uiColor: .systemGroupedBackground))
+        .navigationTitle("view.pipeline.model.layer.title")
+        .toolbar {
+            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                ExplanationMenuButton(title: "explanation.model.layer.title", description: "explanation.model.layer", currentExplanation: $currentExplanation)
+            })
+        }
+        .onChange(of: pipelineParameters.mlModelLayers) {
+            pipelineData.resetAll()
+        }.sheet(isPresented: $currentExplanation.show) {
+            /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
+            ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
         }
     }
     
@@ -168,5 +168,5 @@ struct SelectMLLayersView: View {
 }
 
 #Preview {
-    SelectMLLayersView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData())
+    SelectMLLayersView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
 }

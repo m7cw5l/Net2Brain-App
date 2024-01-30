@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */; };
 		AA0824F32AE2B92F007CF3DD /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */; };
 		AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */; };
 		AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */; };
@@ -552,6 +553,7 @@
 		AA9ADFF12B46D1E500818FDB /* ExplanationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFF02B46D1E500818FDB /* ExplanationRow.swift */; };
 		AA9ADFF32B46D5F900818FDB /* ExplanationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */; };
 		AA9BEB4A2AD4238E001B3DA2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */; };
+		AAB6C41E2B690AC200E5C882 /* RestartPipelineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */; };
 		AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */; };
 		AAC0F9B42B18CF9C002A7A65 /* alexnet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */; };
 		AAC0F9B52B18CF9C002A7A65 /* resnet34.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */; };
@@ -583,6 +585,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChartNew.swift; sourceTree = "<group>"; };
 		AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
 		AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPredict.swift; sourceTree = "<group>"; };
 		AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRDMMetricView.swift; sourceTree = "<group>"; };
@@ -1126,6 +1129,7 @@
 		AA9ADFF02B46D1E500818FDB /* ExplanationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationRow.swift; sourceTree = "<group>"; };
 		AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationMenuButton.swift; sourceTree = "<group>"; };
 		AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartPipelineButton.swift; sourceTree = "<group>"; };
 		AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = resnet50.mlpackage; sourceTree = "<group>"; };
 		AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = alexnet.mlpackage; sourceTree = "<group>"; };
 		AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = resnet34.mlpackage; sourceTree = "<group>"; };
@@ -1586,33 +1590,21 @@
 				AA47B1FA2ADFAA8F00A933D7 /* 3d_brains */,
 				AAF570B12B12417C007DC141 /* data_rdm */,
 				AA1613FB2B107902007FFA70 /* Helper */,
+				AAB6C41F2B690CEF00E5C882 /* Helper Views */,
 				AA5AA2702AB838F70019C38A /* Net2BrainApp.swift */,
 				AA202B812ACECDA9009D2EE1 /* WelcomeView.swift */,
-				AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */,
-				AA9ADFF02B46D1E500818FDB /* ExplanationRow.swift */,
-				AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */,
-				AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */,
-				AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */,
 				AA202B892ACED36B009D2EE1 /* VisualizeRoiView.swift */,
 				AA202B8B2ACED608009D2EE1 /* VisualizeRoiImageView.swift */,
-				AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */,
-				AAFDAAA32B4EFBBD00D19ACB /* ImageGridHeader.swift */,
 				AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */,
+				AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */,
 				AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */,
-				AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */,
-				AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */,
 				AAE7BF0F2B0F71400040F11F /* SelectDatasetView.swift */,
 				AAF570AF2B1240CF007DC141 /* SelectDatasetImagesView.swift */,
-				AA96FBA02B4EE9B400F9F4A6 /* RandomImagePicker.swift */,
-				AAFDAAA12B4EEC1C00D19ACB /* ImageGridHeaderSelectable.swift */,
-				AA96FB9E2B4EE85B00F9F4A6 /* ImageGridItemSelectable.swift */,
 				AA202B852ACED24A009D2EE1 /* SelectMLModelView.swift */,
 				AAC0F9B72B18E1BE002A7A65 /* SelectMLLayersView.swift */,
 				AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */,
 				AAF570AD2B123E40007DC141 /* SelectEvaluationTypeView.swift */,
 				AA30D96F2AF10D5A00081BB8 /* HeatmapChartView.swift */,
-				AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */,
-				AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */,
 				AA7380C52B1DE2A600517431 /* RSAChartView.swift */,
 				AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */,
 				AAC0F9B92B18E555002A7A65 /* resnet18.mlpackage */,
@@ -1650,6 +1642,28 @@
 				AA5AA28D2AB838F80019C38A /* Net2BrainUITestsLaunchTests.swift */,
 			);
 			path = Net2BrainUITests;
+			sourceTree = "<group>";
+		};
+		AAB6C41F2B690CEF00E5C882 /* Helper Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */,
+				AA9ADFF02B46D1E500818FDB /* ExplanationRow.swift */,
+				AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */,
+				AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */,
+				AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */,
+				AAFDAAA32B4EFBBD00D19ACB /* ImageGridHeader.swift */,
+				AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */,
+				AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */,
+				AA96FBA02B4EE9B400F9F4A6 /* RandomImagePicker.swift */,
+				AAFDAAA12B4EEC1C00D19ACB /* ImageGridHeaderSelectable.swift */,
+				AA96FB9E2B4EE85B00F9F4A6 /* ImageGridItemSelectable.swift */,
+				AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */,
+				AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */,
+				AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */,
+				AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */,
+			);
+			path = "Helper Views";
 			sourceTree = "<group>";
 		};
 		AAF570B12B12417C007DC141 /* data_rdm */ = {
@@ -2551,6 +2565,7 @@
 				AA202B902ACEDC06009D2EE1 /* DataStructures.swift in Sources */,
 				AAE7BF102B0F71400040F11F /* SelectDatasetView.swift in Sources */,
 				AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */,
+				AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */,
 				AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */,
 				AAC0F9B82B18E1BE002A7A65 /* SelectMLLayersView.swift in Sources */,
 				AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */,
@@ -2559,6 +2574,7 @@
 				AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */,
 				AA5AA2712AB838F70019C38A /* Net2BrainApp.swift in Sources */,
 				AAF570B02B1240CF007DC141 /* SelectDatasetImagesView.swift in Sources */,
+				AAB6C41E2B690AC200E5C882 /* RestartPipelineButton.swift in Sources */,
 				AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */,
 				AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */,
 				AA969A672B1A3F49002A5900 /* vgg11.mlpackage in Sources */,

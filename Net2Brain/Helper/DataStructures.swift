@@ -31,8 +31,11 @@ enum ROI: String {
     case anatomical = "anatomical"
 }
 
-
 // Data Types for pipeline
+enum PipelineView {
+    case datasetImages, mlModel, mlLayers, rdmMetric, evaluationType, rsaChart
+}
+
 /// https://www.hackingwithswift.com/books/ios-swiftui/using-state-with-classes; 28.11.2023 08:36
 @Observable
 class PipelineParameters {
@@ -74,6 +77,16 @@ class PipelineParameters {
         if self.mlModelLayers.count != 0 {
             self.mlModelLayers.removeAll()
         }
+    }
+    
+    func resetAll() {
+        self.dataset = N2BDataset(name: "", description: "", images: [])
+        resetDatasetImages()
+        self.mlModel = N2BMLModel(key: "", name: "", description: "", layers: [], bias: [], scale: [])
+        resetMLModelLayers()
+        self.rdmMetric = N2BRDMMetric(name: "", description: "")
+        self.evaluationType = N2BEvaluationType(name: "", description: "", parameters: [])
+        self.evaluationParameter = N2BEvaluationParameter(name: "", description: "")
     }
 }
 
@@ -138,15 +151,18 @@ struct N2BEvaluationParameter: Hashable {
 class PipelineData: ObservableObject {
     @Published var mlPredictionOutputs: [String:MfArray]
     @Published var distanceMatrices: [String:MfArray]
+    @Published var allRoisOutput: [RSAOutput]
     
-    init(mlPredictionOutputs: [String:MfArray], distanceMatrices: [String:MfArray]) {
+    init(mlPredictionOutputs: [String:MfArray], distanceMatrices: [String:MfArray], allRoisOutput: [RSAOutput]) {
         self.mlPredictionOutputs = mlPredictionOutputs
         self.distanceMatrices = distanceMatrices
+        self.allRoisOutput = allRoisOutput
     }
     
     init() {
         self.mlPredictionOutputs = [:]
         self.distanceMatrices = [:]
+        self.allRoisOutput = []
     }
     
     func resetPredictionOutputs() {
@@ -159,6 +175,18 @@ class PipelineData: ObservableObject {
         if self.distanceMatrices.count != 0 {
             self.distanceMatrices.removeAll()
         }
+    }
+    
+    func resetRoiOutputs() {
+        if self.allRoisOutput.count != 0 {
+            self.allRoisOutput.removeAll()
+        }
+    }
+    
+    func resetAll() {
+        resetPredictionOutputs()
+        resetDistanceMatrices()
+        resetRoiOutputs()
     }
 }
 

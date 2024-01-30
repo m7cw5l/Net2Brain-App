@@ -123,6 +123,23 @@
         }
       }
     },
+    "button.restart.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von Neuem beginnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart from Beginning"
+          }
+        }
+      }
+    },
     "button.select.all.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1110,6 +1127,40 @@
         }
       }
     },
+    "pipeline.heatmap.select.square" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wähle ein Quadrat in der Heatmap"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a square from the heatmap"
+          }
+        }
+      }
+    },
+    "pipeline.heatmap.selected.images" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ausgewählte Bilder:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "selected images:"
+          }
+        }
+      }
+    },
     "pipeline.image.category.animals" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1869,6 +1920,74 @@
         }
       }
     },
+    "pipeline.restart.alert.cancel.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "pipeline.restart.alert.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle ausgewählten Parameter werden zurückgesetzt und die berechneten Werte werden gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All selected parameters will be reset and the calculated values will be deleted."
+          }
+        }
+      }
+    },
+    "pipeline.restart.alert.restart.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von Neuem beginnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart from Beginning"
+          }
+        }
+      }
+    },
+    "pipeline.restart.alert.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willst Du von Neuem beginnen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to start over?"
+          }
+        }
+      }
+    },
     "pipeline.select.parameter.%@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2055,6 +2174,9 @@
           }
         }
       }
+    },
+    "Value" : {
+
     },
     "view.about.title" : {
       "extractionState" : "manual",
@@ -2294,10 +2416,16 @@
         }
       }
     },
+    "x" : {
+
+    },
     "xEnd" : {
 
     },
     "xStart" : {
+
+    },
+    "y" : {
 
     },
     "yEnd" : {

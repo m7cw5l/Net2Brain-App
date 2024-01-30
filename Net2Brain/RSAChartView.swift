@@ -10,8 +10,9 @@ import Charts
 
 struct RSAChartView: View {
     @State var pipelineParameters: PipelineParameters
+    @StateObject var pipelineData: PipelineData
     
-    var allRoisOutput: [RSAOutput]
+    @Binding var path: NavigationPath
     
     @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
     
@@ -44,6 +45,9 @@ struct RSAChartView: View {
             
         }.background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle("view.pipeline.evaluation.chart.title")
+            .toolbar {
+                RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            }
             .sheet(isPresented: $explanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
                 ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
@@ -57,7 +61,7 @@ struct RSAChartView: View {
     func sortedRoiOutput() -> [RSAOutput] {
         let originalLayerKeys = pipelineParameters.mlModel.layers.map { $0.coremlKey }
         
-        let sortedAllRoisOutput = allRoisOutput.sorted(by: {
+        let sortedAllRoisOutput = pipelineData.allRoisOutput.sorted(by: {
             (originalLayerKeys.firstIndex(of: $0.layer) ?? 0) < (originalLayerKeys.firstIndex(of: $1.layer) ?? 0)
         })
         return sortedAllRoisOutput
@@ -75,5 +79,5 @@ struct RSAChartView: View {
             exampleData.append(RSAOutput(roi: roi, layer: layer, model: "AlexNet", r2: Float.random(in: 0...5), significance: Float.random(in: 0...1), sem: Float.random(in: 0...1)))
         }
     }
-    return RSAChartView(pipelineParameters: PipelineParameters(), allRoisOutput: exampleData)
+    return RSAChartView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
 }

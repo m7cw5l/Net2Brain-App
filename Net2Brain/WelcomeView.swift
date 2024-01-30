@@ -27,9 +27,12 @@ struct WelcomeView: View {
     ]
     
     @State private var showAboutScreen = false
+        
+    @State var pipelineParameters = PipelineParameters()
+    @StateObject var pipelineData = PipelineData()
     
-    @State private var selectedTargetView: MenuTargetView?
-    
+    @State private var path = NavigationPath()
+            
     let explanations = [
         Explanation(title: "explanation.main.roi.title", description: "explanation.main.roi", show: false),
         Explanation(title: "explanation.main.fmri.title", description: "explanation.main.fmri", show: false),
@@ -41,19 +44,16 @@ struct WelcomeView: View {
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
                 List {
                     Section {
                         LazyVGrid(columns: columns, spacing: 8) {
                             ForEach(menuItems, id: \.title) { menuItem in
                                 Button(action: {
-                                    selectedTargetView = menuItem.targetView
+                                    path.append(menuItem.targetView)
                                 }, label: {
                                     WelcomeGridItemView(icon: menuItem.systemIcon, title: menuItem.title)
                                 }).buttonStyle(BorderlessButtonStyle())
-                                /*.onTapGesture {
-                                    selectedTargetView = .visualizeRoi
-                                }*/
                             }
                         }.background(Color(uiColor: .systemGroupedBackground))
                             .listRowInsets(EdgeInsets())
@@ -66,16 +66,34 @@ struct WelcomeView: View {
                     }
                 }.background(Color(uiColor: UIColor.secondarySystemBackground))
                 .navigationTitle(String(localized: "view.main.title"))
-                .navigationDestination(item: $selectedTargetView, destination: { targetView in
+                .navigationDestination(for: MenuTargetView.self, destination: { targetView in
+                    // Navigation Destinations for Main Menu
                     switch targetView {
                     case .visualizeRoi:
-                        VisualizeRoiView()
+                        VisualizeRoiView(path: $path)
                     case .visualizeFmri:
-                        VisualizeRoiImageView()
+                        VisualizeRoiImageView(path: $path)
                     case .prediction:
-                        SelectDatasetView()
+                        SelectDatasetView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
                     case .imageOverview:
-                        ImagesOverviewView()
+                        ImagesOverviewView(path: $path)
+                    }
+                })
+                .navigationDestination(for: PipelineView.self, destination: { selection in
+                    // navigation Destinations for Prediction Pipeline
+                    switch selection {
+                    case .datasetImages:
+                        SelectDatasetImagesView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                    case .mlModel:
+                        SelectMLModelView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                    case .mlLayers:
+                        SelectMLLayersView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                    case .rdmMetric:
+                        SelectRDMMetricView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                    case .evaluationType:
+                        SelectEvaluationTypeView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                    case .rsaChart:
+                        RSAChartView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
                     }
                 })
                 .toolbar {
