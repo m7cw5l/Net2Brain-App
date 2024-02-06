@@ -5,12 +5,9 @@
 //  Created by Marco Weßel on 26.10.23.
 //
 
-//import Foundation
 import SwiftUI
-import SwiftData
 import CoreML
 import Matft
-import Kingfisher
 
 extension UIImage {
     func resize(targetSize: CGSize) -> UIImage {
@@ -57,7 +54,7 @@ struct MLPredict {
         return Matft.image.mfarray2cgimage(scaledImage)
     }
     
-    func loadImageFromUrl(_ urlString: String, completionHandler: @escaping (UIImage?) -> ()) {
+    /*func loadImageFromUrl(_ urlString: String, completionHandler: @escaping (UIImage?) -> ()) {
         guard let url = URL(string: urlString) else { return completionHandler(nil) }
         KingfisherManager.shared.retrieveImage(with: KF.ImageResource(downloadURL: url), completionHandler: { result in
             switch result {
@@ -68,7 +65,7 @@ struct MLPredict {
                 completionHandler(nil)
             }
         })
-    }
+    }*/
     
     func buffer(from image: UIImage, width: Int = 224, height: Int = 224) -> CVPixelBuffer? {
         let inputImage = image.resize(targetSize: CGSize(width: width, height: height))

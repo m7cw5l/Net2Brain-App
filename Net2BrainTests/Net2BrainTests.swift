@@ -11,13 +11,13 @@ import Matft
 
 private extension RSAOutput {
     /// https://forums.swift.org/t/double-equatable-and-unit-tests-that-fails-because-they-are-almost-equal/12133/5 ; 06.02.2024 10:34
-    static func almostEqual(lhs: RSAOutput, rhs: RSAOutput, accuracy: Double) {
+    static func almostEqual(lhs: RSAOutput, rhs: RSAOutput, accuracy: Float) {
         XCTAssertEqual(lhs.roi, rhs.roi)
         XCTAssertEqual(lhs.layer, rhs.layer)
         XCTAssertEqual(lhs.model, rhs.model)
-        XCTAssertEqual(lhs.r2, rhs.r2, accuracy: 0.0001)
-        XCTAssertEqual(lhs.significance, rhs.significance, accuracy: 0.0001)
-        XCTAssertEqual(lhs.sem, rhs.sem, accuracy: 0.0001)
+        XCTAssertEqual(lhs.r2, rhs.r2, accuracy: accuracy)
+        XCTAssertEqual(lhs.significance, rhs.significance, accuracy: accuracy)
+        XCTAssertEqual(lhs.sem, rhs.sem, accuracy: accuracy)
     }
 }
 
@@ -226,32 +226,37 @@ final class Net2BrainTests: XCTestCase {
     func testRSA() async throws {
         /// case1: ResNet18
         /// case2: RN50
-        let layerNames = ["layer3.1.conv2", "layer4.1.bn2"]
-        let distanceMatrices = loadLayers("case1", layerNames)
-        
-        let rsa = RSA()
-        let brainRdms = await rsa.loadBrainRdms(dataset: "78images", images: (1...78).map { String(format: "78images_%05d", $0) }, progressCallback: { progress in
-        })
-        
-        let rsaOutputs = await rsa.evaluate(brainRdms: brainRdms, modelName: "ResNet18", modelRdms: distanceMatrices, progressCallback: { progress in
-        })
-        let filteredRsaOutputs = rsaOutputs.filter({ output in
-            output.roi.contains("fmri_IT_RDMs") || output.roi.contains("fmri_EVC_RDMs")
-        }).map({ output in
-            var output = output
-            output.roi = String(output.roi.dropFirst(4))
+        let testCases = [
+            (name: "case1", layerNames: ["layer3.1.conv2", "layer4.1.bn2"], model: "ResNet18"),
+            (name: "case2", layerNames: ["visual.layer4"], model: "RN50")
+        ]
+        for testCase in testCases {
+            let distanceMatrices = loadLayers(testCase.name, testCase.layerNames)
             
-            return output
-        }).sorted(by: {
-            ($0.roi, $0.layer) > ($1.roi, $1.layer)
-        })
-        
-        let correctResults = loadResultsFile("case1").sorted(by: {
-            ($0.roi, $0.layer) > ($1.roi, $1.layer)
-        })
-        
-        for (result, correct) in zip(filteredRsaOutputs, correctResults) {
-            RSAOutput.almostEqual(lhs: result, rhs: correct, accuracy: 0.0001)
+            let rsa = RSA()
+            let brainRdms = await rsa.loadBrainRdms(dataset: "78images", images: (1...78).map { String(format: "78images_%05d", $0) }, progressCallback: { progress in
+            })
+            
+            let rsaOutputs = await rsa.evaluate(brainRdms: brainRdms, modelName: testCase.model, modelRdms: distanceMatrices, progressCallback: { progress in
+            })
+            let filteredRsaOutputs = rsaOutputs.filter({ output in
+                output.roi.contains("fmri_IT_RDMs") || output.roi.contains("fmri_EVC_RDMs")
+            }).map({ output in
+                var output = output
+                output.roi = String(output.roi.dropFirst(4))
+                
+                return output
+            }).sorted(by: {
+                ($0.roi, $0.layer) > ($1.roi, $1.layer)
+            })
+            
+            let correctResults = loadResultsFile(testCase.name).sorted(by: {
+                ($0.roi, $0.layer) > ($1.roi, $1.layer)
+            })
+                        
+            for (result, correct) in zip(filteredRsaOutputs, correctResults) {
+                RSAOutput.almostEqual(lhs: result, rhs: correct, accuracy: 0.00005)
+            }
         }
     }
 

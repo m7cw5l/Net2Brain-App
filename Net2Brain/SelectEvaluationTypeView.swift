@@ -70,16 +70,6 @@ struct SelectEvaluationTypeView: View {
                         
                         isCalculating = false
                         rsaStatus = .none
-                        /*let rois = ["visual", "body", "face", "place", "word", "anatomical"]
-                        let layers = alexnetLayers.map {
-                            $0.name
-                        }
-                        for roi in rois {
-                            for layer in layers {
-                                allRoisOutput.append(RSAOutput(roi: roi, layer: layer, model: "AlexNet", r2: Double.random(in: 0...5), significance: Double.random(in: 0...1), sem: Double.random(in: 0...1)))
-                            }
-                        }*/
-                        //print(allRoisOutput)
                     }
                 }, label: {
                     Text(rsaStatus == .loadingData ? "pipeline.evaluation.progress.loading" : rsaStatus == .calculatingRSA ? "pipeline.evaluation.progress.calculating" : "pipeline.evaluation.button.start.title").frame(maxWidth: .infinity).padding(6)

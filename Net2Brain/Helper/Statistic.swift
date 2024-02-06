@@ -26,7 +26,7 @@ struct Statistic {
         return 0.0
     }
     
-    func sem(x: MfArray, mean: Float) -> Float {
+    /*func sem(x: MfArray, mean: Float) -> Float {
         /// Standard Error of Mean
         /// https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step; 21.11.2023 10:46
         /// https://en.wikipedia.org/wiki/Standard_error; 21.11.2023 11:20
@@ -39,5 +39,27 @@ struct Statistic {
         }
         let sd = sqrt(sum / Double(n))
         return Float(sd / sqrt(Double(n)))
+    }*/
+    
+    func sem(x: MfArray, mean: Float) -> Float {
+        /// Standard Error of Mean
+        /// https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step; 21.11.2023 10:46
+        /// https://en.wikipedia.org/wiki/Standard_error; 21.11.2023 11:20
+        let n = x.count
+        
+        var sum: Float = 0.0
+        for i in 0..<n {
+            let value = x.item(index: i, type: Float.self)
+            sum += pow(abs(value - mean), 2.0)
+        }
+        let sd = sqrt(sum / Float(n))
+        return sd / sqrt(Float(n))
     }
+    
+    /*func sem(x: MfArray, mean: Float) -> Float {
+        let data: Array<Float> = x.toFlattenArray(datatype: Float.self, { $0 })
+        let sample = SSExamine<Float, Float>.init(withArray: data, name: "data", characterSet: nil)
+        
+        return sample.standardError ?? 0.0
+    }*/
 }

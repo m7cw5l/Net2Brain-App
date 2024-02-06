@@ -10,12 +10,12 @@
 		AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */; };
 		AA0824F32AE2B92F007CF3DD /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */; };
 		AA0963192B70E6F1009A614D /* results_case1.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0963182B70E6F1009A614D /* results_case1.gzip */; };
+		AA0A98202B7261F2001E6F7C /* results_case2.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0A981F2B7261F2001E6F7C /* results_case2.gzip */; };
 		AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */; };
 		AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */; };
 		AA1B256D2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */; };
 		AA1FE1AC2B6CD2E700A367B3 /* HistoryOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FE1AB2B6CD2E700A367B3 /* HistoryOverview.swift */; };
 		AA1FE1AE2B6CD7E000A367B3 /* HistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FE1AD2B6CD7E000A367B3 /* HistoryChartView.swift */; };
-		AA202B7E2ACEB992009D2EE1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA202B7D2ACEB992009D2EE1 /* Kingfisher */; };
 		AA202B822ACECDA9009D2EE1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B812ACECDA9009D2EE1 /* WelcomeView.swift */; };
 		AA202B862ACED24A009D2EE1 /* SelectMLModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B852ACED24A009D2EE1 /* SelectMLModelView.swift */; };
 		AA202B882ACED321009D2EE1 /* ImagesOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */; };
@@ -536,6 +536,7 @@
 		AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C52B1DE2A600517431 /* RSAChartView.swift */; };
 		AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73A2452B0C9F0A00EB13A1 /* RSA.swift */; };
 		AA872A682B7216D400192A45 /* SwiftyStats in Frameworks */ = {isa = PBXBuildFile; productRef = AA872A672B7216D400192A45 /* SwiftyStats */; };
+		AA872A6A2B7250A900192A45 /* RSAChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA872A692B7250A900192A45 /* RSAChart.swift */; };
 		AA894E2A2AE24C41005ABC3C /* WelcomeGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */; };
 		AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B10DC2AFA2A7300C76E63 /* Dist.swift */; };
 		AA8B80052B1DF66400D3879A /* 78images_fmri_T2_IT_RDMs.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA8B7FFA2B1DF39A00D3879A /* 78images_fmri_T2_IT_RDMs.gzip */; };
@@ -593,6 +594,7 @@
 		AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChartNew.swift; sourceTree = "<group>"; };
 		AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
 		AA0963182B70E6F1009A614D /* results_case1.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case1.gzip; sourceTree = "<group>"; };
+		AA0A981F2B7261F2001E6F7C /* results_case2.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case2.gzip; sourceTree = "<group>"; };
 		AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPredict.swift; sourceTree = "<group>"; };
 		AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRDMMetricView.swift; sourceTree = "<group>"; };
 		AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationInfoButton.swift; sourceTree = "<group>"; };
@@ -1118,6 +1120,7 @@
 		AA7380C32B1DE15300517431 /* AvailableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableData.swift; sourceTree = "<group>"; };
 		AA7380C52B1DE2A600517431 /* RSAChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChartView.swift; sourceTree = "<group>"; };
 		AA73A2452B0C9F0A00EB13A1 /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
+		AA872A692B7250A900192A45 /* RSAChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChart.swift; sourceTree = "<group>"; };
 		AA894E292AE24C41005ABC3C /* WelcomeGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeGridItemView.swift; sourceTree = "<group>"; };
 		AA8B10DC2AFA2A7300C76E63 /* Dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dist.swift; sourceTree = "<group>"; };
 		AA8B7FF92B1DF39900D3879A /* 78images_fmri_EVC_RDMs.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = 78images_fmri_EVC_RDMs.gzip; sourceTree = "<group>"; };
@@ -1162,7 +1165,6 @@
 				AA872A682B7216D400192A45 /* SwiftyStats in Frameworks */,
 				AA2D78ED2AFB7AB8003BCEE4 /* Matft in Frameworks */,
 				AA3D9F632ADFD1BA00F782F6 /* Gzip in Frameworks */,
-				AA202B7E2ACEB992009D2EE1 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1597,6 +1599,7 @@
 			isa = PBXGroup;
 			children = (
 				AA4E3F092B70DF1D00700EDA /* visual.layer4.gzip */,
+				AA0A981F2B7261F2001E6F7C /* results_case2.gzip */,
 			);
 			path = case2;
 			sourceTree = "<group>";
@@ -1702,6 +1705,7 @@
 				AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */,
 				AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */,
 				AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */,
+				AA872A692B7250A900192A45 /* RSAChart.swift */,
 			);
 			path = "Helper Views";
 			sourceTree = "<group>";
@@ -1944,7 +1948,6 @@
 			);
 			name = Net2Brain;
 			packageProductDependencies = (
-				AA202B7D2ACEB992009D2EE1 /* Kingfisher */,
 				AA3D9F622ADFD1BA00F782F6 /* Gzip */,
 				AA2D78EC2AFB7AB8003BCEE4 /* Matft */,
 				AA872A672B7216D400192A45 /* SwiftyStats */,
@@ -2024,7 +2027,6 @@
 			);
 			mainGroup = AA5AA2642AB838F70019C38A;
 			packageReferences = (
-				AA202B7C2ACEB992009D2EE1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AA3D9F612ADFD1BA00F782F6 /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				AA2D78EB2AFB7AB8003BCEE4 /* XCRemoteSwiftPackageReference "Matft" */,
 				AA872A662B7216D400192A45 /* XCRemoteSwiftPackageReference "SwiftyStats" */,
@@ -2561,6 +2563,7 @@
 			files = (
 				AA0963192B70E6F1009A614D /* results_case1.gzip in Resources */,
 				AA4E3F072B70DF1400700EDA /* layer3.1.conv2.gzip in Resources */,
+				AA0A98202B7261F2001E6F7C /* results_case2.gzip in Resources */,
 				AA4E3F052B70DF1400700EDA /* layer4.1.bn2.gzip in Resources */,
 				AA4E3F0B2B70DF1D00700EDA /* visual.layer4.gzip in Resources */,
 			);
@@ -2613,6 +2616,7 @@
 				AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */,
 				AAC0F9B82B18E1BE002A7A65 /* SelectMLLayersView.swift in Sources */,
 				AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */,
+				AA872A6A2B7250A900192A45 /* RSAChart.swift in Sources */,
 				AA30D9702AF10D5A00081BB8 /* HeatmapChartView.swift in Sources */,
 				AA6EDE2F2B17400C004EFBCF /* HeatmapChart.swift in Sources */,
 				AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */,
@@ -2968,14 +2972,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AA202B7C2ACEB992009D2EE1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.9.1;
-			};
-		};
 		AA2D78EB2AFB7AB8003BCEE4 /* XCRemoteSwiftPackageReference "Matft" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jjjkkkjjj/Matft";
@@ -3003,11 +2999,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA202B7D2ACEB992009D2EE1 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA202B7C2ACEB992009D2EE1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		AA2D78EC2AFB7AB8003BCEE4 /* Matft */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA2D78EB2AFB7AB8003BCEE4 /* XCRemoteSwiftPackageReference "Matft" */;
