@@ -63,14 +63,14 @@ struct HeatmapChartView: View {
                 
                 VStack {
                     if let selectedImages {
-                        VStack {
-                            Text("pipeline.heatmap.selected.images").font(.headline)
+                        VStack(spacing: 2.0) {
+                            //Text("pipeline.heatmap.selected.images").font(.headline)
                             HStack {
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.first).jpg") ?? UIImage()).resizable().scaledToFit()
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.second).jpg") ?? UIImage()).resizable().scaledToFit()
                             }
-                            Text(String(format: "Dissimilarity: %.2f", currentMatrix.item(indices: [Int(selectedImages.firstIndex) ?? 0, Int(selectedImages.secondIndex) ?? 0], type: Float.self)))
-                        }.padding()
+                            Text(String(format: "Dissimilarity: %.2f", currentMatrix.item(indices: [Int(selectedImages.firstIndex) ?? 0, Int(selectedImages.secondIndex) ?? 0], type: Float.self))).font(.caption)
+                        }.padding(.vertical, 12.0)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background()
                             .clipShape(.rect(cornerRadius: 16))

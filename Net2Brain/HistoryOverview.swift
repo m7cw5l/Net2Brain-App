@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct HistoryOverview: View {
+    @Environment(\.modelContext) private var modelContext
+    
     @Binding var path: NavigationPath
     
     @Query var historyEntries: [HistoryEntry]
@@ -29,8 +31,17 @@ struct HistoryOverview: View {
                     Text(dateFormatter.string(from: historyEntry.date))
                     Text("\(historyEntry.pipelineParameters.dataset.name) | \(historyEntry.pipelineParameters.mlModel.name) | \(historyEntry.pipelineParameters.rdmMetric.name) | \(historyEntry.pipelineParameters.evaluationType.name) – \(historyEntry.pipelineParameters.evaluationParameter.name)").font(.caption)
                 }
-            })
-        }.navigationTitle("view.history.title")
+            }).swipeActions {
+                Button("button.history.entry.delete", systemImage: "trash", role: .destructive) {
+                    modelContext.delete(historyEntry)
+                }
+            }
+        }.overlay(Group {
+            if historyEntries.isEmpty {
+                Text("history.list.empty").foregroundStyle(Color.secondary).multilineTextAlignment(.center)
+            }
+        })
+        .navigationTitle("view.history.title")
     }
 }
 

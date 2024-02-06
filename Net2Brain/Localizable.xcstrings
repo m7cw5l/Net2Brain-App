@@ -91,6 +91,23 @@
         }
       }
     },
+    "button.history.entry.delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
     "button.info.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -583,6 +600,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hemisphere"
+          }
+        }
+      }
+    },
+    "history.list.empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It looks like this list is empty.\n\nStart filling it by completing some prediction experiments."
           }
         }
       }
@@ -1408,6 +1436,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "pipeline.image.picker.category.button.title.%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "%lld category"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld categories"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pipeline.image.picker.image.button.title.%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld images"
           }
         }
       }

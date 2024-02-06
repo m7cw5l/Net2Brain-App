@@ -10,7 +10,7 @@ import Charts
 import SwiftData
 
 struct RSAChartView: View {
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) private var modelContext
     
     @State var pipelineParameters: PipelineParameters
     @StateObject var pipelineData: PipelineData
@@ -56,7 +56,7 @@ struct RSAChartView: View {
                 ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
             }.onAppear {
                 let newHistoryEntry = HistoryEntry(date: Date(), pipelineParameter: HistoryPipelineParameters(pipelineParameters: pipelineParameters), roiOutput: pipelineData.allRoisOutput)
-                context.insert(newHistoryEntry)
+                modelContext.insert(newHistoryEntry)
             }
     }
     

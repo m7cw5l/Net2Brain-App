@@ -7,22 +7,63 @@
 
 import SwiftUI
 
+struct ImagePickerItem: Hashable {
+    let type: String
+    let count: Int
+}
+
 struct RandomImagePicker: View {
     
     @State var pipelineParameters: PipelineParameters
     
+    let items = [
+        ImagePickerItem(type: "category", count: 1),
+        ImagePickerItem(type: "category", count: 2),
+        ImagePickerItem(type: "category", count: 3),
+        ImagePickerItem(type: "image", count: 10),
+        ImagePickerItem(type: "image", count: 15),
+        ImagePickerItem(type: "image", count: 20),
+        ImagePickerItem(type: "image", count: 30),
+        ImagePickerItem(type: "image", count: 40)
+    ]
+    
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach([5, 10, 15, 20, 25, 30, 35, 40], id: \.self) { number in
+                ForEach(items, id: \.self) { item in
                     Button(action: {
-                        selectRandomImages(number)
+                        if item.type == "category" {
+                            selectRandomCategories(item.count)
+                        } else {
+                            selectRandomImages(item.count)
+                        }
                     }, label: {
-                        Text("\(number)").frame(maxWidth: .infinity).padding(6)
+                        Text(item.type == "image" ? "pipeline.image.picker.image.button.title.\(item.count)" : "pipeline.image.picker.category.button.title.\(item.count)").frame(maxWidth: .infinity).padding(6)
                     }).buttonStyle(BorderedButtonStyle())
                 }
             }.padding(.horizontal)
         }
+    }
+    
+    func selectRandomCategories(_ count: Int) {
+        pipelineParameters.datasetImages.removeAll()
+        var selectedCategories = [N2BImageCategory]()
+        for _ in 0..<count {
+            var newValidCategory = false
+            while !newValidCategory {
+                let selectedCategory = pipelineParameters.dataset.images.randomElement() ?? N2BImageCategory(name: "", images: [])
+                if !selectedCategories.contains(selectedCategory) {
+                    selectedCategories.append(selectedCategory)
+                    newValidCategory = true
+                }
+            }
+        }
+        var selectedImages = [String]()
+        for category in selectedCategories {
+            selectedImages.append(contentsOf: category.images)
+        }
+        selectedImages = selectedImages.sorted()
+        pipelineParameters.datasetImages.append(contentsOf: selectedImages)
     }
     
     func selectRandomImages(_ count: Int) {
@@ -44,7 +85,7 @@ struct RandomImagePicker: View {
             
         }
         selectedImages = selectedImages.sorted()
-        print(selectedImages)
+        //print(selectedImages)
         pipelineParameters.datasetImages.append(contentsOf: selectedImages)
     }
 }

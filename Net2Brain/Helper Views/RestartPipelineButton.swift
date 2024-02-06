@@ -22,9 +22,9 @@ struct RestartPipelineButton: View {
         .alert("pipeline.restart.alert.title", isPresented: $showWarning, actions: {
             Button("pipeline.restart.alert.cancel.button", role: .cancel, action: { })
             Button("pipeline.restart.alert.restart.button", role: .destructive, action: {
+                path.removeLast(path.count - 1)
                 pipelineParameters.resetAll()
                 pipelineData.resetAll()
-                path = NavigationPath([MenuTargetView.prediction])
             })
         }, message: {
             Text("pipeline.restart.alert.message")

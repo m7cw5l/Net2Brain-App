@@ -9,8 +9,9 @@ import SwiftUI
 import Charts
 
 struct HistoryChartView: View {
-    //@State var pipelineParameters: PipelineParameters
-    //var allRoisOutput: [RSAOutput]
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) var dismiss
+        
     @State var historyEntry: HistoryEntry
     
     @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
@@ -57,6 +58,12 @@ struct HistoryChartView: View {
             
         }.background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle(dateFormatter.string(from: historyEntry.date))
+            .toolbar {
+                Button("button.history.entry.delete", systemImage: "trash", role: .destructive) {
+                    modelContext.delete(historyEntry)
+                    dismiss()
+                }
+            }
             .sheet(isPresented: $explanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
                 ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)

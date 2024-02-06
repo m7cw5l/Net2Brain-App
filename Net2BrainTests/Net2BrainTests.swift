@@ -10,6 +10,7 @@ import XCTest
 import Matft
 
 private extension RSAOutput {
+    /// https://forums.swift.org/t/double-equatable-and-unit-tests-that-fails-because-they-are-almost-equal/12133/5 ; 06.02.2024 10:34
     static func almostEqual(lhs: RSAOutput, rhs: RSAOutput, accuracy: Double) {
         XCTAssertEqual(lhs.roi, rhs.roi)
         XCTAssertEqual(lhs.layer, rhs.layer)
@@ -242,11 +243,11 @@ final class Net2BrainTests: XCTestCase {
             
             return output
         }).sorted(by: {
-            $0.roi > $1.roi
+            ($0.roi, $0.layer) > ($1.roi, $1.layer)
         })
         
         let correctResults = loadResultsFile("case1").sorted(by: {
-            $0.roi > $1.roi
+            ($0.roi, $0.layer) > ($1.roi, $1.layer)
         })
         
         for (result, correct) in zip(filteredRsaOutputs, correctResults) {
@@ -254,7 +255,7 @@ final class Net2BrainTests: XCTestCase {
         }
     }
 
-    func testExample() throws {
+    /*func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.
@@ -267,6 +268,6 @@ final class Net2BrainTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
-    }
+    }*/
 
 }
