@@ -13,6 +13,6 @@ struct Net2BrainApp: App {
         WindowGroup {
             //WelcomeListView()
             WelcomeView()
-        }
+        }.modelContainer(for: HistoryEntry.self)
     }
 }

@@ -1,27 +1,36 @@
 //
-//  RSAChartView.swift
+//  HistoryChartView.swift
 //  Net2Brain
 //
-//  Created by Marco Weßel on 04.12.23.
+//  Created by Marco Weßel on 02.02.24.
 //
 
 import SwiftUI
 import Charts
-import SwiftData
 
-struct RSAChartView: View {
-    @Environment(\.modelContext) private var context
+struct HistoryChartView: View {
+    //@State var pipelineParameters: PipelineParameters
+    //var allRoisOutput: [RSAOutput]
+    @State var historyEntry: HistoryEntry
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
-    
-    @Binding var path: NavigationPath
-        
     @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     var body: some View {
+        /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-custom-bindings ; 02.02.2024 09:18
+        let parametersBinding = Binding(
+            get: { PipelineParameters(historyPipelineParameters: self.historyEntry.pipelineParameters) },
+            set: { self.historyEntry.pipelineParameters = HistoryPipelineParameters(pipelineParameters: $0) }
+        )
+        
         VStack {
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
+            PipelineSelectionView(pipelineParameters: parametersBinding, currentlySelectedParameter: .none)
             
             Chart {
                 ForEach(sortedRoiOutput(), id: \.self) { rsaOutput in
@@ -47,27 +56,21 @@ struct RSAChartView: View {
             }).padding([.top])
             
         }.background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("view.pipeline.evaluation.chart.title")
-            .toolbar {
-                RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
-            }
+            .navigationTitle(dateFormatter.string(from: historyEntry.date))
             .sheet(isPresented: $explanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
                 ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
-            }.onAppear {
-                let newHistoryEntry = HistoryEntry(date: Date(), pipelineParameter: HistoryPipelineParameters(pipelineParameters: pipelineParameters), roiOutput: pipelineData.allRoisOutput)
-                context.insert(newHistoryEntry)
             }
     }
     
     func getLayerName(_ key: String) -> String {
-        return pipelineParameters.mlModel.layers.filter({ $0.coremlKey == key }).first?.name ?? ""
+        return historyEntry.pipelineParameters.mlModel.layers.filter({ $0.coremlKey == key }).first?.name ?? ""
     }
     
     func sortedRoiOutput() -> [RSAOutput] {
-        let originalLayerKeys = pipelineParameters.mlModel.layers.map { $0.coremlKey }
+        let originalLayerKeys = historyEntry.pipelineParameters.mlModel.layers.map { $0.coremlKey }
         
-        let sortedAllRoisOutput = pipelineData.allRoisOutput.sorted(by: {
+        let sortedAllRoisOutput = historyEntry.roiOutput.sorted(by: {
             (originalLayerKeys.firstIndex(of: $0.layer) ?? 0) < (originalLayerKeys.firstIndex(of: $1.layer) ?? 0)
         })
         return sortedAllRoisOutput
@@ -75,15 +78,5 @@ struct RSAChartView: View {
 }
 
 #Preview {
-    let rois = ["visual", "body", "face", "place", "word", "anatomical"]
-    let layers = alexnetLayers.map {
-        $0.name
-    }
-    var exampleData = [RSAOutput]()
-    for roi in rois {
-        for layer in layers {
-            exampleData.append(RSAOutput(roi: roi, layer: layer, model: "AlexNet", r2: Float.random(in: 0...5), significance: Float.random(in: 0...1), sem: Float.random(in: 0...1)))
-        }
-    }
-    return RSAChartView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    HistoryChartView(historyEntry: HistoryEntry())
 }

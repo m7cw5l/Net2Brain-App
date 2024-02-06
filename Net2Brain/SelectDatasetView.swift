@@ -25,7 +25,7 @@ struct SelectDatasetView: View {
                 Picker("pipeline.available.datasets.title", selection: $pipelineParameters.dataset) {
                     ForEach(availableDatasets, id: \.name) { dataset in
                         HStack {
-                            ExplanationInfoButton(title: dataset.name, description: dataset.description, currentExplanation: $currentExplanation)
+                            ExplanationInfoButton(title: dataset.name, description: dataset.datasetDescription, currentExplanation: $currentExplanation)
                             Text(dataset.name)
                         }.tag(dataset)
                     }

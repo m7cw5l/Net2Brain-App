@@ -4,6 +4,19 @@
     "" : {
 
     },
+    "%@" : {
+
+    },
+    "%@ | %@ | %@ | %@ – %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ | %2$@ | %3$@ | %4$@ – %5$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -638,6 +651,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"
+          }
+        }
+      }
+    },
+    "mainmenu.history.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vergangene Experimente"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "past Experiments"
           }
         }
       }
@@ -2208,6 +2238,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visualize fMRI data with image"
+          }
+        }
+      }
+    },
+    "view.history.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vergangene Experimente"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "past Experiments"
           }
         }
       }

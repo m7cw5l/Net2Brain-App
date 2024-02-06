@@ -99,7 +99,7 @@ struct PipelineSelectionView: View {
         case .mlModel:
             return pipelineParameters.mlModel.name
         case .mlModelLayer:
-            return pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : String(localized: "pipeline.model.layers.\(pipelineParameters.mlModelLayers.count)")
+            return pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", layerDescription: "", coremlKey: "")).name : String(localized: "pipeline.model.layers.\(pipelineParameters.mlModelLayers.count)")
         case .rdmMetric:
             return pipelineParameters.rdmMetric.name
         case .evaluationType, .evaluationParameter:

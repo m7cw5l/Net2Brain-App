@@ -12,11 +12,28 @@ struct HeatmapChartView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    let heatmap = [
+        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+        UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
+        UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
+        UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
+        UIColor(red: 0.0, green: 0.0, blue: 0.75755961, alpha: 1.0),
+        UIColor(red: 0.0, green: 0.0, blue: 0.2802532, alpha: 1.0),
+        UIColor(red: 0.2802532, green: 0.0, blue: 0.0, alpha: 1.0),
+        UIColor(red: 0.75755961, green: 0.0, blue: 0.0, alpha: 1.0),
+        UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
+        UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
+        UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0),
+        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    ].map {
+        Color(uiColor: $0)
+    }
+    
     @Binding var pipelineParameters: PipelineParameters
     
     var matrices: [String:MfArray]
     
-    @State var currentLayer: N2BMLLayer = N2BMLLayer(name: "", description: "", coremlKey: "")
+    @State var currentLayer: N2BMLLayer = N2BMLLayer(name: "", layerDescription: "", coremlKey: "")
     @State var currentMatrix: MfArray = MfArray((1...100).map { _ in Float.random(in: 0...1) }, shape: [10, 10])
     
     let pathImages = Bundle.main.resourcePath!
@@ -52,6 +69,7 @@ struct HeatmapChartView: View {
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.first).jpg") ?? UIImage()).resizable().scaledToFit()
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.second).jpg") ?? UIImage()).resizable().scaledToFit()
                             }
+                            Text(String(format: "Dissimilarity: %.2f", currentMatrix.item(indices: [Int(selectedImages.firstIndex) ?? 0, Int(selectedImages.secondIndex) ?? 0], type: Float.self)))
                         }.padding()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background()
@@ -82,6 +100,19 @@ struct HeatmapChartView: View {
                     .aspectRatio(1, contentMode: .fill)
                     .padding(.horizontal)
                 
+                VStack {
+                    LinearGradient(colors: [Color.white, Color.red, Color.black], startPoint: .leading, endPoint: .trailing)
+                        .frame(height: 16.0)
+                        .clipShape(.rect(cornerRadius: 8))
+                    HStack {
+                        Text("\(String(format: "%.2f", getMatrixMin()))")
+                        Spacer()
+                        Text("0")
+                        Spacer()
+                        Text("\(String(format: "%.2f", getMatrixMax()))")
+                    }
+                }.padding(.horizontal)
+                
                 Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
                     explanation.show.toggle()
                 }).padding([.top])
@@ -104,7 +135,7 @@ struct HeatmapChartView: View {
                     }*/
                 }
         }.onAppear {
-            currentLayer = pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")
+            currentLayer = pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", layerDescription: "", coremlKey: "")
             //currentMatrix = matrices.first ?? MfArray([-1])
         }
         .onChange(of: currentLayer, initial: true, {
@@ -129,6 +160,14 @@ struct HeatmapChartView: View {
             }
         }
         return heatmapEntries
+    }
+    
+    func getMatrixMin() -> Float {
+        return currentMatrix.min().item(index: 0, type: Float.self)
+    }
+    
+    func getMatrixMax() -> Float {
+        return currentMatrix.max().item(index: 0, type: Float.self)
     }
 }
 

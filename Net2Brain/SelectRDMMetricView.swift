@@ -29,7 +29,7 @@ struct SelectRDMMetricView: View {
                 Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
                     ForEach(availableRDMMetrics, id: \.self) { metric in
                         HStack {
-                            ExplanationInfoButton(title: metric.name, description: metric.description, currentExplanation: $currentExplanation)
+                            ExplanationInfoButton(title: metric.name, description: metric.metricDescription, currentExplanation: $currentExplanation)
                             Text(metric.name)
                         }.tag(metric)
                     }

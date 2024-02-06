@@ -9,21 +9,6 @@ import Foundation
 import Matft
 
 struct RSA {
-    func sem(x: MfArray, mean: Float) -> Float {
-        /// Standard Error of Mean
-        /// https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step; 21.11.2023 10:46
-        /// https://en.wikipedia.org/wiki/Standard_error; 21.11.2023 11:20
-        let n = x.count
-        
-        var sum = 0.0
-        for i in 0..<n {
-            let value = x.item(index: i, type: Float.self)
-            sum += pow(Double(abs(value - mean)), 2)
-        }
-        let sd = sqrt(sum / Double(n))
-        return Float(sd / sqrt(Double(n)))
-    }
-    
     struct RdmFile: Decodable {
         var data: [Float]
         var shape: [Int]
@@ -117,77 +102,28 @@ struct RSA {
         return MfArray([-1])
     }
     
-    /// https://github.com/scipy/scipy/blob/main/scipy/spatial/distance.py; 21.11.2023 10:06
-    /// 
-    /*func squareform(x: MfArray, force: String = "no") -> MfArray {
-        var x = x
+    func sq(x: MfArray) -> MfArray {
+        /// https://stackoverflow.com/a/13079806 ; 06.02.2024 10:16
+        let matrixShape = x.shape
         
-        x = x.to_contiguous(mforder: .Column)
-        
-        let s = x.shape
-        
-        if force.lowercased() == "tomatrix" {
-            if s.count != 1 {
-                fatalError("input is not a distance vector")
+        if matrixShape[0] == matrixShape[1] {
+            var outputList = [Float]()
+            for i in 0..<matrixShape[0] {
+                for j in i..<matrixShape[0] {
+                    if i != j {
+                        outputList.append(x.item(indices: [i, j], type: Float.self))
+                    }
+                }
             }
-        } else if force.lowercased() == "tovector" {
-            if s.count != 2 {
-                fatalError("input is not a distance matrix")
-            }
+            return MfArray(outputList, mftype: .Float)
         }
         
-        if s.count == 1 {
-            if s.first == 0 {
-                return Matft.nums(0.0, shape: [1, 1])
-            }
-            
-            let d = Int(ceilf(sqrtf(Float(s.first ?? 0) * 2.0)))
-            
-            if d * (d - 1) != (s.first ?? 0) * 2 {
-                fatalError("Incompatible vector size. It must be a binomial coefficient n choose 2 for some integer n >= 2.")
-            }
-            
-            //let m = Matft.nums(0.0, shape: [d, d])
-            
-            let m = x.reshape([d, d])
-            
-            return m
-            
-        } else if s.count == 2 {
-            if s.first != s[1] {
-                fatalError("The matrix argument must be square")
-            }
-            
-            let d = s.first ?? 0
-            
-            if d <= 1 {
-                return MfArray([])
-            }
-            
-            //let v = Matft.nums(0.0, shape: [Int(floorf(Float((d * (d - 1)) / 2)))])
-            
-            let v = x.reshape([Int(floorf(Float((d * (d - 1)) / 2)))])
-        } else {
-            fatalError("first argument must be a one or two dimensional array")
-        }
-        
-        return MfArray([])
-    }*/
-    
-    func rankArrayOld(_ mfArray: MfArray) -> MfArray {
-        ///https://www.hackingwithswift.com/forums/swift/given-an-array-of-integers-arr-replace-each-element-with-its-rank/9701/9703; 22.11.2023 14:52
-        let inputArray = mfArray.toFlattenArray(datatype: Float.self, { $0 })
-        let sortedArray = inputArray.sorted()
-        let ranks = inputArray.map {
-            sortedArray.firstIndex(of: $0)! + 1
-        }
-                
-        return MfArray(ranks, shape: mfArray.shape)
+        return MfArray([-1])
     }
     
     func rankArray(_ array: MfArray) -> MfArray {
         ///https://stackoverflow.com/a/5284703 ; 04.12.2023 16:35
-        let temp = array.argsort()
+        let temp = array.argsort(order: .Descending)
         let ranks = Matft.nums_like(0, mfarray: temp)
         ranks[temp] = Matft.arange(start: 0, to: array.count, by: 1)
         return ranks
@@ -195,7 +131,6 @@ struct RSA {
     
     func spearman(x: MfArray, y: MfArray) -> Float {
         /// https://www.simplilearn.com/tutorials/statistics-tutorial/spearmans-rank-correlation; 21.11.2023 11:27
-        // TODO: Test Spearman
                 
         // Step 1: add ranks to the input arrays
         let xRanks = rankArray(x)
@@ -221,13 +156,13 @@ struct RSA {
     }
     
     func distance(modelRdm: MfArray, rdms: MfArray) -> MfArray {
-        //let modelRdmVector = squareform(x: modelRdm) // TODO: Test Squareform
-        let modelRdmVector = modelRdm.flatten()
+        //let modelRdmVector = modelRdm.flatten()
+        let modelRdmVector = sq(x: modelRdm) // TODO: Test Squareform
         //print(modelRdmVector.shape)
         var corrList = [Float]()
         for rdm in rdms {
-            //let rdmVector = squareform(x: rdm) // TODO: Test Squareform
-            let rdmVector = rdm.flatten()
+            //let rdmVector = rdm.flatten()
+            let rdmVector = sq(x: rdm) // TODO: Test Squareform
             
             //let spearmanResult = spearman(x: modelRdm, y: rdm)
             let spearmanResult = spearman(x: modelRdmVector, y: rdmVector)
@@ -240,56 +175,43 @@ struct RSA {
     func rsaMeg(modelRdm: MfArray, brainRdm: MfArray) -> (r2: Float, significance: Float, sem: Float, corrSquared: MfArray) {
         
         // calculate correlation
-        /*var distances = [MfArray]()
-        let batchSize = brainRdm.shape[0]
-        for i in 0..<batchSize {
-            let rdms = brainRdm[i]
-            let distance = distance(modelRdm: modelRdm, rdms: rdms)
-            distances.append(distance)
-        }*/
-        let distances = (0..<brainRdm.shape[0]).map { i in
-            distance(modelRdm: modelRdm, rdms: brainRdm[i])
-        }
-        
-        let corr = Matft.stats.mean(Matft.vstack(distances))
-        //let corr = Matft.stats.mean(distance(modelRdm: modelRdm, rdms: brainRdm))
+        let distances = MfArray(brainRdm.map({ rdm in
+            distance(modelRdm: modelRdm, rdms: rdm).toFlattenArray(datatype: Float.self, { $0 })
+        }), mftype: .Float)
+        let corr = Matft.stats.mean(distances, axis: 1)
         
         let corrSquared = Matft.math.square(corr)
-        
+                
         let r2 = Matft.stats.mean(corrSquared).item(index: 0, type: Float.self)
         
-        // TODO: Significance
-        //let significance = SwiftyStats.SSHypothesisTesting.oneSampleTTEst(data: corrSquared.toArray(), mean: 0, alpha: 0)
         let stats = Statistic()
         let significance = stats.tTest1Samp(corrSquared, popMean: 0)
-        print("SIGNIFICANCE: \(significance)")
         
         let mean = r2
-        let sem = sem(x: corrSquared, mean: mean)
+        let sem = stats.sem(x: corrSquared, mean: mean)
         
         return (r2: r2, significance: significance, sem: sem, corrSquared: corrSquared)
     }
     
     func rsaFmri(modelRdm: MfArray, brainRdm: MfArray) -> (r2: Float, significance: Float, sem: Float, corrSquared: MfArray) {
         let corr = distance(modelRdm: modelRdm, rdms: brainRdm)
-        let corrSquared = Matft.math.square(corr)
         
+        let corrSquared = Matft.math.square(corr)
+                
         let r2 = Matft.stats.mean(corrSquared).item(index: 0, type: Float.self)
         
-        // TODO: Significance
         let stats = Statistic()
         let significance = stats.tTest1Samp(corrSquared, popMean: 0)
-        print("SIGNIFICANCE: \(significance)")
         
         let mean = r2
         
-        let sem = sem(x: corrSquared, mean: mean)
+        let sem = stats.sem(x: corrSquared, mean: mean)
         
         return (r2: r2, significance: significance, sem: sem, corrSquared: corrSquared)
     }
     
     func rsa(modelRdm: MfArray, brainRdm: MfArray, dataType: String) -> (r2: Float, significance: Float, sem: Float, corrSquared: MfArray) {
-        print("RSA for \(dataType)")
+        //print("RSA for \(dataType)")
         if dataType == "fmri" {
             // fmri
             return rsaFmri(modelRdm: modelRdm, brainRdm: brainRdm)
@@ -345,7 +267,6 @@ struct RSA {
                     sem: layerOutput["SEM"] as! Float)
                 )
             }
-            //currentIndex += 1
         }
         
         return allRoisOutput

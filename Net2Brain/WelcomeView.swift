@@ -58,6 +58,11 @@ struct WelcomeView: View {
                         }.background(Color(uiColor: .systemGroupedBackground))
                             .listRowInsets(EdgeInsets())
                     }
+                    Section {
+                        NavigationLink(value: MenuTargetView.history, label: {
+                            Label("mainmenu.history.title", systemImage: "clock.fill")
+                        })
+                    }
                     
                     Section("explanation.menu.title") {
                         ForEach(explanations, id: \.title) { explanation in
@@ -77,6 +82,8 @@ struct WelcomeView: View {
                         SelectDatasetView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
                     case .imageOverview:
                         ImagesOverviewView(path: $path)
+                    case .history:
+                        HistoryOverview(path: $path)
                     }
                 })
                 .navigationDestination(for: PipelineView.self, destination: { selection in

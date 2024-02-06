@@ -30,7 +30,7 @@ struct SelectMLModelView: View {
                 Picker("pipeline.available.models.title", selection: $pipelineParameters.mlModel) {
                     ForEach(Array(availableMLModels), id: \.key) { model in
                         HStack {
-                            ExplanationInfoButton(title: model.name, description: model.description, currentExplanation: $currentExplanation)
+                            ExplanationInfoButton(title: model.name, description: model.modelDescription, currentExplanation: $currentExplanation)
                             Text(model.name)
                         }.tag(model)
                     }

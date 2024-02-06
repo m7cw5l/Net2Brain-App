@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 import Matft
+import SwiftData
 
 enum MenuTargetView {
-    case visualizeRoi, visualizeFmri, imageOverview, prediction
+    case visualizeRoi, visualizeFmri, imageOverview, prediction, history
 }
 
 enum VisualizationType {
@@ -58,13 +59,23 @@ class PipelineParameters {
     }
     
     init() {
-        self.dataset = N2BDataset(name: "", description: "", images: [])
+        self.dataset = N2BDataset(name: "", datasetDescription: "", images: [])
         self.datasetImages = []
-        self.mlModel = N2BMLModel(key: "", name: "", description: "", layers: [], bias: [], scale: [])
+        self.mlModel = N2BMLModel(key: "", name: "", modelDescription: "", layers: [], bias: [], scale: [])
         self.mlModelLayers = []
-        self.rdmMetric = N2BRDMMetric(name: "", description: "")
-        self.evaluationType = N2BEvaluationType(name: "", description: "", parameters: [])
-        self.evaluationParameter = N2BEvaluationParameter(name: "", description: "")
+        self.rdmMetric = N2BRDMMetric(name: "", metricDescription: "")
+        self.evaluationType = N2BEvaluationType(name: "", typeDescription: "", parameters: [])
+        self.evaluationParameter = N2BEvaluationParameter(name: "", parameterDescription: "")
+    }
+    
+    init(historyPipelineParameters: HistoryPipelineParameters) {
+        self.dataset = historyPipelineParameters.dataset
+        self.datasetImages = historyPipelineParameters.datasetImages
+        self.mlModel = historyPipelineParameters.mlModel
+        self.mlModelLayers = historyPipelineParameters.mlModelLayers
+        self.rdmMetric = historyPipelineParameters.rdmMetric
+        self.evaluationType = historyPipelineParameters.evaluationType
+        self.evaluationParameter = historyPipelineParameters.evaluationParameter
     }
     
     func resetDatasetImages() {
@@ -80,13 +91,13 @@ class PipelineParameters {
     }
     
     func resetAll() {
-        self.dataset = N2BDataset(name: "", description: "", images: [])
+        self.dataset = N2BDataset(name: "", datasetDescription: "", images: [])
         resetDatasetImages()
-        self.mlModel = N2BMLModel(key: "", name: "", description: "", layers: [], bias: [], scale: [])
+        self.mlModel = N2BMLModel(key: "", name: "", modelDescription: "", layers: [], bias: [], scale: [])
         resetMLModelLayers()
-        self.rdmMetric = N2BRDMMetric(name: "", description: "")
-        self.evaluationType = N2BEvaluationType(name: "", description: "", parameters: [])
-        self.evaluationParameter = N2BEvaluationParameter(name: "", description: "")
+        self.rdmMetric = N2BRDMMetric(name: "", metricDescription: "")
+        self.evaluationType = N2BEvaluationType(name: "", typeDescription: "", parameters: [])
+        self.evaluationParameter = N2BEvaluationParameter(name: "", parameterDescription: "")
     }
 }
 
@@ -105,47 +116,47 @@ enum PipelineParameter: String {
     }
 }
 
-struct N2BImageCategory: Hashable {
+struct N2BImageCategory: Codable, Hashable {
     var name: String
     var images: [String]
 }
 
-struct N2BDataset: Hashable {
+struct N2BDataset: Codable, Hashable {
     var name: String
-    var description: String
+    var datasetDescription: String
     var images: [N2BImageCategory]
 }
 
-struct N2BMLModel: Hashable {
+struct N2BMLModel: Codable, Hashable {
     var key: String
     var name: String
-    var description: String
+    var modelDescription: String
     var layers: [N2BMLLayer]
     var bias: [Float]
     var scale: [Float]
 }
 
-struct N2BMLLayer: Hashable {    
+struct N2BMLLayer: Codable, Hashable {
     var name: String
-    var description: String
+    var layerDescription: String
     var coremlKey: String
 }
 
-struct N2BRDMMetric: Hashable {
+struct N2BRDMMetric: Codable, Hashable {
     var name: String
-    var description: String
+    var metricDescription: String
     //var function: (() -> Void)
 }
 
-struct N2BEvaluationType: Hashable {
+struct N2BEvaluationType: Codable, Hashable {
     var name: String
-    var description: String
+    var typeDescription: String
     var parameters: [N2BEvaluationParameter]
 }
 
-struct N2BEvaluationParameter: Hashable {
+struct N2BEvaluationParameter: Codable, Hashable {
     var name: String
-    var description: String
+    var parameterDescription: String
 }
 
 class PipelineData: ObservableObject {
@@ -198,7 +209,7 @@ enum RSAStatus {
     case none, loadingData, calculatingRSA
 }
 
-struct RSAOutput: Hashable {
+struct RSAOutput: Codable, Hashable {
     var roi: String
     var layer: String
     var model: String
@@ -209,6 +220,63 @@ struct RSAOutput: Hashable {
 
 enum MLModelName {
     case alexnet, resnet18, resnet34, resnet50, vgg11, vgg13
+}
+
+// data types for experiment history
+@Model
+final class HistoryPipelineParameters {
+    @Attribute(.unique) let id: UUID
+    var dataset: N2BDataset
+    var datasetImages: [String]
+    var mlModel: N2BMLModel
+    var mlModelLayers: [N2BMLLayer]
+    var rdmMetric: N2BRDMMetric
+    var evaluationType: N2BEvaluationType
+    var evaluationParameter: N2BEvaluationParameter
+    
+    init(dataset: N2BDataset, datasetImages: [String], mlModel: N2BMLModel, mlModelLayers: [N2BMLLayer], rdmMetric: N2BRDMMetric, evaluationType: N2BEvaluationType, evaluationParameter: N2BEvaluationParameter) {
+        self.id = UUID()
+        self.dataset = dataset
+        self.datasetImages = datasetImages
+        self.mlModel = mlModel
+        self.mlModelLayers = mlModelLayers
+        self.rdmMetric = rdmMetric
+        self.evaluationType = evaluationType
+        self.evaluationParameter = evaluationParameter
+    }
+    
+    init(pipelineParameters: PipelineParameters) {
+        self.id = UUID()
+        self.dataset = pipelineParameters.dataset
+        self.datasetImages = pipelineParameters.datasetImages
+        self.mlModel = pipelineParameters.mlModel
+        self.mlModelLayers = pipelineParameters.mlModelLayers
+        self.rdmMetric = pipelineParameters.rdmMetric
+        self.evaluationType = pipelineParameters.evaluationType
+        self.evaluationParameter = pipelineParameters.evaluationParameter
+    }
+}
+
+@Model
+final class HistoryEntry {
+    @Attribute(.unique) let id: UUID
+    var date: Date
+    var pipelineParameters: HistoryPipelineParameters
+    var roiOutput: [RSAOutput]
+    
+    init(date: Date, pipelineParameter: HistoryPipelineParameters, roiOutput: [RSAOutput]) {
+        self.id = UUID()
+        self.date = date
+        self.pipelineParameters = pipelineParameter
+        self.roiOutput = roiOutput
+    }
+    
+    init() {
+        self.id = UUID()
+        self.date = Date()
+        self.pipelineParameters = HistoryPipelineParameters(pipelineParameters: PipelineParameters())
+        self.roiOutput = []
+    }
 }
 
 /*enum ROI: String {

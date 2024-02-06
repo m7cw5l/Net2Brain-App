@@ -86,8 +86,8 @@ struct HeatmapChartNew: View {
                     /// https://developer.apple.com/documentation/charts/customizing-axes-in-swift-charts#Set-the-domain-of-an-axis ; 10.01.2024 13:45
                         .chartYAxis(.hidden)
                         .chartXAxis(.hidden)
-                    .chartForegroundStyleScale(range: Gradient(colors: heatmap))
-                    //.chartForegroundStyleScale(range: Gradient(colors: [Color.white, Color.accentColor]))
+                    //.chartForegroundStyleScale(range: Gradient(colors: heatmap))
+                        .chartForegroundStyleScale(range: Gradient(colors: [Color.white, Color.red, Color.black]))
                         .chartLegend(.hidden)
                         .chartXSelection(value: $selectedX)
                         .chartYSelection(value: $selectedY)

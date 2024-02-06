@@ -29,7 +29,7 @@ struct SelectEvaluationTypeView: View {
                 Picker("pipeline.available.evaluation.types.title", selection: $pipelineParameters.evaluationType) {
                     ForEach(availableEvaluationTypes, id: \.self) { evalType in
                         HStack {
-                            ExplanationInfoButton(title: evalType.name, description: evalType.description, currentExplanation: $currentExplanation)
+                            ExplanationInfoButton(title: evalType.name, description: evalType.typeDescription, currentExplanation: $currentExplanation)
                             Text(evalType.name)
                         }.tag(evalType)
                     }
@@ -39,7 +39,7 @@ struct SelectEvaluationTypeView: View {
                     Picker("pipeline.available.evaluation.parameters.title", selection: $pipelineParameters.evaluationParameter) {
                         ForEach(pipelineParameters.evaluationType.parameters, id: \.self) { parameter in
                             HStack {
-                                ExplanationInfoButton(title: parameter.name, description: parameter.description, currentExplanation: $currentExplanation)
+                                ExplanationInfoButton(title: parameter.name, description: parameter.parameterDescription, currentExplanation: $currentExplanation)
                                 Text(parameter.name)
                             }.tag(parameter)
                         }
@@ -111,9 +111,9 @@ struct SelectEvaluationTypeView: View {
             ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
         }
         .onAppear {
-            let firstEvaluationType = availableEvaluationTypes.first ?? N2BEvaluationType(name: "", description: "", parameters: [])
+            let firstEvaluationType = availableEvaluationTypes.first ?? N2BEvaluationType(name: "", typeDescription: "", parameters: [])
             pipelineParameters.evaluationType = firstEvaluationType
-            pipelineParameters.evaluationParameter = firstEvaluationType.parameters.first ?? N2BEvaluationParameter(name: "", description: "")
+            pipelineParameters.evaluationParameter = firstEvaluationType.parameters.first ?? N2BEvaluationParameter(name: "", parameterDescription: "")
         }
     }
 }

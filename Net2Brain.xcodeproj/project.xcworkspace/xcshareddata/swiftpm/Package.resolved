@@ -37,12 +37,12 @@
       }
     },
     {
-      "identity" : "swift-numerics",
+      "identity" : "swiftystats",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-numerics.git",
+      "location" : "https://github.com/strike65/SwiftyStats/",
       "state" : {
-        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
-        "version" : "1.0.2"
+        "revision" : "120644b65c5913493607530d58df7093adb44182",
+        "version" : "1.1.8"
       }
     }
   ],

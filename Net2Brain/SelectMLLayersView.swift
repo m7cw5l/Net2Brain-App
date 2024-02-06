@@ -60,7 +60,7 @@ struct SelectMLLayersView: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(layer.name).foregroundColor(.primary)
-                                    Text(layer.description).font(.caption).fontDesign(.monospaced).foregroundColor(.primary)
+                                    Text(layer.layerDescription).font(.caption).fontDesign(.monospaced).foregroundColor(.primary)
                                 }
                                 if pipelineParameters.mlModelLayers.contains(layer) {
                                     Spacer()
