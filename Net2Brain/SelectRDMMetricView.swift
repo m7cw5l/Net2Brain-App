@@ -51,7 +51,8 @@ struct SelectRDMMetricView: View {
             Button(action: {
                 showHeatmap.toggle()
             }, label: {
-                Text("pipeline.rdm.button.heatmap.title").frame(maxWidth: .infinity).padding(6)
+                Label("pipeline.rdm.button.heatmap.title", systemImage: "square.grid.3x3.square")
+                .frame(maxWidth: .infinity).padding(6)
             }).buttonStyle(BorderedButtonStyle())
                 .padding([.top, .leading, .trailing])
                 .disabled(pipelineParameters.rdmMetric.name == "" || pipelineData.distanceMatrices.count == 0 || isCalculating)

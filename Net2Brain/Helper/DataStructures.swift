@@ -223,6 +223,12 @@ enum MLModelName {
 }
 
 // data types for experiment history
+struct SimpleMatrix: Codable, Hashable {
+    var layerName: String
+    var data: [Float]
+    var shape: [Int]
+}
+
 @Model
 final class HistoryPipelineParameters {
     @Attribute(.unique) let id: UUID
@@ -262,12 +268,14 @@ final class HistoryEntry {
     @Attribute(.unique) let id: UUID
     var date: Date
     var pipelineParameters: HistoryPipelineParameters
+    var distanceMatrices: [SimpleMatrix]
     var roiOutput: [RSAOutput]
     
-    init(date: Date, pipelineParameter: HistoryPipelineParameters, roiOutput: [RSAOutput]) {
+    init(date: Date, pipelineParameter: HistoryPipelineParameters, distanceMatrices: [SimpleMatrix], roiOutput: [RSAOutput]) {
         self.id = UUID()
         self.date = date
         self.pipelineParameters = pipelineParameter
+        self.distanceMatrices = distanceMatrices
         self.roiOutput = roiOutput
     }
     
@@ -275,6 +283,7 @@ final class HistoryEntry {
         self.id = UUID()
         self.date = Date()
         self.pipelineParameters = HistoryPipelineParameters(pipelineParameters: PipelineParameters())
+        self.distanceMatrices = []
         self.roiOutput = []
     }
 }

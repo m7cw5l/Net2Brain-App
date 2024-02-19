@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ExplanationMenuButton: View {
     
+    @State var buttonTitle = ""
     @State var title: String
     @State var description: String
     
     @Binding var currentExplanation: Explanation
     
     var body: some View {
-        Button(LocalizedStringKey(title)) {
+        Button(LocalizedStringKey(buttonTitle == "" ? title : buttonTitle)) {
             currentExplanation = Explanation(title: title, description: description, show: true)
         }
     }

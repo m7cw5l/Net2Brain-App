@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Matft
 
 struct HistoryChartView: View {
     @Environment(\.modelContext) private var modelContext
@@ -13,7 +14,9 @@ struct HistoryChartView: View {
         
     @State var historyEntry: HistoryEntry
     
-    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    @State var showHeatmap = false
+    
+    @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -30,25 +33,41 @@ struct HistoryChartView: View {
         )
         
         VStack {
-            PipelineSelectionView(pipelineParameters: parametersBinding, currentlySelectedParameter: .none)
+            PipelineSelectionView(pipelineParameters: parametersBinding, currentlySelectedParameter: .none, allowCollapse: true)
             
             RSAChart(data: historyEntry.roiOutput, pipelineParameters: PipelineParameters(historyPipelineParameters: self.historyEntry.pipelineParameters))
             
-            Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
+            /*Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
                 explanation.show.toggle()
-            }).padding([.top])
+            })//.padding([.top])*/
+            
+            Button(action: {
+                showHeatmap.toggle()
+            }, label: {
+                Label("pipeline.rdm.button.heatmap.title", systemImage: "square.grid.3x3.square")
+                .frame(maxWidth: .infinity).padding(6)
+            }).buttonStyle(BorderedButtonStyle())
+                .padding()
             
         }.background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle(dateFormatter.string(from: historyEntry.date))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button("button.history.entry.delete", systemImage: "trash", role: .destructive) {
                     modelContext.delete(historyEntry)
                     dismiss()
                 }
+                Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
+                    ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.filler", currentExplanation: $currentExplanation)
+                })
+            }.sheet(isPresented: $showHeatmap) {
+                HeatmapChartView(pipelineParameters: parametersBinding, matrices: historyEntry.distanceMatrices.reduce(into: [String:MfArray]()) {
+                    $0[$1.layerName] = MfArray($1.data, mftype: .Float, shape: $1.shape)
+                })
             }
-            .sheet(isPresented: $explanation.show) {
+            .sheet(isPresented: $currentExplanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
-                ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
+                ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
             }
     }
 }

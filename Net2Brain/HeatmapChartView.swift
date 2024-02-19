@@ -71,13 +71,13 @@ struct HeatmapChartView: View {
                             }
                             Text(String(format: "Dissimilarity: %.2f", currentMatrix.item(indices: [Int(selectedImages.firstIndex) ?? 0, Int(selectedImages.secondIndex) ?? 0], type: Float.self))).font(.caption)
                         }.padding(.vertical, 12.0)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
                             .background()
                             .clipShape(.rect(cornerRadius: 16))
                     } else {
                         VStack {
                             Text("pipeline.heatmap.select.square")
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }.frame(maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
                             .background()
                             .clipShape(.rect(cornerRadius: 16))
                     }
@@ -101,13 +101,13 @@ struct HeatmapChartView: View {
                     .padding(.horizontal)
                 
                 VStack {
-                    LinearGradient(colors: [Color.white, Color.red, Color.black], startPoint: .leading, endPoint: .trailing)
+                    LinearGradient(colors: [Color.white, Color.accentColor, Color.black], startPoint: .leading, endPoint: .trailing)
                         .frame(height: 16.0)
                         .clipShape(.rect(cornerRadius: 8))
                     HStack {
                         Text("\(String(format: "%.2f", getMatrixMin()))")
                         Spacer()
-                        Text("0")
+                        Text("heatmap.legend.zero")
                         Spacer()
                         Text("\(String(format: "%.2f", getMatrixMax()))")
                     }

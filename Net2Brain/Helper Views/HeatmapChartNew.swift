@@ -87,7 +87,7 @@ struct HeatmapChartNew: View {
                         .chartYAxis(.hidden)
                         .chartXAxis(.hidden)
                     //.chartForegroundStyleScale(range: Gradient(colors: heatmap))
-                        .chartForegroundStyleScale(range: Gradient(colors: [Color.white, Color.red, Color.black]))
+                        .chartForegroundStyleScale(range: Gradient(colors: [Color.white, Color.accentColor, Color.black]))
                         .chartLegend(.hidden)
                         .chartXSelection(value: $selectedX)
                         .chartYSelection(value: $selectedY)

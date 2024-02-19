@@ -5,22 +5,49 @@
 
     },
     "%@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%@ | %@ | %@ | %@ – %@" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@ | %2$@ | %3$@ | %4$@ – %5$@"
           }
         }
       }
     },
-    "%lld" : {
-
+    "%@, %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
     },
-    "0" : {
+    "%lld" : {
 
     },
     "3d.model.generation.running" : {
@@ -36,6 +63,73 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3D model is being generated"
+          }
+        }
+      }
+    },
+    "about.list.cache.size.%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache: %@"
+          }
+        }
+      }
+    },
+    "about.list.developer.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwickelt von Marco Wessel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developed by Marco Wessel"
+          }
+        }
+      }
+    },
+    "about.list.reset.db.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlaufsdatenbank zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset History DB"
+          }
+        }
+      }
+    },
+    "button.back.menu.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zurück zum Hauptmenü"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "back to main menu"
           }
         }
       }
@@ -111,6 +205,12 @@
     "button.info.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -258,6 +358,12 @@
     "explanation.main.compare.data" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir vergleichen Hirndaten mit ML Modellen um herauszufinden, wie neuroyale Netze Bilder \"sehen\" und ob ein Zusammenhang zwischen maschinellem und menschlichem Sehen besteht."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -286,6 +392,12 @@
     "explanation.main.data.generation" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Gehirnaktivität der Probanden als Reaktion auf die \"Stimulusbilder\" wurde mit einem MRT-Scan (Magnetresonanztomographie) gemessen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -314,6 +426,12 @@
     "explanation.main.fmri" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fMRT () misst die Hirnaktivität durch Erkennung der Änderung des Blutflusses."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -342,6 +460,12 @@
     "explanation.main.images" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Stimulusbilder\" sind die Bilder, welche den Probanden gezeigt wurden und die dazugehörige Hirnaktivität gemessen wurde.\nDie App beinhaltet ein Auswahl von 20 Bildern welche in der Ansicht \"Hirnaktivität basierend auf Bild visualisieren\" verwendet werden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -370,6 +494,12 @@
     "explanation.main.roi" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine ROI (Region of Interest [Region von Interesse]) beschreibt eine Hirnregion, welche einer bestimmten Aktivität zugeordnet wird."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -435,6 +565,12 @@
     "explanation.model.cnn.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist ein Convolutional Neural Network (CNN)?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +667,12 @@
     "explanation.visualization.fmri" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du siehst ein 3D Modell eines Gehirns auf dem die Reaktion eines Probanden auf das gewählte Bild in der gewählten ROI als Heatmap abgebildet ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -542,6 +684,12 @@
     "explanation.visualization.roi" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du siehst ein 3D Modell eines Gehirns auf dem ausgewählte ROI (Region of Interest) hervorgehoben ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -550,8 +698,22 @@
         }
       }
     },
-    "Hello, World!" : {
-
+    "heatmap.legend.zero" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
     },
     "hemisphere.left" : {
       "extractionState" : "manual",
@@ -607,6 +769,12 @@
     "history.list.empty" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es sieht so aus, als sei diese Liste leer.\n\nFülle sie, indem du ein paar Vorhersageexperimente ausführst."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -889,6 +1057,12 @@
     "pipeline.datasets.78images.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein aus 78 Bildern bestehender Datensatz und die Abstandsmatrizen der Gehirnreaktionen für alle 78 Bilder und 15 Probanden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1091,12 @@
     "pipeline.datasets.92images.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein aus 92 Bildern bestehender Datensatz und die Abstandsmatrizen der Gehirnreaktionen für alle 92 Bilder und 15 Probanden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1227,12 @@
     "pipeline.evaluation.parameters.spearman.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korrelation zwischen Werten auf der Grundlage ihres Ranges\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)\n29.12.2023 15:51"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1443,12 +1629,30 @@
     "pipeline.image.picker.category.button.title.%lld" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kategorie"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kategorien"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
               "one" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "%lld category"
                 }
               },
@@ -1466,6 +1670,12 @@
     "pipeline.image.picker.image.button.title.%lld" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Bilder"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1589,7 +1799,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ML Modell Ebene"
+            "value" : "ML Ebene"
           }
         },
         "en" : {
@@ -1617,16 +1827,13 @@
         }
       }
     },
-    "pipeline.model.layers.available.title" : {
-
-    },
     "pipeline.model.layers.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ML Modell Ebenen"
+            "value" : "ML Ebenen"
           }
         },
         "en" : {
@@ -1657,6 +1864,12 @@
     "pipeline.models.alexnet.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein von Alex Krizhevsky in Zusammenarbeit mit Ilya Sutskever und Geoffrey Hinton, der Krizhevskys Doktorvater an der Universität Toronto war, entwickeltes Faltungsneuronales Netzwerk (CNN).\nVortrainiertes Netzwerk von pytorch.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/AlexNet)\n13.12.2023 09:42"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1668,6 +1881,12 @@
     "pipeline.models.resnet18.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neuronales Faltungsnetzwerk (CNN), bestehend aus 18 Schichten.\nVortrainiertes Netz von pytorch.\n\n[mathworks.com](https://www.mathworks.com/help/deeplearning/ref/resnet18.html)\n13.12.2023 09:45"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1679,6 +1898,12 @@
     "pipeline.models.resnet34.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neuronales Faltungsnetzwerk (CNN), bestehend aus 34 Schichten.\nVortrainiertes Netzwerk von pytorch."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1690,6 +1915,12 @@
     "pipeline.models.resnet50.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neuronales Faltungsnetzwerk (CNN), das aus 50 Schichten besteht.\nVortrainiertes Netzwerk von pytorch."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1701,6 +1932,12 @@
     "pipeline.models.vgg11.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neuronales Faltungsnetzwerk (CNN), bestehend aus 11 Schichten.\nVortrainiertes Netzwerk von pytorch.\n\n[arxiv.org](https://arxiv.org/abs/1409.1556)\n13.12.2023 09:49"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1712,6 +1949,12 @@
     "pipeline.models.vgg13.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neuronales Faltungsnetzwerk (CNN), bestehend aus 13 Schichten.\nVortrainiertes Netzwerk von pytorch.\n\n[arxiv.org](https://arxiv.org/abs/1409.1556)\n13.12.2023 09:49"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1811,7 +2054,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ML Modell Ebenen"
+            "value" : "ML Ebenen"
           }
         },
         "en" : {
@@ -1910,10 +2153,16 @@
     "pipeline.rdm.metric.correlation.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ein Maß für die Abhängigkeit zwischen zwei gepaarten Zufallsvektoren beliebiger, nicht notwendigerweise gleicher, Dimension.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Distance_correlation) 07.02.2024 12:39"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A descriptive text for that metric"
+            "value" : "a measure of dependence between two paired random vectors of arbitrary, not necessarily equal, dimension.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Distance_correlation) 07.02.2024 12:39"
           }
         }
       }
@@ -1921,6 +2170,12 @@
     "pipeline.rdm.metric.correlation.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korrelation"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1932,10 +2187,16 @@
     "pipeline.rdm.metric.cosine.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosinus-Ähnlichkeit ist ein Maß für die Ähnlichkeit zweier Vektoren. Dabei wird der Kosinus des Winkels zwischen beiden Vektoren bestimmt. Der Kosinus des eingeschlossenen Nullwinkels ist eins; für jeden anderen Winkel ist der Kosinus des eingeschlossenen Winkels kleiner als eins. Er ist daher ein Maß dafür, wie ausgeprägt zwei Vektoren in die gleiche Richtung zeigen.\n\n[wikipedia.org](https://de.wikipedia.org/wiki/Kosinus-Ähnlichkeit) 07.02.2024 12:31"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A descriptive text for that metric"
+            "value" : "cosine similarity is a measure of similarity between two non-zero vectors defined in an inner product space. Cosine similarity is the cosine of the angle between the vectors; that is, it is the dot product of the vectors divided by the product of their lengths.\n\n[wikipedia.org](https://en.wikipedia.org/wiki/Cosine_similarity) 07.02.2024 12:33"
           }
         }
       }
@@ -1943,6 +2204,12 @@
     "pipeline.rdm.metric.cosine.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosinus-Ähnlichkeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1954,6 +2221,12 @@
     "pipeline.rdm.metric.euclidean.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der euklidische Abstand zweier Punkte in der Ebene oder im Raum ist die zum Beispiel mit einem Lineal gemessene Länge einer Strecke, die diese zwei Punkte verbindet.\n\n[wikipedia.org](https://de.wikipedia.org/wiki/Euklidischer_Abstand) 07.02.2024 12:35"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1965,6 +2238,12 @@
     "pipeline.rdm.metric.euclidean.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euklidischer Abstand"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1976,6 +2255,12 @@
     "pipeline.rdm.metric.manhattan.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "die Distanz zwischen zwei Punkten als die Summe der absoluten Differenzen ihrer Einzelkoordinaten\n\n[wikipedia.org](https://de.wikipedia.org/wiki/Manhattan-Metrik) 07.02.2024 12:36"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1987,6 +2272,12 @@
     "pipeline.rdm.metric.manhattan.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manhattan-Metrik"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2110,6 +2401,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "will be selected later"
+          }
+        }
+      }
+    },
+    "pipeline.summary.empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Parameter gewählt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No parameters selected"
+          }
+        }
+      }
+    },
+    "pipeline.summary.show.less" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weniger anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "show less"
+          }
+        }
+      }
+    },
+    "pipeline.summary.show.more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mehr anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "show more"
           }
         }
       }

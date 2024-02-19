@@ -11,31 +11,60 @@ struct PipelineSelectionView: View {
     
     @Binding var pipelineParameters: PipelineParameters
     var currentlySelectedParameter: PipelineParameter
+    var allowCollapse = false
+    @State private var collapsed = false
+    @State private var chevronRotationAngle: Double = 0
     
     var body: some View {
         VStack(spacing: 6) {
-            PipelineSelectionRow(title: "pipeline.dataset.title", description: parameterValueText(.dataset))
-                .foregroundStyle(parameterForegroundStyle(.dataset))
-            PipelineSelectionRow(title: "pipeline.images.title", description: parameterValueText(.images))
-                .foregroundStyle(parameterForegroundStyle(.images))
-            Divider()
-            PipelineSelectionRow(title: "pipeline.model.title", description: parameterValueText(.mlModel))
-                .foregroundStyle(parameterForegroundStyle(.mlModel))
-            /*PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "ML Model Layer" : "ML Model Layers", description: pipelineParameters.mlModel.name == "" ? "select a ML Model" : pipelineParameters.mlModelLayers.count == 0 ? "select model layers" : pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : "\(pipelineParameters.mlModelLayers.count) Layers")
-                .foregroundStyle(parameterForegroundStyle(.mlModelLayer))*/
-            PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "pipeline.model.layer.title" : "pipeline.model.layers.title", description: parameterValueText(.mlModelLayer))
-                .foregroundStyle(parameterForegroundStyle(.mlModelLayer))
-            Divider()
-            PipelineSelectionRow(title: "pipeline.rdm.title", description: parameterValueText(.rdmMetric))
-                .foregroundStyle(parameterForegroundStyle(.rdmMetric))
-            Divider()
-            PipelineSelectionRow(title: "pipeline.evaluation.title", description: parameterValueText(.evaluationType))
-                .foregroundStyle(parameterForegroundStyle(.evaluationType))
+            if collapsed {
+                Text(parameterSummary())
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+            } else {
+                PipelineSelectionRow(title: "pipeline.dataset.title", description: parameterValueText(.dataset))
+                    .foregroundStyle(parameterForegroundStyle(.dataset))
+                PipelineSelectionRow(title: "pipeline.images.title", description: parameterValueText(.images))
+                    .foregroundStyle(parameterForegroundStyle(.images))
+                Divider()
+                PipelineSelectionRow(title: "pipeline.model.title", description: parameterValueText(.mlModel))
+                    .foregroundStyle(parameterForegroundStyle(.mlModel))
+                /*PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "ML Model Layer" : "ML Model Layers", description: pipelineParameters.mlModel.name == "" ? "select a ML Model" : pipelineParameters.mlModelLayers.count == 0 ? "select model layers" : pipelineParameters.mlModelLayers.count == 1 ? (pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", description: "", coremlKey: "")).name : "\(pipelineParameters.mlModelLayers.count) Layers")
+                 .foregroundStyle(parameterForegroundStyle(.mlModelLayer))*/
+                PipelineSelectionRow(title: pipelineParameters.mlModelLayers.count == 1 ? "pipeline.model.layer.title" : "pipeline.model.layers.title", description: parameterValueText(.mlModelLayer))
+                    .foregroundStyle(parameterForegroundStyle(.mlModelLayer))
+                Divider()
+                PipelineSelectionRow(title: "pipeline.rdm.title", description: parameterValueText(.rdmMetric))
+                    .foregroundStyle(parameterForegroundStyle(.rdmMetric))
+                Divider()
+                PipelineSelectionRow(title: "pipeline.evaluation.title", description: parameterValueText(.evaluationType))
+                    .foregroundStyle(parameterForegroundStyle(.evaluationType))
+            }
         }.padding()
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .clipShape(.rect(cornerRadius: 16))
             .border(Color.clear, width: 0)
             .padding()
+            .overlay(alignment: .bottomTrailing, content: {
+                if allowCollapse {
+                    HStack(alignment: .top) {
+                        Text(collapsed ? "pipeline.summary.show.more" : "pipeline.summary.show.less").font(.caption2).foregroundStyle(Color.accentColor)
+                        Image(systemName: "chevron.up").foregroundStyle(Color.accentColor)
+                            .rotationEffect(Angle(degrees: chevronRotationAngle))
+                    }.padding(.trailing)
+                }
+            })
+            .onTapGesture {
+                if allowCollapse {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        collapsed.toggle()
+                        chevronRotationAngle += 180
+                    }
+                    chevronRotationAngle = collapsed ? 180 : 0
+                }
+            }
     }
     
     func datasetEmpty() -> Bool {
@@ -124,6 +153,18 @@ struct PipelineSelectionView: View {
                 return Color.primary
             }
         }
+    }
+    
+    func parameterSummary() -> String {
+        let summaryParameters: [PipelineParameter] = [.dataset, .images, .mlModel, .mlModelLayer, .rdmMetric, .evaluationType]
+        var summaryString = ""
+        for summaryParameter in summaryParameters {
+            if !isParameterEmpty(summaryParameter) {
+                summaryString += summaryString == "" ? valueForParameter(summaryParameter) : " • \(valueForParameter(summaryParameter))"
+            }
+        }
+        
+        return summaryString == "" ? String(localized: "pipeline.summary.empty") : summaryString
     }
 }
 

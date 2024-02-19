@@ -71,7 +71,7 @@ func euclidean(x: MfArray, y: MfArray? = nil) async -> MfArray? {
 }
 
 
-func manhattanOld(x: MfArray, y: MfArray? = nil) async -> MfArray? {
+/*func manhattanOld(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var y = y
     if y == nil {
         y = x
@@ -106,7 +106,7 @@ func manhattanOld(x: MfArray, y: MfArray? = nil) async -> MfArray? {
         return output
     }
     return nil
-}
+}*/
 
 func manhattan(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var y = y

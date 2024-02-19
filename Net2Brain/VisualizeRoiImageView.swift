@@ -136,7 +136,7 @@ struct VisualizeRoiImageView: View {
                     if !loadingBrain {
                         Text("\(minColor)")
                         Spacer()
-                        Text("0")
+                        Text("heatmap.legend.zero")
                         Spacer()
                         Text("\(maxColor)")
                     } else {

@@ -48,7 +48,7 @@ struct SelectMLLayersView: View {
                     .disabled(pipelineParameters.mlModelLayers.count == 0)
             }
             List {
-                Section("pipeline.model.layers.available.title") {
+                Section("pipeline.available.model.layers.title") {
                     ForEach(pipelineParameters.mlModel.layers, id: \.name) { layer in
                         Button(action: {
                             if pipelineParameters.mlModelLayers.contains(layer) {

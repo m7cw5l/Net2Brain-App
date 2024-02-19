@@ -80,7 +80,8 @@ struct SelectEvaluationTypeView: View {
                 Button(action: {
                     path.append(PipelineView.rsaChart)
                 }, label: {
-                    Text("pipeline.evaluation.button.chart.title").frame(maxWidth: .infinity).padding(6)
+                    Label("pipeline.evaluation.button.chart.title", systemImage: "chart.bar.fill")
+                    .frame(maxWidth: .infinity).padding(6)
                 }).buttonStyle(BorderedProminentButtonStyle())
                     .padding([.leading, .trailing, .bottom])
                     .disabled(pipelineParameters.evaluationType.name == "" || pipelineParameters.evaluationParameter.name == "")
