@@ -42,7 +42,7 @@ func euclidean(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var y = y
     
     let xNorm = Matft.math.square(x).sum(axis: x.ndim - 1, keepDims: true)
-        
+    
     var yNorm: MfArray? = nil
     
     if let y = y {

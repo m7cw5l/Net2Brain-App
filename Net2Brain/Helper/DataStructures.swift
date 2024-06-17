@@ -11,7 +11,7 @@ import Matft
 import SwiftData
 
 enum MenuTargetView {
-    case visualizeRoi, visualizeFmri, imageOverview, prediction, history
+    case visualizeRoi, visualizeFmri, imageOverview, prediction, history, glossary
 }
 
 enum VisualizationType {

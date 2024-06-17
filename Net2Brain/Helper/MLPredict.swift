@@ -99,6 +99,8 @@ struct MLPredict {
     }
     
     func predictAlexNet(imageNames: [String], selectedModel: N2BMLModel, layers: [String], progressCallback: (_ status: PredictionStatus, _ progress: Double)->()) async -> [String:MfArray] {
+        //let config = MLModelConfiguration()
+        //config.computeUnits = .cpuAndGPU
         guard let model = try? alexnet() else {
             fatalError()
         }

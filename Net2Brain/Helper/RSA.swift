@@ -130,7 +130,7 @@ struct RSA {
     }
     
     func spearman(x: MfArray, y: MfArray) -> Float {
-        /// https://www.simplilearn.com/tutorials/statistics-tutorial/spearmans-rank-correlation; 21.11.2023 11:27
+        /// https://www.simplilearn.com/tutorials/statistics-tutorial/spearmans-rank-correlation ; 21.11.2023 11:27
                 
         // Step 1: add ranks to the input arrays
         let xRanks = rankArray(x)

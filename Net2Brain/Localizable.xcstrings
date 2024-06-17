@@ -270,6 +270,17 @@
         }
       }
     },
+    "button.rsa.brain.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize RSA Results on brain"
+          }
+        }
+      }
+    },
     "button.select.all.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -560,7 +571,21 @@
       }
     },
     "explanation.model.cnn" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convolutional Neural Networks verwenden dreidimensionale Daten für die Bildklassifizierung und Objekterkennung.\n\nNeuronale Netze sind ein Teilbereich des maschinellen Lernens und bilden das Herzstück von Deep-Learning-Algorithmen. Sie bestehen aus Knotenschichten, die eine Eingabeschicht, eine oder mehrere versteckte Schichten und eine Ausgabeschicht enthalten. Jeder Knoten ist mit einem anderen verbunden und verfügt über eine entsprechende Gewichtung und einen Schwellenwert. Wenn die Ausgabe eines einzelnen Knotens über dem angegebenen Schwellenwert liegt, wird dieser Knoten aktiviert und sendet Daten an die nächste Schicht des Netzwerks. Andernfalls werden keine Daten an die nächste Schicht des Netzes weitergeleitet.\n\nConvolutional Neural Networks bieten nun einen besser skalierbaren Ansatz für Bildklassifizierungs- und Objekterkennungsaufgaben, indem sie die Prinzipien der linearen Algebra, insbesondere die Matrixmultiplikation, nutzen, um Muster in einem Bild zu erkennen. Allerdings können sie rechenintensiv sein und erfordern grafische Verarbeitungseinheiten (GPUs), um Modelle zu trainieren.\n\n[ibm.com](https://www.ibm.com/topics/convolutional-neural-networks)\n21.03.2024 10:50"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convolutional neural networks use three-dimensional data to for image classification and object recognition tasks.\n\nNeural networks are a subset of machine learning, and they are at the heart of deep learning algorithms. They are comprised of node layers, containing an input layer, one or more hidden layers, and an output layer. Each node connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network.\n\nConvolutional neural networks now provide a more scalable approach to image classification and object recognition tasks, leveraging principles from linear algebra, specifically matrix multiplication, to identify patterns within an image. That said, they can be computationally demanding, requiring graphical processing units (GPUs) to train models.\n\n[ibm.com](https://www.ibm.com/topics/convolutional-neural-networks)\n21.03.2024 10:50"
+          }
+        }
+      }
     },
     "explanation.model.cnn.title" : {
       "extractionState" : "manual",
@@ -851,6 +876,23 @@
         }
       }
     },
+    "mainmenu.glossary.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glossar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glossary"
+          }
+        }
+      }
+    },
     "mainmenu.history.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -874,13 +916,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hirnaktivität basierend auf Bild visualisieren"
+            "value" : "Hirnaktivität visualisieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visualize brain activity based on image"
+            "value" : "Visualize brain activity"
           }
         }
       }
@@ -908,13 +950,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vorhersage der fMRT-Reaktion mit ML Modell"
+            "value" : "Vorhersage der fMRT-Reaktion"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predict fMRI response with ML model"
+            "value" : "Predict fMRI response"
           }
         }
       }
@@ -2371,6 +2413,40 @@
         }
       }
     },
+    "pipeline.rsa.chart.layer.select.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML Modell Ebene"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ML model layer"
+          }
+        }
+      }
+    },
+    "pipeline.rsa.chart.no.data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Daten zum Anzeigen vorhanden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no data to visualize"
+          }
+        }
+      }
+    },
     "pipeline.select.parameter.%@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2642,6 +2718,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visualize fMRI data with image"
+          }
+        }
+      }
+    },
+    "view.glossary.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glossar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glossary"
           }
         }
       }

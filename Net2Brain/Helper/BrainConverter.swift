@@ -23,6 +23,10 @@ extension UIColor {
     }
 }
 
+enum BrainVisualizationType {
+    case roi, fmri, rsa
+}
+
 struct Vector: Codable {
     let x: Float
     let y: Float
@@ -33,29 +37,147 @@ func deg2rad(_ number: Double) -> Double {
     return number * .pi / 180
 }
 
+enum CameraStyle {
+    case perspective, orthographic
+}
+
+struct BrainVisualizationValues {
+    let visual: Float
+    let body: Float
+    let face: Float
+    let place: Float
+    let word: Float
+    let anatomical: Float
+    
+    func getMin() -> Float {
+        return [visual, body, face, place, word, anatomical].min() ?? 0.0
+    }
+    
+    func getMax() -> Float {
+        return [visual, body, face, place, word, anatomical].max() ?? 0.0
+    }
+}
+
 struct BrainConverter {
     var environment: EnvironmentValues
     
-    /// heatmap from matplotlib/nilearn ("cold_hot")
-    let heatmap = [
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.75755961, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.2802532, alpha: 1.0),
-        UIColor(red: 0.2802532, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.75755961, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    ]
+    let heatmap = Heatmaps().coldHotUI
     let threshold = 1e-14
     
+    @State var visualizationType: BrainVisualizationType
     @Binding var hemisphere: String
     @Binding var roi: ROI
     @Binding var image: String
+    //@State var rsaOutput: RSAOutput? = nil
+    @State var brainVisualizationValues: BrainVisualizationValues? = nil
+    
+    @Binding var sceneViewSize: CGSize
+    
+    /// https://stackoverflow.com/a/51679667 ; 09.04.2024 11:31
+    func calculateColor(orgColor: UIColor, overlayColor: UIColor) -> UIColor {
+        // Helper function to clamp values to range (0.0 ... 1.0)
+        func clampValue(_ v: CGFloat) -> CGFloat {
+            guard v > 0 else { return  0 }
+            guard v < 1 else { return  1 }
+            return v
+        }
+
+        var (r1, g1, b1, a1) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
+        var (r2, g2, b2, a2) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
+
+        orgColor.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        overlayColor.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        // Make sure the input colors are well behaved
+        // Components should be in the range (0.0 ... 1.0)
+        r1 = clampValue(r1)
+        g1 = clampValue(g1)
+        b1 = clampValue(b1)
+
+        r2 = clampValue(r2)
+        g2 = clampValue(g2)
+        b2 = clampValue(b2)
+        a2 = clampValue(a2)
+
+        let color = UIColor(  red: r1 * (1 - a2) + r2 * a2,
+                            green: g1 * (1 - a2) + g2 * a2,
+                             blue: b1 * (1 - a2) + b2 * a2,
+                            alpha: 1)
+
+        return color
+    }
+    
+    func getSurfaceWithColorMap() -> [SCNVector3] {
+        guard let resourcePath = Bundle.main.resourcePath else {
+            return []
+        }
+        
+        let surfaceFilePath = "\(resourcePath)/brain_surface_\(hemisphere).gzip"
+        var surface = readJSONFileSurface(surfaceFilePath)
+        
+        switch visualizationType {
+        case .roi:
+            let colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map.gzip"
+            let colorMap = readJSONFileColors(colorMapFilePath)
+            
+            // no heatmap; only one color
+            let accentColor = Color(.accent).resolve(in: environment)
+            let accentColorVector = SCNVector3(accentColor.red, accentColor.green, accentColor.blue)
+            
+            for (index, color) in colorMap.enumerated() {
+                if color != 0.0 {
+                    surface[index] = accentColorVector
+                }
+            }
+        case .fmri:
+            let colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map_\(image).gzip"
+            let colorMap = readJSONFileColors(colorMapFilePath)
+            
+            // add heatmap
+            let min = colorMap.min() ?? 0.0
+            let max = colorMap.max() ?? 0.0
+            
+            let difference = abs(max - min)
+            
+            let stepSize = difference / Float(heatmap.count)
+            
+            for (index, color) in colorMap.enumerated() {
+                if color != 0.0 {
+                    var steps = Int(floor((color - min) / stepSize))
+                    steps = (steps < 0) ? 0 : steps
+                    steps = (steps > heatmap.count - 1) ? heatmap.count - 1 : steps
+                    let uicolorValues = heatmap[steps].rgba
+                    
+                    let colorVector = SCNVector3(uicolorValues.0, uicolorValues.1, uicolorValues.2)
+                    surface[index] = colorVector
+                }
+            }
+        case .rsa:
+            let minValue = brainVisualizationValues?.getMin() ?? 0.0
+            let maxValue = brainVisualizationValues?.getMax() ?? 0.0
+            let difference = abs(maxValue - minValue)
+                                    
+            let values = [brainVisualizationValues?.anatomical, brainVisualizationValues?.visual, brainVisualizationValues?.body, brainVisualizationValues?.face, brainVisualizationValues?.place, brainVisualizationValues?.word]
+            let colorMaps = [ROI.anatomical, ROI.visual, ROI.body, ROI.face, ROI.place, ROI.word].map { roi in
+                let colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map.gzip"
+                return readJSONFileColors(colorMapFilePath)
+            }
+            
+            for (value, colorMap) in zip(values, colorMaps) {
+                let percentage = Double((value ?? 0.0) / difference)
+                let roiColor = Color(uiColor: calculateColor(orgColor: UIColor.white, overlayColor: UIColor(Color(.accent).opacity(percentage)))).resolve(in: environment)
+                let roiColorVector = SCNVector3(roiColor.red, roiColor.green, roiColor.blue)
+                
+                for (index, color) in colorMap.enumerated() {
+                    if color != 0.0 {
+                        surface[index] = roiColorVector
+                    }
+                }
+            }
+        }
+        
+        return surface
+    }
     
     func getColorExtremes() -> (min: Int, max: Int) {
         if image != "" {
@@ -89,49 +211,7 @@ struct BrainConverter {
         let normals = readJSONFileVectors(normalsFilePath)
         let faces = readJSONFileIndices(facesFilePath)
         
-        let surfaceFilePath = "\(resourcePath)/brain_surface_\(hemisphere).gzip"
-        var surface = readJSONFileSurface(surfaceFilePath)
-        
-        var colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map.gzip"
-        if image != "" {
-            colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map_\(image).gzip"
-        }
-        let colorMap = readJSONFileColors(colorMapFilePath)
-        
-        if image == "" {
-            // no heatmap; only one color
-            //let pinkVector = SCNVector3(223.0 / 255.0, 0.0, 211.0 / 255.0)
-            let accentColor = Color(.accent).resolve(in: environment)
-            let accentColorVector = SCNVector3(accentColor.red, accentColor.green, accentColor.blue)
-            
-            for (index, color) in colorMap.enumerated() {
-                if color != 0.0 {
-                    //surface[index] = pinkVector
-                    surface[index] = accentColorVector
-                }
-            }
-        } else {
-            // add heatmap
-            let min = colorMap.min() ?? 0.0
-            let max = colorMap.max() ?? 0.0
-            
-            let difference = abs(max - min)
-            
-            let stepSize = difference / Float(heatmap.count)
-            
-            for (index, color) in colorMap.enumerated() {
-                if color != 0.0 {
-                    var steps = Int(floor((color - min) / stepSize))
-                    steps = (steps < 0) ? 0 : steps
-                    steps = (steps > heatmap.count - 1) ? heatmap.count - 1 : steps
-                    let uicolorValues = heatmap[steps].rgba
-                    
-                    let colorVector = SCNVector3(uicolorValues.0, uicolorValues.1, uicolorValues.2)
-                    surface[index] = colorVector
-                    //print(steps)
-                }
-            }
-        }
+        let surface = getSurfaceWithColorMap()
         
         /// https://github.com/aheze/CustomSCNGeometry; 18.10.23 08:27
         let vertexData = Data(bytes: vertices, count: vertices.count * MemoryLayout<SCNVector3>.size)
@@ -160,7 +240,7 @@ struct BrainConverter {
     func createScene() async -> SCNScene {
         let geometry = await createGeometry()
         
-        // create scene/
+        // create scene
         let scene = SCNScene()
         DispatchQueue.main.async {
             // add the node
@@ -176,24 +256,41 @@ struct BrainConverter {
             }
             scene.rootNode.addChildNode(brainNode)
             
+            let cameraStyle = CameraStyle.perspective
             let camera = SCNCamera()
-            camera.zNear = 0.1
-            camera.zFar = 10
             
-            let cameraNode = SCNNode()
-            cameraNode.name = "camera"
-            cameraNode.camera = camera
-            
-            if image != "" {
-                // fmri visualization
-                cameraNode.position = SCNVector3Make(0.0, 0.0, 2.0)
+            if cameraStyle == .orthographic {
+                let viewAspectRatio = sceneViewSize.height / sceneViewSize.width
+                
+                camera.projectionDirection = .vertical
+                camera.usesOrthographicProjection = true
+                camera.orthographicScale = 1.2 * viewAspectRatio
+                
+                let cameraNode = SCNNode()
+                cameraNode.name = "camera"
+                cameraNode.camera = camera
+                
+                cameraNode.position = SCNVector3Make(0.0, 0.0, 5.0)
+                
+                scene.rootNode.addChildNode(cameraNode)
             } else {
-                // roi visualization
-                cameraNode.position = SCNVector3Make(0.0, 0.0, 3.0)
+                camera.zNear = 0.1
+                camera.zFar = 10
+                camera.projectionDirection = .vertical
+                camera.fieldOfView = 50
+                
+                let cameraNode = SCNNode()
+                cameraNode.name = "camera"
+                cameraNode.camera = camera
+                
+                let viewAspectRatio = Float(sceneViewSize.height / sceneViewSize.width)
+                
+                cameraNode.position = SCNVector3Make(0.0, 0.0, (2.5 * viewAspectRatio))
+                
+                scene.rootNode.addChildNode(cameraNode)
             }
-            
-            scene.rootNode.addChildNode(cameraNode)
         }
+        
         return scene
     }
 }
@@ -218,8 +315,6 @@ func readJSONFileVectors(_ path: String) -> [SCNVector3] {
         let scnVectors  = vectors.map { SCNVector3(x: $0.x, y: $0.y, z: $0.z) }
         
         return scnVectors
-        
-        //print("FINISHED DATA")
     } catch {
         print("JSON serialization failed")
     }
@@ -247,8 +342,6 @@ func readJSONFileIndices(_ path: String) -> [Int32] {
         let indices  = intData.map { Int32($0) }
         
         return indices
-        
-        //print("FINISHED DATA")
     } catch {
         print("JSON serialization failed")
     }
@@ -274,7 +367,6 @@ func readJSONFileSurface(_ path: String) -> [SCNVector3] {
     do {
         let rawColor = try decoder.decode([Float].self, from: decompressedData)
         
-        //let colorVectors = rawColor.map { SCNVector3($0, $0, $0) }
         let colorVectors = rawColor.map { SCNVector3(abs(1.0 - $0), abs(1.0 - $0), abs(1.0 - $0)) }
         
         return colorVectors

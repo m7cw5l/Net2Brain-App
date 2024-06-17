@@ -9,21 +9,6 @@ import SwiftUI
 import SceneKit
 
 struct VisualizeRoiImageView: View {
-    let heatmap = [
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.75755961, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.2802532, alpha: 1.0),
-        UIColor(red: 0.2802532, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.75755961, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    ]
-    
     let pathTrainingImages = Bundle.main.resourcePath!
     
     @Binding var path: NavigationPath
@@ -37,7 +22,12 @@ struct VisualizeRoiImageView: View {
     
     @State private var loadingBrain = true
     
+    @State private var sceneViewSize = CGSize.zero
+    
     @State private var scene = SCNScene()
+    var cameraNode: SCNNode? {
+        scene.rootNode.childNode(withName: "camera", recursively: false)
+    }
     @State private var minColor = 0
     @State private var maxColor = 0
     
@@ -105,31 +95,37 @@ struct VisualizeRoiImageView: View {
                 
             }.fixedSize(horizontal: false, vertical: true)
             
-            ZStack {
-                SceneView(
-                    scene: scene,
-                    pointOfView: nil,
-                    options: [.allowsCameraControl, .autoenablesDefaultLighting],
-                    delegate: nil
-                ).scaledToFit()
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .zIndex(1.0)
-                if loadingBrain {
-                    VStack {
-                        ProgressView()
-                        Spacer().frame(height: 8.0)
-                        Text("3d.model.generation.running").font(.callout)
-                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background()
-                        .zIndex(2.0)
-                        .allowsHitTesting(false)
+            GeometryReader { geo in
+                ZStack {
+                    SceneView(
+                        scene: scene,
+                        pointOfView: cameraNode,
+                        options: [.allowsCameraControl, .autoenablesDefaultLighting, .temporalAntialiasingEnabled],
+                        delegate: nil
+                    )//.scaledToFit()
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .zIndex(1.0)
+                    if loadingBrain {
+                        VStack {
+                            ProgressView()
+                            Spacer().frame(height: 8.0)
+                            Text("3d.model.generation.running").font(.callout)
+                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .background()
+                            .zIndex(2.0)
+                            .allowsHitTesting(false)
+                    }
+                }//.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .background()
+                .clipShape(.rect(cornerRadius: 16))
+                .onChange(of: geo.size) {
+                    sceneViewSize = geo.size
+                    //print(sceneViewSize)
                 }
-            }//.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .background()
-            .clipShape(.rect(cornerRadius: 16))
+            }
             
             VStack {
-                LinearGradient(colors: heatmap.map { Color(uiColor: $0) }, startPoint: .leading, endPoint: .trailing)
+                LinearGradient(colors: Heatmaps().coldHot, startPoint: .leading, endPoint: .trailing)
                     .frame(height: 32.0)
                     .clipShape(.rect(cornerRadius: 16))
                 HStack {
@@ -165,9 +161,10 @@ struct VisualizeRoiImageView: View {
                     withAnimation {
                         loadingBrain = true
                     }
-                    let brainConverter = BrainConverter(environment: environment, hemisphere: $selectedHemisphere, roi: $selectedRoi, image: $selectedImage)
+                    let brainConverter = BrainConverter(environment: environment, visualizationType: .fmri, hemisphere: $selectedHemisphere, roi: $selectedRoi, image: $selectedImage, sceneViewSize: $sceneViewSize)
                     scene = await brainConverter.createScene()
                     scene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
+                    
                     let extremes = brainConverter.getColorExtremes()
                     minColor = extremes.min
                     maxColor = extremes.max

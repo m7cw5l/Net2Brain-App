@@ -1,25 +1,26 @@
 //
-//  VisualizeRoiView.swift
+//  RSABrainView.swift
 //  Net2Brain
 //
-//  Created by Marco Weßel on 05.10.23.
+//  Created by Marco Weßel on 21.03.24.
 //
 
 import SwiftUI
 import SceneKit
 
-struct VisualizeRoiView: View {
-    @Binding var path: NavigationPath
+struct RSABrainView: View {    
+    @State var pipelineParameters: PipelineParameters
+    @StateObject var pipelineData: PipelineData
     
     @Environment(\.self) var environment
     @Environment(\.colorScheme) var colorScheme
     @State private var backgroundColor: Color = .white
     
-    @State private var selectedRoi: ROI = .all
+    @State var selectedLayer: N2BMLLayer = N2BMLLayer(name: "", layerDescription: "", coremlKey: "")
     @State private var selectedHemisphere = "left"
     
     var selectedBrain: [String] {[
-        selectedRoi.rawValue,
+        selectedLayer.coremlKey,
         selectedHemisphere
     ]}
     
@@ -39,15 +40,13 @@ struct VisualizeRoiView: View {
             // https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-two-views-the-same-width-or-height#; 16.10.23 16:05
             HStack {
                 VStack {
-                    Text("roi.title.long").font(.headline)
-                    Picker("roi.title", selection: $selectedRoi) {
-                        Label("roi.all", systemImage: "brain").tag(ROI.all)
-                        Label("roi.visual", systemImage: "eyes").tag(ROI.visual)
-                        Label("roi.body", systemImage: "figure.stand").tag(ROI.body)
-                        Label("roi.face", systemImage: "face.smiling").tag(ROI.face)
-                        Label("roi.place", systemImage: "map").tag(ROI.place)
-                        Label("roi.word", systemImage: "text.bubble").tag(ROI.word)
-                        Label("roi.anatomical", systemImage: "figure.run").tag(ROI.anatomical)
+                    VStack {
+                        Text("pipeline.rsa.chart.layer.select.title").font(.headline)
+                        Picker("pipeline.rsa.chart.layer.select.title", selection: $selectedLayer) {
+                            ForEach(pipelineParameters.mlModelLayers, id: \.self) {
+                                Text($0.name).tag($0)
+                            }
+                        }//.pickerStyle(.segmented)
                     }
                 }.padding(.vertical)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -66,36 +65,6 @@ struct VisualizeRoiView: View {
                     .background()
                     .clipShape(.rect(cornerRadius: 16))
             }.fixedSize(horizontal: false, vertical: true)
-            /*VStack {
-                VStack {
-                    Text("roi.title.long").font(.headline)
-                    Picker("roi.title", selection: $selectedRoi) {
-                        Label("roi.all", systemImage: "brain").tag(ROI.all)
-                        Label("roi.visual", systemImage: "eyes").tag(ROI.visual)
-                        Label("roi.body", systemImage: "figure.stand").tag(ROI.body)
-                        Label("roi.face", systemImage: "face.smiling").tag(ROI.face)
-                        Label("roi.place", systemImage: "map").tag(ROI.place)
-                        Label("roi.word", systemImage: "text.bubble").tag(ROI.word)
-                        Label("roi.anatomical", systemImage: "figure.run").tag(ROI.anatomical)
-                    }
-                }.padding(.vertical)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background()
-                    .clipShape(.rect(cornerRadius: 16))
-                
-                VStack {
-                    Text("hemisphere.title").font(.headline)
-                    Picker("hemisphere.title", selection: $selectedHemisphere) {
-                        Text("hemisphere.left").tag("left")
-                        Text("hemisphere.right").tag("right")
-                    }.pickerStyle(.segmented)
-                        .fixedSize()
-                }.padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background()
-                    .clipShape(.rect(cornerRadius: 16))
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .fixedSize(horizontal: false, vertical: true)*/
                         
             GeometryReader { geo in
                 ZStack {
@@ -145,7 +114,11 @@ struct VisualizeRoiView: View {
                     loadingBrain = true
                 }
                 if sceneViewSize != .zero {
-                    let brainConverter = BrainConverter(environment: environment, visualizationType: .roi, hemisphere: $selectedHemisphere, roi: $selectedRoi, image: .constant(""), sceneViewSize: $sceneViewSize)
+                    let rsaOutput = pipelineData.allRoisOutput.filter {
+                        $0.layer == selectedLayer.coremlKey
+                    }.first
+                    
+                    let brainConverter = BrainConverter(environment: environment, visualizationType: .rsa, hemisphere: $selectedHemisphere, roi: .constant(ROI.all), image: .constant(""), brainVisualizationValues: getVisualizationValues(), sceneViewSize: $sceneViewSize)
                     scene = await brainConverter.createScene()
                     scene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
                     
@@ -160,8 +133,18 @@ struct VisualizeRoiView: View {
             ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
         }
     }
+    
+    func getVisualizationValues() -> BrainVisualizationValues {
+        if pipelineParameters.dataset.name == "78images" {
+            
+        } else {
+            
+        }
+        
+        return BrainVisualizationValues(visual: 0, body: 1, face: 2, place: 3, word: 4, anatomical: 5)
+    }
 }
 
 #Preview {
-    VisualizeRoiView(path: .constant(NavigationPath()))
+    RSABrainView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData())
 }

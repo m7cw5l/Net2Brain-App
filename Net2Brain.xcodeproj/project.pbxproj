@@ -11,6 +11,7 @@
 		AA0824F32AE2B92F007CF3DD /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */; };
 		AA0963192B70E6F1009A614D /* results_case1.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0963182B70E6F1009A614D /* results_case1.gzip */; };
 		AA0A98202B7261F2001E6F7C /* results_case2.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0A981F2B7261F2001E6F7C /* results_case2.gzip */; };
+		AA0E4F712BC52BD000BDD34B /* Heatmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E4F702BC52BD000BDD34B /* Heatmaps.swift */; };
 		AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */; };
 		AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */; };
 		AA1B256D2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */; };
@@ -208,6 +209,8 @@
 		AA3D9F5F2ADFD08600F782F6 /* roi_left_anatomical_color_map.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA3D9F512ADFD08600F782F6 /* roi_left_anatomical_color_map.gzip */; };
 		AA3D9F602ADFD08600F782F6 /* roi_left_body_color_map.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA3D9F522ADFD08600F782F6 /* roi_left_body_color_map.gzip */; };
 		AA3D9F632ADFD1BA00F782F6 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D9F622ADFD1BA00F782F6 /* Gzip */; };
+		AA46D9F62BAC3FB20097E882 /* GlossaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46D9F52BAC3FB20097E882 /* GlossaryView.swift */; };
+		AA46D9F82BAC451D0097E882 /* RSABrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46D9F72BAC451D0097E882 /* RSABrainView.swift */; };
 		AA47B2012ADFAB3300A933D7 /* BrainConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47B2002ADFAB3300A933D7 /* BrainConverter.swift */; };
 		AA4E3F052B70DF1400700EDA /* layer4.1.bn2.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA4E3F022B70DF1400700EDA /* layer4.1.bn2.gzip */; };
 		AA4E3F072B70DF1400700EDA /* layer3.1.conv2.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA4E3F042B70DF1400700EDA /* layer3.1.conv2.gzip */; };
@@ -595,6 +598,7 @@
 		AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
 		AA0963182B70E6F1009A614D /* results_case1.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case1.gzip; sourceTree = "<group>"; };
 		AA0A981F2B7261F2001E6F7C /* results_case2.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case2.gzip; sourceTree = "<group>"; };
+		AA0E4F702BC52BD000BDD34B /* Heatmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heatmaps.swift; sourceTree = "<group>"; };
 		AA0E55BB2AEA4C7400ECD2BA /* MLPredict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPredict.swift; sourceTree = "<group>"; };
 		AA1613FC2B107CB6007FFA70 /* SelectRDMMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRDMMetricView.swift; sourceTree = "<group>"; };
 		AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationInfoButton.swift; sourceTree = "<group>"; };
@@ -790,6 +794,8 @@
 		AA3D9F502ADFD08500F782F6 /* roi_right_body_color_map.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = roi_right_body_color_map.gzip; sourceTree = "<group>"; };
 		AA3D9F512ADFD08600F782F6 /* roi_left_anatomical_color_map.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = roi_left_anatomical_color_map.gzip; sourceTree = "<group>"; };
 		AA3D9F522ADFD08600F782F6 /* roi_left_body_color_map.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = roi_left_body_color_map.gzip; sourceTree = "<group>"; };
+		AA46D9F52BAC3FB20097E882 /* GlossaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryView.swift; sourceTree = "<group>"; };
+		AA46D9F72BAC451D0097E882 /* RSABrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSABrainView.swift; sourceTree = "<group>"; };
 		AA47B2002ADFAB3300A933D7 /* BrainConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainConverter.swift; sourceTree = "<group>"; };
 		AA4E3F022B70DF1400700EDA /* layer4.1.bn2.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = layer4.1.bn2.gzip; sourceTree = "<group>"; };
 		AA4E3F042B70DF1400700EDA /* layer3.1.conv2.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = layer3.1.conv2.gzip; sourceTree = "<group>"; };
@@ -1195,6 +1201,7 @@
 				AA8B10DC2AFA2A7300C76E63 /* Dist.swift */,
 				AA73A2452B0C9F0A00EB13A1 /* RSA.swift */,
 				AAD0EE9E2B1F31430058FF33 /* Statistic.swift */,
+				AA0E4F702BC52BD000BDD34B /* Heatmaps.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1639,6 +1646,7 @@
 				AA202B872ACED321009D2EE1 /* ImagesOverviewView.swift */,
 				AA1FE1AB2B6CD2E700A367B3 /* HistoryOverview.swift */,
 				AA1FE1AD2B6CD7E000A367B3 /* HistoryChartView.swift */,
+				AA46D9F52BAC3FB20097E882 /* GlossaryView.swift */,
 				AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */,
 				AAE7BF0F2B0F71400040F11F /* SelectDatasetView.swift */,
 				AAF570AF2B1240CF007DC141 /* SelectDatasetImagesView.swift */,
@@ -1648,6 +1656,7 @@
 				AAF570AD2B123E40007DC141 /* SelectEvaluationTypeView.swift */,
 				AA30D96F2AF10D5A00081BB8 /* HeatmapChartView.swift */,
 				AA7380C52B1DE2A600517431 /* RSAChartView.swift */,
+				AA46D9F72BAC451D0097E882 /* RSABrainView.swift */,
 				AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */,
 				AAC0F9B92B18E555002A7A65 /* resnet18.mlpackage */,
 				AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */,
@@ -2609,11 +2618,14 @@
 				AA47B2012ADFAB3300A933D7 /* BrainConverter.swift in Sources */,
 				AA202B8A2ACED36B009D2EE1 /* VisualizeRoiView.swift in Sources */,
 				AA2AED252AE7C0F9004753C2 /* AboutAppView.swift in Sources */,
+				AA0E4F712BC52BD000BDD34B /* Heatmaps.swift in Sources */,
+				AA46D9F82BAC451D0097E882 /* RSABrainView.swift in Sources */,
 				AA202B902ACEDC06009D2EE1 /* DataStructures.swift in Sources */,
 				AAE7BF102B0F71400040F11F /* SelectDatasetView.swift in Sources */,
 				AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */,
 				AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */,
 				AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */,
+				AA46D9F62BAC3FB20097E882 /* GlossaryView.swift in Sources */,
 				AAC0F9B82B18E1BE002A7A65 /* SelectMLLayersView.swift in Sources */,
 				AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */,
 				AA872A6A2B7250A900192A45 /* RSAChart.swift in Sources */,

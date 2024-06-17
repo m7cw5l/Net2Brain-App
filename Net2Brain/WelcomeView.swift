@@ -18,7 +18,9 @@ struct WelcomeView: View {
         MenuItem(systemIcon: "brain.head.profile", title: "mainmenu.menu.roi.visualize", targetView: .visualizeRoi),
         MenuItem(systemIcon: "doc.text.image", title: "mainmenu.menu.fmri.visualize", targetView: .visualizeFmri),
         MenuItem(systemIcon: "chart.bar.xaxis", title: "mainmenu.menu.predict", targetView: .prediction),
-        MenuItem(systemIcon: "photo.on.rectangle.angled", title: "mainmenu.menu.images", targetView: .imageOverview)
+        MenuItem(systemIcon: "clock.fill", title: "mainmenu.history.title", targetView: .history),
+        MenuItem(systemIcon: "photo.on.rectangle.angled", title: "mainmenu.menu.images", targetView: .imageOverview),
+        MenuItem(systemIcon: "books.vertical.fill", title: "mainmenu.glossary.title", targetView: .glossary)
     ]
     
     let columns = [
@@ -43,7 +45,7 @@ struct WelcomeView: View {
     
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
-    var body: some View {
+    var body: some View {        
         NavigationStack(path: $path) {
                 List {
                     Section {
@@ -58,11 +60,16 @@ struct WelcomeView: View {
                         }.background(Color(uiColor: .systemGroupedBackground))
                             .listRowInsets(EdgeInsets())
                     }
-                    Section {
+                    /*Section {
                         NavigationLink(value: MenuTargetView.history, label: {
                             Label("mainmenu.history.title", systemImage: "clock.fill")
                         })
                     }
+                    Section {
+                        NavigationLink(value: MenuTargetView.history, label: {
+                            Label("mainmenu.glossary.title", systemImage: "book.fill")
+                        })
+                    }*/
                     
                     Section("explanation.menu.title") {
                         ForEach(explanations, id: \.title) { explanation in
@@ -84,6 +91,8 @@ struct WelcomeView: View {
                         ImagesOverviewView(path: $path)
                     case .history:
                         HistoryOverview(path: $path)
+                    case .glossary:
+                        GlossaryView(path: $path)
                     }
                 })
                 .navigationDestination(for: PipelineView.self, destination: { selection in

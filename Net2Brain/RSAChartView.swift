@@ -15,6 +15,8 @@ struct RSAChartView: View {
     @StateObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
+    
+    @State var showBrainVisualization = false
         
     //@State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
@@ -23,11 +25,23 @@ struct RSAChartView: View {
         VStack {
             PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none, allowCollapse: true)
             
-            RSAChart(data: pipelineData.allRoisOutput, pipelineParameters: pipelineParameters)
+            if !pipelineData.allRoisOutput.isEmpty {
+                RSAChart(data: pipelineData.allRoisOutput, pipelineParameters: pipelineParameters)
+            } else {
+                Text("pipeline.rsa.chart.no.data")
+            }
             
             /*Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
                 explanation.show.toggle()
             })//.padding([.top])*/
+            
+            /*Button(action: {
+                showBrainVisualization.toggle()
+            }, label: {
+                Text("button.rsa.brain.title")
+                .frame(maxWidth: .infinity).padding(6)
+            }).buttonStyle(BorderedProminentButtonStyle())
+                .padding([.horizontal, .top])*/
             
             Button(action: {
                 path = NavigationPath()
@@ -37,7 +51,7 @@ struct RSAChartView: View {
                 Text("button.back.menu.title")
                 .frame(maxWidth: .infinity).padding(6)
             }).buttonStyle(BorderedButtonStyle())
-                .padding()
+                .padding([.horizontal, .vertical])
             
         }.background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle("view.pipeline.evaluation.chart.title")
@@ -46,6 +60,8 @@ struct RSAChartView: View {
                 Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
                     ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.filler", currentExplanation: $currentExplanation)
                 })
+            }.sheet(isPresented: $showBrainVisualization) {
+                RSABrainView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
             }
             .sheet(isPresented: $currentExplanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
