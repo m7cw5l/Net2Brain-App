@@ -11,7 +11,9 @@ import Charts
 struct RSAChart: View {
     
     var data: [RSAOutput]
-    var pipelineParameters: PipelineParameters
+    //var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    //@EnvironmentObject var pipelineData: PipelineData
     
     var body: some View {
         Chart {
@@ -89,5 +91,5 @@ struct RSAChart: View {
 }
 
 #Preview {
-    RSAChart(data: [], pipelineParameters: PipelineParameters())
+    RSAChart(data: [])
 }

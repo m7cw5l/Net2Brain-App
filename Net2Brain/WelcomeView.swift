@@ -30,7 +30,7 @@ struct WelcomeView: View {
     
     @State private var showAboutScreen = false
         
-    @State var pipelineParameters = PipelineParameters()
+    @StateObject var pipelineParameters = PipelineParameters()
     @StateObject var pipelineData = PipelineData()
     
     @State private var path = NavigationPath()
@@ -86,7 +86,7 @@ struct WelcomeView: View {
                     case .visualizeFmri:
                         VisualizeRoiImageView(path: $path)
                     case .prediction:
-                        SelectDatasetView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectDatasetView(path: $path)
                     case .imageOverview:
                         ImagesOverviewView(path: $path)
                     case .history:
@@ -99,17 +99,17 @@ struct WelcomeView: View {
                     // navigation Destinations for Prediction Pipeline
                     switch selection {
                     case .datasetImages:
-                        SelectDatasetImagesView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectDatasetImagesView(path: $path)
                     case .mlModel:
-                        SelectMLModelView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectMLModelView(path: $path)
                     case .mlLayers:
-                        SelectMLLayersView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectMLLayersView(path: $path)
                     case .rdmMetric:
-                        SelectRDMMetricView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectRDMMetricView(path: $path)
                     case .evaluationType:
-                        SelectEvaluationTypeView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        SelectEvaluationTypeView(path: $path)
                     case .rsaChart:
-                        RSAChartView(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                        RSAChartView(path: $path)
                     }
                 })
                 .toolbar {
@@ -122,7 +122,9 @@ struct WelcomeView: View {
                     /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
                     ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
                 }
-        }
+        }/// https://stackoverflow.com/questions/75752604/environmentobject-not-injected-for-navigationdestination ; 22.07.24 07:52
+        .environmentObject(pipelineParameters)
+            .environmentObject(pipelineData)
     }
 }
 

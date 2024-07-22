@@ -38,15 +38,15 @@ enum PipelineView {
 }
 
 /// https://www.hackingwithswift.com/books/ios-swiftui/using-state-with-classes; 28.11.2023 08:36
-@Observable
-class PipelineParameters {
-    var dataset: N2BDataset
-    var datasetImages: [String]
-    var mlModel: N2BMLModel
-    var mlModelLayers: [N2BMLLayer]
-    var rdmMetric: N2BRDMMetric
-    var evaluationType: N2BEvaluationType
-    var evaluationParameter: N2BEvaluationParameter
+//@Observable
+class PipelineParameters: ObservableObject {
+    @Published var dataset: N2BDataset
+    @Published var datasetImages: [String]
+    @Published var mlModel: N2BMLModel
+    @Published var mlModelLayers: [N2BMLLayer]
+    @Published var rdmMetric: N2BRDMMetric
+    @Published var evaluationType: N2BEvaluationType
+    @Published var evaluationParameter: N2BEvaluationParameter
     
     init(dataset: N2BDataset, datasetImages: [String], mlModel: N2BMLModel, mlModelLayers: [N2BMLLayer], rdmMetric: N2BRDMMetric, evaluationType: N2BEvaluationType, evaluationParameter: N2BEvaluationParameter) {
         self.dataset = dataset

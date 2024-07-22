@@ -10,8 +10,8 @@ import Matft
 
 struct SelectEvaluationTypeView: View {
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
@@ -23,7 +23,7 @@ struct SelectEvaluationTypeView: View {
     
     var body: some View {
         VStack {
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .evaluationType)
+            PipelineSelectionView(currentlySelectedParameter: .evaluationType)
             
             Form {
                 Picker("pipeline.available.evaluation.types.title", selection: $pipelineParameters.evaluationType) {
@@ -93,7 +93,7 @@ struct SelectEvaluationTypeView: View {
         .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("view.pipeline.evaluation.title")
         .toolbar {
-            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            RestartPipelineButton(path: $path)
             Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
                 ExplanationMenuButton(title: "explanation.evaluation.type.title", description: "explanation.evaluation.type", currentExplanation: $currentExplanation)
             })
@@ -110,5 +110,5 @@ struct SelectEvaluationTypeView: View {
 }
 
 #Preview {
-    SelectEvaluationTypeView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectEvaluationTypeView(path: .constant(NavigationPath()))
 }

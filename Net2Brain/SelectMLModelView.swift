@@ -12,8 +12,8 @@ struct SelectMLModelView: View {
         
     @State var selectedHelpItem: String = ""
 
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
         
@@ -24,7 +24,7 @@ struct SelectMLModelView: View {
     var body: some View {
         VStack {
             
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .mlModel)
+            PipelineSelectionView(currentlySelectedParameter: .mlModel)
             
             Form {
                 Picker("pipeline.available.models.title", selection: $pipelineParameters.mlModel) {
@@ -48,7 +48,7 @@ struct SelectMLModelView: View {
         }.background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("view.pipeline.model.title")
         .toolbar {
-            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            RestartPipelineButton(path: $path)
             Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
                 ExplanationMenuButton(title: "explanation.model.title", description: "explanation.model", currentExplanation: $currentExplanation)
                 ExplanationMenuButton(title: "explanation.model.cnn.title", description: "explanation.model.cnn", currentExplanation: $currentExplanation)
@@ -68,5 +68,5 @@ struct SelectMLModelView: View {
 }
 
 #Preview {
-    SelectMLModelView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectMLModelView(path: .constant(NavigationPath()))
 }

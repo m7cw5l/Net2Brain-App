@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SelectDatasetImagesView: View {
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
         
@@ -22,7 +22,7 @@ struct SelectDatasetImagesView: View {
     
     var body: some View {
         VStack {
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .images)
+            PipelineSelectionView(currentlySelectedParameter: .images)
             
             HStack {
                 Button(action: {
@@ -39,9 +39,9 @@ struct SelectDatasetImagesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 2, pinnedViews: .sectionHeaders) {
                     ForEach(pipelineParameters.dataset.images, id: \.name) { imageCategory in
-                        Section(header: ImageGridHeaderSelectable(pipelineParameters: pipelineParameters, category: imageCategory)) {
+                        Section(header: ImageGridHeaderSelectable(category: imageCategory)) {
                             ForEach(imageCategory.images, id: \.self) { name in
-                                ImageGridItemSelectable(pipelineParameters: pipelineParameters, basePath: pathImages, name: name)
+                                ImageGridItemSelectable(basePath: pathImages, name: name)
                             }
                         }
                     }
@@ -60,7 +60,7 @@ struct SelectDatasetImagesView: View {
             .navigationTitle("view.pipeline.dataset.images.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                RestartPipelineButton(path: $path)
             }
             .onChange(of: pipelineParameters.datasetImages) {
                 pipelineData.resetAll()
@@ -71,5 +71,5 @@ struct SelectDatasetImagesView: View {
 }
 
 #Preview {
-    SelectDatasetImagesView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectDatasetImagesView(path: .constant(NavigationPath()))
 }

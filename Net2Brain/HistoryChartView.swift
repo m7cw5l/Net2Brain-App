@@ -27,15 +27,15 @@ struct HistoryChartView: View {
     
     var body: some View {
         /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-custom-bindings ; 02.02.2024 09:18
-        let parametersBinding = Binding(
+        /*let parametersBinding = Binding(
             get: { PipelineParameters(historyPipelineParameters: self.historyEntry.pipelineParameters) },
             set: { self.historyEntry.pipelineParameters = HistoryPipelineParameters(pipelineParameters: $0) }
-        )
+        )*/
         
         VStack {
-            PipelineSelectionView(pipelineParameters: parametersBinding, currentlySelectedParameter: .none, allowCollapse: true)
+            PipelineSelectionView(currentlySelectedParameter: .none, allowCollapse: true)
             
-            RSAChart(data: historyEntry.roiOutput, pipelineParameters: PipelineParameters(historyPipelineParameters: self.historyEntry.pipelineParameters))
+            RSAChart(data: historyEntry.roiOutput)
             
             /*Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
                 explanation.show.toggle()
@@ -58,10 +58,10 @@ struct HistoryChartView: View {
                     dismiss()
                 }
                 Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
-                    ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.filler", currentExplanation: $currentExplanation)
+                    ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.rsa.chart", currentExplanation: $currentExplanation)
                 })
             }.sheet(isPresented: $showHeatmap) {
-                HeatmapChartView(pipelineParameters: parametersBinding, matrices: historyEntry.distanceMatrices.reduce(into: [String:MfArray]()) {
+                HeatmapChartView(matrices: historyEntry.distanceMatrices.reduce(into: [String:MfArray]()) {
                     $0[$1.layerName] = MfArray($1.data, mftype: .Float, shape: $1.shape)
                 })
             }

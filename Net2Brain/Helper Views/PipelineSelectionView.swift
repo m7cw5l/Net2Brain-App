@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PipelineSelectionView: View {
     
-    @Binding var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
     var currentlySelectedParameter: PipelineParameter
     var allowCollapse = false
     @State private var collapsed = false
@@ -169,5 +169,5 @@ struct PipelineSelectionView: View {
 }
 
 #Preview {
-    PipelineSelectionView(pipelineParameters: .constant(PipelineParameters()), currentlySelectedParameter: .mlModel)
+    PipelineSelectionView(currentlySelectedParameter: .mlModel)
 }

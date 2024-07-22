@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RestartPipelineButton: View {
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
@@ -33,5 +33,5 @@ struct RestartPipelineButton: View {
 }
 
 #Preview {
-    RestartPipelineButton(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    RestartPipelineButton(path: .constant(NavigationPath()))
 }

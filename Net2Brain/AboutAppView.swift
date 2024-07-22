@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    
+    var releaseVersionString: String {
+        return "\(releaseVersionNumber ?? "1.0.0")"
+    }
+    
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+    
+    var buildVersionString: String {
+        return "\(buildVersionNumber ?? "1")"
+    }
+}
+
 struct AboutAppView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
@@ -15,18 +33,44 @@ struct AboutAppView: View {
         NavigationStack {
             List {
                 Section {
-                    Text("about.list.developer.title")
+                    NavigationLink(destination: {
+                        LibraryLicensesView()
+                    }, label: {
+                        HStack {
+                            Image(systemName: "rosette").foregroundStyle(.accent)
+                            Text("about.list.libraries.title")
+                        }
+                    })
+                } header: {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image("app-icon-info-screen").frame(width: 80, height: 80)
+                            Spacer()
+                        }
+                        Text("about.list.version.title.\(Bundle.main.releaseVersionString)").font(.subheadline)
+                        Text("about.list.build.title.\(Bundle.main.buildVersionString)")
+                        Spacer().frame(height: 16)
+                        Text("about.list.developer.title")
+                    }.padding()
                 }
-                
-                Text("about.list.cache.size.\(getCacheSize())")
-                Button("about.list.reset.db.title") {
-                    do {
-                        try modelContext.delete(model: HistoryEntry.self)
-                    } catch {
-                        print("Failed to clear history data")
+                Section("about.list.section.advanced.title") {
+                    Text("about.list.cache.size.\(getCacheSize())")
+                    Button("about.list.delete.cache.title") {
+                        URLCache.shared.removeAllCachedResponses()
                     }
                 }
-            }.navigationTitle("view.about.title")
+                Section {
+                    Button("about.list.reset.db.title") {
+                        do {
+                            try modelContext.delete(model: HistoryEntry.self)
+                        } catch {
+                            print("Failed to clear history data")
+                        }
+                    }
+                }
+            }
+            .navigationTitle("view.about.title")
                 //.navigationBarTitleDisplayMode(.large)
                 .toolbar {
                     Button("button.dismiss.title", systemImage: "xmark") {

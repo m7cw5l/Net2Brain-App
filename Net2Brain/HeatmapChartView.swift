@@ -29,7 +29,7 @@ struct HeatmapChartView: View {
         Color(uiColor: $0)
     }
     
-    @Binding var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
     
     var matrices: [String:MfArray]
     
@@ -54,7 +54,7 @@ struct HeatmapChartView: View {
         return nil
       }
     
-    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
+    @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.heatmap.chart", show: false)
     
     var body: some View {
         NavigationStack {
@@ -96,7 +96,7 @@ struct HeatmapChartView: View {
                 }.padding(.horizontal)
                 
                 //HeatmapChart(matrix: currentMatrix, images: pipelineParameters.datasetImages)
-                HeatmapChartNew(heatmapEntries: getHeatmapData(), images: pipelineParameters.datasetImages, selectedX: $chartSelectedX, selectedY: $chartSelectedY)
+                HeatmapChart(heatmapEntries: getHeatmapData(), images: pipelineParameters.datasetImages, selectedX: $chartSelectedX, selectedY: $chartSelectedY)
                     .aspectRatio(1, contentMode: .fill)
                     .padding(.horizontal)
                 
@@ -175,5 +175,5 @@ struct HeatmapChartView: View {
     //let matrix = Matft.arange(start: -50, to: 50, by: 1, shape: [10, 10], mftype: .Float)
     let matrix = MfArray((1...100).map { _ in Float.random(in: 0...1) }, shape: [10, 10])
     let matrix2 = MfArray((1...400).map { _ in Float.random(in: 0...1) }, shape: [20, 20])
-    return HeatmapChartView(pipelineParameters: .constant(PipelineParameters()), matrices: ["Test1": matrix, "Test2":matrix2])
+    return HeatmapChartView(matrices: ["Test1": matrix, "Test2":matrix2])
 }

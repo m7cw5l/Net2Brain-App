@@ -10,8 +10,8 @@ import Matft
 
 struct SelectRDMMetricView: View {
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
@@ -23,7 +23,7 @@ struct SelectRDMMetricView: View {
     
     var body: some View {
         VStack {
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .rdmMetric)
+            PipelineSelectionView(currentlySelectedParameter: .rdmMetric)
             
             Form {
                 Picker("pipeline.available.metrics.title", selection: $pipelineParameters.rdmMetric) {
@@ -68,7 +68,7 @@ struct SelectRDMMetricView: View {
         }.background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("view.pipeline.rdm.title")
         .toolbar {
-            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            RestartPipelineButton(path: $path)
             Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
                 ExplanationMenuButton(title: "explanation.rdm.title", description: "explanation.rdm", currentExplanation: $currentExplanation)
             })
@@ -78,7 +78,7 @@ struct SelectRDMMetricView: View {
             pipelineData.resetRoiOutputs()
         }
         .sheet(isPresented: $showHeatmap) {
-            HeatmapChartView(pipelineParameters: $pipelineParameters, matrices: pipelineData.distanceMatrices)
+            HeatmapChartView(matrices: pipelineData.distanceMatrices)
         }.sheet(isPresented: $currentExplanation.show) {
             /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
             ExplanationSheet(sheetTitle: $currentExplanation.title, sheetDescription: $currentExplanation.description)
@@ -135,5 +135,5 @@ struct SelectRDMMetricView: View {
 }
 
 #Preview {
-    SelectRDMMetricView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectRDMMetricView(path: .constant(NavigationPath()))
 }

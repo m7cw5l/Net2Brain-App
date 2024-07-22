@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageGridItemSelectable: View {
     
-    @State var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
         
     var basePath: String
     var name: String
@@ -36,5 +36,5 @@ struct ImageGridItemSelectable: View {
 }
 
 #Preview {
-    ImageGridItemSelectable(pipelineParameters: PipelineParameters(), basePath: "", name: "")
+    ImageGridItemSelectable(basePath: "", name: "")
 }

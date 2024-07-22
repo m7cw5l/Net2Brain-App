@@ -114,7 +114,7 @@ struct RSABrainView: View {
                     loadingBrain = true
                 }
                 if sceneViewSize != .zero {
-                    let rsaOutput = pipelineData.allRoisOutput.filter {
+                    let _ = pipelineData.allRoisOutput.filter {
                         $0.layer == selectedLayer.coremlKey
                     }.first
                     

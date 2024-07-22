@@ -13,7 +13,7 @@ struct HistoryOverview: View {
     
     @Binding var path: NavigationPath
     
-    @Query var historyEntries: [HistoryEntry]
+    @Query(sort: \HistoryEntry.date, order: .reverse) var historyEntries: [HistoryEntry]
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,6 +26,7 @@ struct HistoryOverview: View {
         List(historyEntries) { historyEntry in
             NavigationLink(destination: {
                 HistoryChartView(historyEntry: historyEntry)
+                    .environmentObject(PipelineParameters(historyPipelineParameters: historyEntry.pipelineParameters))
             }, label: {
                 VStack(alignment: .leading) {
                     Text(dateFormatter.string(from: historyEntry.date))
@@ -38,7 +39,7 @@ struct HistoryOverview: View {
             }
         }.overlay(Group {
             if historyEntries.isEmpty {
-                Text("history.list.empty").foregroundStyle(Color.secondary).multilineTextAlignment(.center)
+                Text("history.list.empty").foregroundStyle(Color.secondary).multilineTextAlignment(.center).padding()
             }
         })
         .navigationTitle("view.history.title")

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SelectDatasetView: View {
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
@@ -19,7 +19,7 @@ struct SelectDatasetView: View {
     var body: some View {
         VStack {
             
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .dataset)
+            PipelineSelectionView(currentlySelectedParameter: .dataset)
             
             Form {
                 Picker("pipeline.available.datasets.title", selection: $pipelineParameters.dataset) {
@@ -53,5 +53,5 @@ struct SelectDatasetView: View {
 }
 
 #Preview {
-    SelectDatasetView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectDatasetView(path: .constant(NavigationPath()))
 }

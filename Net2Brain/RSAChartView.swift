@@ -11,22 +11,21 @@ import SwiftData
 struct RSAChartView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
     @State var showBrainVisualization = false
         
-    //@State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.filler", show: false)
     @State var currentExplanation = Explanation(title: "", description: "", show: false)
     
     var body: some View {
         VStack {
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none, allowCollapse: true)
+            PipelineSelectionView(currentlySelectedParameter: .none, allowCollapse: true)
             
             if !pipelineData.allRoisOutput.isEmpty {
-                RSAChart(data: pipelineData.allRoisOutput, pipelineParameters: pipelineParameters)
+                RSAChart(data: pipelineData.allRoisOutput)
             } else {
                 Text("pipeline.rsa.chart.no.data")
             }
@@ -56,9 +55,9 @@ struct RSAChartView: View {
         }.background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle("view.pipeline.evaluation.chart.title")
             .toolbar {
-                RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+                RestartPipelineButton(path: $path)
                 Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
-                    ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.filler", currentExplanation: $currentExplanation)
+                    ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.rsa.chart", currentExplanation: $currentExplanation)
                 })
             }.sheet(isPresented: $showBrainVisualization) {
                 RSABrainView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
@@ -88,5 +87,5 @@ struct RSAChartView: View {
             exampleData.append(RSAOutput(roi: roi, layer: layer, model: "AlexNet", r2: Float.random(in: 0...5), significance: Float.random(in: 0...1), sem: Float.random(in: 0...1)))
         }
     }
-    return RSAChartView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    return RSAChartView(path: .constant(NavigationPath()))
 }

@@ -9,7 +9,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "%@"
           }
         }
       }
@@ -19,7 +19,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "%1$@ | %2$@ | %3$@ | %4$@ – %5$@"
           }
         },
         "en" : {
@@ -30,25 +30,15 @@
         }
       }
     },
-    "%@, %@" : {
-      "extractionState" : "stale",
+    "%lld" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@, %2$@"
+            "value" : "%lld"
           }
         }
       }
-    },
-    "%lld" : {
-
     },
     "3d.model.generation.running" : {
       "extractionState" : "manual",
@@ -67,12 +57,29 @@
         }
       }
     },
+    "about.list.build.title.%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build %@"
+          }
+        }
+      }
+    },
     "about.list.cache.size.%@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Cache: %@"
           }
         },
         "en" : {
@@ -83,19 +90,53 @@
         }
       }
     },
+    "about.list.delete.cache.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache leeren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "delete cache"
+          }
+        }
+      }
+    },
     "about.list.developer.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entwickelt von Marco Wessel"
+            "value" : "App entwickelt von Marco Wessel"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Developed by Marco Wessel"
+            "value" : "App developed by Marco Wessel"
+          }
+        }
+      }
+    },
+    "about.list.libraries.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliotheken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libraries"
           }
         }
       }
@@ -113,6 +154,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset History DB"
+          }
+        }
+      }
+    },
+    "about.list.section.advanced.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "erweiterte Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "advanced Settings"
+          }
+        }
+      }
+    },
+    "about.list.version.build.title.%@.%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@, Build %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@, Build %@"
+          }
+        }
+      }
+    },
+    "about.list.version.title.%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
           }
         }
       }
@@ -273,6 +365,12 @@
     "button.rsa.brain.title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA-Ergebnisse auf Gehirn visualisieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -294,6 +392,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select All"
+          }
+        }
+      }
+    },
+    "explanation.evaluation.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Auswertungsart beschreibt die Methode, die zur Berechnung statistischer Werte wie der Korrelation für zwei RDMs verwendet wird."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Evaluation Type describes the method used for calculating statistical values like correlation for two RDMs."
           }
         }
       }
@@ -362,6 +477,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Explain what I see here"
+          }
+        }
+      }
+    },
+    "explanation.heatmap.chart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Heatmap-Diagramm stellt die RDM (Representational Dissimilarity Matrix) dar, die einen Wert für die Unähnlichkeit der Aktivitätsmuster jedes Bildpaares enthält.\nAus diesem Grund ist sie symmetrisch mit einer Diagonale aus Nullen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This heatmap chart plots the RDM (Representational Dissimilarity Matrix) which has a value for the dissimilarity of every image pairs activity patterns.\nBecause of that, it is symmetrical with a diagonal of zeros."
           }
         }
       }
@@ -604,6 +736,23 @@
         }
       }
     },
+    "explanation.model.layer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine ML Modell Ebene beschreibt eine Schicht in einem neuronalen Netz. Es gibt verschiedene Arten von Ebenen: den Input Layer, eine unterschiedliche Anzahl von Hidden Layers und den Output Layer.\nJeder Layer besteht aus Neuronen, die auf der Basis der einzelnen Ebenen miteinander verbunden sind."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ML Model Layer describes a layer in a neural network. There are different types of layers: the input layer, a different amount of hidden layers and the output layer.\nEvery layer consists out of neurons, which are all connected on layer per layer basis."
+          }
+        }
+      }
+    },
     "explanation.model.layer.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -672,6 +821,23 @@
         }
       }
     },
+    "explanation.rdm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Distanzmetrik beschreibt die Metrik, die für die Berechnung der Unähnlichkeiten der verschiedenen Bilder verwendet wird."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The RDM Metric describes the metric that is used for calculating the dissimilarities of the different images."
+          }
+        }
+      }
+    },
     "explanation.rdm.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -685,6 +851,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "What is the RDM Metric?"
+          }
+        }
+      }
+    },
+    "explanation.rsa.chart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Diagramm zeigt die Korrelation zwischen der Gehirnreaktion und der ML-Modellreaktion für verschiedene ROIs und Modellschichten.\n\nDer R2-Wert reicht von 0,00 bis 1,00, wobei 0,00 keine Korrelation und 1,00 eine perfekte Korrelation bedeutet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This chart shows the correlation between brain response and ML model response for different ROIs and model layers.\n\nThe R2 value has a range from 0.00 to 1.00, where 0.00 is no correlation and 1.00 is perfect correlation."
           }
         }
       }
@@ -1354,10 +1537,16 @@
     "pipeline.evaluation.types.rsa.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSA (Representational Similarity Analysis) ist eine Methode zur Verarbeitung von RDMs für die Berechnung von statistischen Werten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A descriptive text for that type"
+            "value" : "RSA (Representational Similarity Analysis) is a way of processing RDMs for calculating statistical values."
           }
         }
       }
@@ -2164,13 +2353,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abstandsmatrix berechnen"
+            "value" : "Unähnlichkeitsmatrix berechnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calculate Distance Matrix"
+            "value" : "Calculate Dissimilarity Matrix"
           }
         }
       }
@@ -2686,7 +2875,14 @@
       }
     },
     "Value" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        }
+      }
     },
     "view.about.title" : {
       "extractionState" : "manual",
@@ -2786,6 +2982,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "available images"
+          }
+        }
+      }
+    },
+    "view.libraries.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliotheken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libraries"
           }
         }
       }
@@ -2961,22 +3174,64 @@
       }
     },
     "x" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x"
+          }
+        }
+      }
     },
     "xEnd" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "xEnd"
+          }
+        }
+      }
     },
     "xStart" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "xStart"
+          }
+        }
+      }
     },
     "y" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "y"
+          }
+        }
+      }
     },
     "yEnd" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yEnd"
+          }
+        }
+      }
     },
     "yStart" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yStart"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

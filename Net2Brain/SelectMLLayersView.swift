@@ -13,8 +13,8 @@ struct SelectMLLayersView: View {
     
     //@Environment(\.modelContext) var modelContext
         
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Binding var path: NavigationPath
     
@@ -27,7 +27,7 @@ struct SelectMLLayersView: View {
     var body: some View {
         VStack {
             
-            PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .mlModelLayer)
+            PipelineSelectionView(currentlySelectedParameter: .mlModelLayer)
             
             HStack {
                 Button(action: {
@@ -97,7 +97,7 @@ struct SelectMLLayersView: View {
         }.background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("view.pipeline.model.layer.title")
         .toolbar {
-            RestartPipelineButton(pipelineParameters: pipelineParameters, pipelineData: pipelineData, path: $path)
+            RestartPipelineButton(path: $path)
             Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
                 ExplanationMenuButton(title: "explanation.model.layer.title", description: "explanation.model.layer", currentExplanation: $currentExplanation)
             })
@@ -168,5 +168,5 @@ struct SelectMLLayersView: View {
 }
 
 #Preview {
-    SelectMLLayersView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData(), path: .constant(NavigationPath()))
+    SelectMLLayersView(path: .constant(NavigationPath()))
 }

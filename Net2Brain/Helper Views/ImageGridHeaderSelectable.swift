@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageGridHeaderSelectable: View {
     
-    @State var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
     
     var category: N2BImageCategory
     
@@ -46,5 +46,5 @@ struct ImageGridHeaderSelectable: View {
 }
 
 #Preview {
-    ImageGridHeaderSelectable(pipelineParameters: PipelineParameters(), category: N2BImageCategory(name: "Test", images: []))
+    ImageGridHeaderSelectable(category: N2BImageCategory(name: "Test", images: []))
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */; };
+		AA02C47E2B4FC8C10001B177 /* HeatmapChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02C47D2B4FC8C10001B177 /* HeatmapChart.swift */; };
 		AA0824F32AE2B92F007CF3DD /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */; };
 		AA0963192B70E6F1009A614D /* results_case1.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0963182B70E6F1009A614D /* results_case1.gzip */; };
 		AA0A98202B7261F2001E6F7C /* results_case2.gzip in Resources */ = {isa = PBXBuildFile; fileRef = AA0A981F2B7261F2001E6F7C /* results_case2.gzip */; };
@@ -534,7 +534,7 @@
 		AA5CB9F22B15D9C100A5C2CC /* PipelineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */; };
 		AA5CB9F42B15E0B500A5C2CC /* PipelineSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */; };
 		AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */; };
-		AA6EDE2F2B17400C004EFBCF /* HeatmapChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */; };
+		AA6EDE2F2B17400C004EFBCF /* HeatmapChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */; };
 		AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C32B1DE15300517431 /* AvailableData.swift */; };
 		AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C52B1DE2A600517431 /* RSAChartView.swift */; };
 		AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73A2452B0C9F0A00EB13A1 /* RSA.swift */; };
@@ -563,6 +563,9 @@
 		AA9ADFF32B46D5F900818FDB /* ExplanationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */; };
 		AA9BEB4A2AD4238E001B3DA2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */; };
 		AAB6C41E2B690AC200E5C882 /* RestartPipelineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */; };
+		AABD251C2C4E485400921149 /* LibraryLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD251B2C4E485400921149 /* LibraryLicensesView.swift */; };
+		AABD251E2C4E4A7500921149 /* LibraryLicenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD251D2C4E4A7500921149 /* LibraryLicenses.swift */; };
+		AABD25202C4E4BF000921149 /* LibraryLicenseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD251F2C4E4BF000921149 /* LibraryLicenseDetailView.swift */; };
 		AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */; };
 		AAC0F9B42B18CF9C002A7A65 /* alexnet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */; };
 		AAC0F9B52B18CF9C002A7A65 /* resnet34.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */; };
@@ -594,7 +597,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChartNew.swift; sourceTree = "<group>"; };
+		AA02C47D2B4FC8C10001B177 /* HeatmapChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChart.swift; sourceTree = "<group>"; };
 		AA0824F22AE2B92F007CF3DD /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
 		AA0963182B70E6F1009A614D /* results_case1.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case1.gzip; sourceTree = "<group>"; };
 		AA0A981F2B7261F2001E6F7C /* results_case2.gzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = results_case2.gzip; sourceTree = "<group>"; };
@@ -1122,7 +1125,7 @@
 		AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSelectionView.swift; sourceTree = "<group>"; };
 		AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSelectionRow.swift; sourceTree = "<group>"; };
 		AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapTabView.swift; sourceTree = "<group>"; };
-		AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChart.swift; sourceTree = "<group>"; };
+		AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChartOld.swift; sourceTree = "<group>"; };
 		AA7380C32B1DE15300517431 /* AvailableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableData.swift; sourceTree = "<group>"; };
 		AA7380C52B1DE2A600517431 /* RSAChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChartView.swift; sourceTree = "<group>"; };
 		AA73A2452B0C9F0A00EB13A1 /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
@@ -1150,6 +1153,9 @@
 		AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationMenuButton.swift; sourceTree = "<group>"; };
 		AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartPipelineButton.swift; sourceTree = "<group>"; };
+		AABD251B2C4E485400921149 /* LibraryLicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryLicensesView.swift; sourceTree = "<group>"; };
+		AABD251D2C4E4A7500921149 /* LibraryLicenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryLicenses.swift; sourceTree = "<group>"; };
+		AABD251F2C4E4BF000921149 /* LibraryLicenseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryLicenseDetailView.swift; sourceTree = "<group>"; };
 		AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = resnet50.mlpackage; sourceTree = "<group>"; };
 		AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = alexnet.mlpackage; sourceTree = "<group>"; };
 		AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = resnet34.mlpackage; sourceTree = "<group>"; };
@@ -1647,7 +1653,6 @@
 				AA1FE1AB2B6CD2E700A367B3 /* HistoryOverview.swift */,
 				AA1FE1AD2B6CD7E000A367B3 /* HistoryChartView.swift */,
 				AA46D9F52BAC3FB20097E882 /* GlossaryView.swift */,
-				AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */,
 				AAE7BF0F2B0F71400040F11F /* SelectDatasetView.swift */,
 				AAF570AF2B1240CF007DC141 /* SelectDatasetImagesView.swift */,
 				AA202B852ACED24A009D2EE1 /* SelectMLModelView.swift */,
@@ -1657,6 +1662,10 @@
 				AA30D96F2AF10D5A00081BB8 /* HeatmapChartView.swift */,
 				AA7380C52B1DE2A600517431 /* RSAChartView.swift */,
 				AA46D9F72BAC451D0097E882 /* RSABrainView.swift */,
+				AA2AED242AE7C0F9004753C2 /* AboutAppView.swift */,
+				AABD251D2C4E4A7500921149 /* LibraryLicenses.swift */,
+				AABD251B2C4E485400921149 /* LibraryLicensesView.swift */,
+				AABD251F2C4E4BF000921149 /* LibraryLicenseDetailView.swift */,
 				AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */,
 				AAC0F9B92B18E555002A7A65 /* resnet18.mlpackage */,
 				AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */,
@@ -1711,8 +1720,8 @@
 				AAFDAAA12B4EEC1C00D19ACB /* ImageGridHeaderSelectable.swift */,
 				AA96FB9E2B4EE85B00F9F4A6 /* ImageGridItemSelectable.swift */,
 				AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */,
-				AA6EDE2E2B17400C004EFBCF /* HeatmapChart.swift */,
-				AA02C47D2B4FC8C10001B177 /* HeatmapChartNew.swift */,
+				AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */,
+				AA02C47D2B4FC8C10001B177 /* HeatmapChart.swift */,
 				AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */,
 				AA872A692B7250A900192A45 /* RSAChart.swift */,
 			);
@@ -2612,7 +2621,9 @@
 				AAD0EE9F2B1F31430058FF33 /* Statistic.swift in Sources */,
 				AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */,
 				AA9ADFF12B46D1E500818FDB /* ExplanationRow.swift in Sources */,
+				AABD25202C4E4BF000921149 /* LibraryLicenseDetailView.swift in Sources */,
 				AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */,
+				AABD251C2C4E485400921149 /* LibraryLicensesView.swift in Sources */,
 				AAF570AE2B123E40007DC141 /* SelectEvaluationTypeView.swift in Sources */,
 				AA9ADFEF2B46CFD900818FDB /* ExplanationSheet.swift in Sources */,
 				AA47B2012ADFAB3300A933D7 /* BrainConverter.swift in Sources */,
@@ -2622,15 +2633,16 @@
 				AA46D9F82BAC451D0097E882 /* RSABrainView.swift in Sources */,
 				AA202B902ACEDC06009D2EE1 /* DataStructures.swift in Sources */,
 				AAE7BF102B0F71400040F11F /* SelectDatasetView.swift in Sources */,
+				AABD251E2C4E4A7500921149 /* LibraryLicenses.swift in Sources */,
 				AAC0F9B32B18CF9C002A7A65 /* resnet50.mlpackage in Sources */,
-				AA02C47E2B4FC8C10001B177 /* HeatmapChartNew.swift in Sources */,
+				AA02C47E2B4FC8C10001B177 /* HeatmapChart.swift in Sources */,
 				AA0E55BC2AEA4C7400ECD2BA /* MLPredict.swift in Sources */,
 				AA46D9F62BAC3FB20097E882 /* GlossaryView.swift in Sources */,
 				AAC0F9B82B18E1BE002A7A65 /* SelectMLLayersView.swift in Sources */,
 				AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */,
 				AA872A6A2B7250A900192A45 /* RSAChart.swift in Sources */,
 				AA30D9702AF10D5A00081BB8 /* HeatmapChartView.swift in Sources */,
-				AA6EDE2F2B17400C004EFBCF /* HeatmapChart.swift in Sources */,
+				AA6EDE2F2B17400C004EFBCF /* HeatmapChartOld.swift in Sources */,
 				AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */,
 				AA5AA2712AB838F70019C38A /* Net2BrainApp.swift in Sources */,
 				AAF570B02B1240CF007DC141 /* SelectDatasetImagesView.swift in Sources */,
