@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// view for displaying an image in a image picker with the option of (de-)selecting the image
+/// - Parameters:
+///   - basePath: the base path where the image is stored
+///   - name: the name of the image to display
 struct ImageGridItemSelectable: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters

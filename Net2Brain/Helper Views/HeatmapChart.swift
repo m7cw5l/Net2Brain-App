@@ -9,32 +9,22 @@ import SwiftUI
 import Charts
 import Matft
 
+/// struct for displaying matrix values in a heatmap, the coordinates are stored as Strings
+/// - Parameters:
+///   - x: the x coordinate in the matrix/heatmap
+///   - y: the y coordinate in the matrix/heatmap
+///   - value: the value at the coordinates
 struct HeatmapEntry: Hashable {
     var x: String
     var y: String
     var value: Float
 }
 
+/// view for displaying a matrix in a heatmap with the corresponding images at the edge
+/// - Parameters:
+///   - heatmapEntries: the entries of the matrix as compatible data for Swift Charts (an array of `HeatmapEntry` items)
+///   - images: array of the images to be displayed at the charts top and leading edges
 struct HeatmapChart: View {
-    /// heatmap from matplotlib/nilearn ("cold_hot")
-    let heatmap = [
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.75755961, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.2802532, alpha: 1.0),
-        UIColor(red: 0.2802532, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.75755961, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    ].map {
-        Color(uiColor: $0)
-    }
-    
-    //var matrix: MfArray
     var heatmapEntries: [HeatmapEntry]
     
     var images: [String]

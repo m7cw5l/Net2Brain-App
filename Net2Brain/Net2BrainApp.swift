@@ -11,8 +11,7 @@ import SwiftUI
 struct Net2BrainApp: App {
     var body: some Scene {
         WindowGroup {
-            //WelcomeListView()
             WelcomeView()
-        }.modelContainer(for: HistoryEntry.self)
+        }.modelContainer(for: HistoryEntry.self) // needed for SwiftData to store Pipeline History
     }
 }

@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-
-
+/// view for displaying the used libraries in a list
 struct LibraryLicensesView: View {
     var body: some View {
         List(libraryLicenses, id: \.libraryName) { libraryLicense in

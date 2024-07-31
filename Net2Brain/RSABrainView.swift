@@ -8,9 +8,11 @@
 import SwiftUI
 import SceneKit
 
-struct RSABrainView: View {    
-    @State var pipelineParameters: PipelineParameters
-    @StateObject var pipelineData: PipelineData
+/// view for visualizing RSA statistics on a 3D brain
+/// currently not in use, because statistics cannot be assigned to specific ROIs
+struct RSABrainView: View {
+    @EnvironmentObject var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineData: PipelineData
     
     @Environment(\.self) var environment
     @Environment(\.colorScheme) var colorScheme
@@ -46,7 +48,7 @@ struct RSABrainView: View {
                             ForEach(pipelineParameters.mlModelLayers, id: \.self) {
                                 Text($0.name).tag($0)
                             }
-                        }//.pickerStyle(.segmented)
+                        }
                     }
                 }.padding(.vertical)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -73,7 +75,7 @@ struct RSABrainView: View {
                         pointOfView: cameraNode,
                         options: [.allowsCameraControl, .autoenablesDefaultLighting, .temporalAntialiasingEnabled],
                         delegate: nil
-                    )//.scaledToFill()
+                    )
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         .zIndex(1.0)
                     if loadingBrain {
@@ -91,7 +93,6 @@ struct RSABrainView: View {
                     .clipShape(.rect(cornerRadius: 16))
                     .onChange(of: geo.size) {
                         sceneViewSize = geo.size
-                        //print(sceneViewSize)
                     }
             }
             
@@ -134,6 +135,8 @@ struct RSABrainView: View {
         }
     }
     
+    /// get's the values for visualization on the brain (currently returns dummy data)
+    /// - Returns: a `BrainVisualizationValues` object with the corresponding values
     func getVisualizationValues() -> BrainVisualizationValues {
         if pipelineParameters.dataset.name == "78images" {
             
@@ -146,5 +149,5 @@ struct RSABrainView: View {
 }
 
 #Preview {
-    RSABrainView(pipelineParameters: PipelineParameters(), pipelineData: PipelineData())
+    RSABrainView()
 }

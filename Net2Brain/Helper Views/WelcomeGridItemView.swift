@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Grid item used in the main menu with an icon and a title below the icon
+/// - Parameters:
+///   - icon: the system icon name to be displayed in the cell
+///   - title: the title displayed in the cell
 struct WelcomeGridItemView: View {
     var icon: String
     var title: String

@@ -8,6 +8,10 @@
 import SwiftUI
 import Matft
 
+/// third view in the pipeline
+/// allows the selection of the ML model from the available ones
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectMLModelView: View {
         
     @State var selectedHelpItem: String = ""
@@ -23,7 +27,6 @@ struct SelectMLModelView: View {
         
     var body: some View {
         VStack {
-            
             PipelineSelectionView(currentlySelectedParameter: .mlModel)
             
             Form {

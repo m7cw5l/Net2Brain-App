@@ -7,10 +7,10 @@
 
 import SwiftUI
 
+/// struct for all heatmaps contained in the app in different formats
 struct Heatmaps {
     /// heatmap from matplotlib/nilearn ("cold_hot")
     let coldHotUI = [
-        //UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
         UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
         UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
         UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
@@ -21,7 +21,6 @@ struct Heatmaps {
         UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
         UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
         UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0)
-        //UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     ]
     
     /// heatmap from matplotlib/nilearn ("cold_hot")

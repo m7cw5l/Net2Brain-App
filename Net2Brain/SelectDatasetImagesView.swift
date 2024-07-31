@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// second view in the pipeline
+/// allows the selection of images from the selected dataset
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectDatasetImagesView: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters
@@ -34,7 +38,7 @@ struct SelectDatasetImagesView: View {
                     .disabled(pipelineParameters.datasetImages.count == 0)
             }
             
-            RandomImagePicker(pipelineParameters: pipelineParameters)
+            RandomImagePicker()
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 2, pinnedViews: .sectionHeaders) {

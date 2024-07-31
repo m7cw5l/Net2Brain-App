@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// view for a small info button that can be added to list row and shows a explanation when tapped
+/// - Parameters:
+///   - title: the explanation's title
+///   - description: the text of the explanation
 struct ExplanationInfoButton: View {
     
     @State var title: String

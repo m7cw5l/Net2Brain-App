@@ -8,6 +8,9 @@
 import SwiftUI
 import SceneKit
 
+/// view to visualize different brain responses to an image on a 3D brain
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct VisualizeRoiImageView: View {
     let pathTrainingImages = Bundle.main.resourcePath!
     
@@ -34,6 +37,7 @@ struct VisualizeRoiImageView: View {
     @State var selectedImage: String = "image00001"
     @State private var selectNewImage = false
     
+    // used to detect if any parameter corresponding to the rendered brain changes
     var selectedBrain: [String] {[
         selectedRoi.rawValue,
         selectedHemisphere,
@@ -73,7 +77,6 @@ struct VisualizeRoiImageView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background()
                         .clipShape(.rect(cornerRadius: 16))
-                    //.fixedSize()
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     .fixedSize(horizontal: false, vertical: true)
                 
@@ -95,14 +98,14 @@ struct VisualizeRoiImageView: View {
                 
             }.fixedSize(horizontal: false, vertical: true)
             
-            GeometryReader { geo in
+            GeometryReader { geo in // needed to get size of SceneView
                 ZStack {
                     SceneView(
                         scene: scene,
                         pointOfView: cameraNode,
                         options: [.allowsCameraControl, .autoenablesDefaultLighting, .temporalAntialiasingEnabled],
                         delegate: nil
-                    )//.scaledToFit()
+                    )
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         .zIndex(1.0)
                     if loadingBrain {
@@ -115,12 +118,11 @@ struct VisualizeRoiImageView: View {
                             .zIndex(2.0)
                             .allowsHitTesting(false)
                     }
-                }//.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }
                 .background()
                 .clipShape(.rect(cornerRadius: 16))
                 .onChange(of: geo.size) {
                     sceneViewSize = geo.size
-                    //print(sceneViewSize)
                 }
             }
             

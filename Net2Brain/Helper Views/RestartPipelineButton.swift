@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// button to add to the Navigation Bar to restart the pipeline
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct RestartPipelineButton: View {
     @EnvironmentObject var pipelineParameters: PipelineParameters
     @EnvironmentObject var pipelineData: PipelineData

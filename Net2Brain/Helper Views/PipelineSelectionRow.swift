@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// row displaying a parameter title and a corresponding value
+/// used in the `PipelineSelectionView`
+/// - Parameters:
+///   - title: title displayed on the left side
+///   - description: description displayed on the right side
 struct PipelineSelectionRow: View {
     
     var title: String

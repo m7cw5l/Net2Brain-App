@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// view for displaying all images contained in the app
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct ImagesOverviewView: View {
     @Binding var path: NavigationPath
     

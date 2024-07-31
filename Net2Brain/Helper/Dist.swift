@@ -7,14 +7,15 @@
 
 import Matft
 
+// this file contains all functions used for calculating the distance matrices
+
 /// Performs batchwise matrix-matrix multiplication. Based on `torch.baddbmm`.
-/// Formula: `out_i = `
 /// - Parameters:
-///   - input:
+///   - input: the input array
 ///   - batch1: 2D or 3D MfArray
 ///   - batch2: 2D or 3D MfArray
-///   - beta:
-///   - alpha: 
+///   - beta: a scaling factor
+///   - alpha: a scaling factor
 /// - Returns: 2D or 3D MfArray
 func baddbmm(input: MfArray, batch1: MfArray, batch2: MfArray, beta: Int = 1, alpha: Int = 1) async -> MfArray {
     let batchSize = input.shape.first ?? 0
@@ -31,13 +32,19 @@ func baddbmm(input: MfArray, batch1: MfArray, batch2: MfArray, beta: Int = 1, al
     return output
 }
 
+/// performs matrix multiplication for batch1 and batch2. Based on `torch.addmm`
+/// alpha and beta are scaling factors on matrix-vector product between mat1 and mat2 and the added matrix input respectively
 func addmm(input: MfArray, batch1: MfArray, batch2: MfArray, beta: Int = 1, alpha: Int = 1) async -> MfArray {
     let out = beta * input + alpha * Matft.matmul(batch1, batch2)
     
     return out
 }
 
-
+/// calculates the euclidean norm
+/// - Parameters:
+///   - x: the matrix or vector the norm should be calculated for
+///   - y: a optional second matrix or vector
+/// - Returns: the resulting matrix or vector as  a 2D or 3D MfArray
 func euclidean(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var y = y
     
@@ -70,44 +77,11 @@ func euclidean(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     return nil
 }
 
-
-/*func manhattanOld(x: MfArray, y: MfArray? = nil) async -> MfArray? {
-    var y = y
-    if y == nil {
-        y = x
-    }
-    
-    print(x.shape)
-    
-    if let y = y {
-        let batchSize = x.shape.first ?? 0
-        
-        print(batchSize)
-        
-        var outputArray = [MfArray]()
-        
-        for i in 0..<batchSize {
-            let vectorCount = x[i].shape.first ?? 0
-            print(vectorCount)
-            var vectorOutput = [MfArray]()
-            for j in 0..<vectorCount {
-                for k in 0..<vectorCount {
-                    let value = Matft.math.abs(x[i][j] - y[i][k]).sum()
-                    vectorOutput.append(value)
-                }
-            }
-            
-            outputArray.append(Matft.concatenate(vectorOutput))
-        }
-        
-        print(outputArray)
-        let output = Matft.concatenate(outputArray).reshape(x.shape)
-                
-        return output
-    }
-    return nil
-}*/
-
+/// calculates the manhattan distance
+/// - Parameters:
+///   - x: the matrix or vector the distance should be calculated for
+///   - y: a optional second matrix or vector
+/// - Returns: the resulting matrix or vector as  a 2D or 3D MfArray
 func manhattan(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var y = y
     if y == nil {
@@ -148,7 +122,11 @@ func manhattan(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     return nil
 }
 
-
+/// calculates the cosine distance
+/// - Parameters:
+///   - x: the matrix or vector the distance should be calculated for
+///   - y: a optional second matrix or vector
+/// - Returns: the resulting matrix or vector as  a 2D or 3D MfArray
 func cosine(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     let xNorm = x / Matft.linalg.normlp_vec(x, ord: 2, axis: -1, keepDims: true)
     
@@ -171,9 +149,9 @@ func cosine(x: MfArray, y: MfArray? = nil) async -> MfArray? {
 /// Computes the pairwise correlation distance between all vectors in `x`.
 /// Formula: `correlation(x, y) = 1 - (x - x.mean()) . (y - y.mean()) / (||x - x.mean()||_2 * ||y - y.mean()||_2)`
 /// - Parameters:
-///   - x: 2D or 3D MfArray
-///   - y: 2D or 3D MfArray, optional
-/// - Returns: 2D or 3D MfArray
+///   - x: the matrix or vector the distance should be calculated for
+///   - y: a optional second matrix or vector
+/// - Returns: the resulting matrix or vector as  a 2D or 3D MfArray
 func correlation(x: MfArray, y: MfArray? = nil) async -> MfArray? {
     var x = x
     var yArray = y

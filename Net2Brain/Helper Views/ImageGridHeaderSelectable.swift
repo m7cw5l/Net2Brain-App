@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// view for displaying a header for a image category in a categorized image picker with the option of (de-)selecting the image category
+/// - Parameters:
+///   - category: the image category corresponding to the header
 struct ImageGridHeaderSelectable: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters

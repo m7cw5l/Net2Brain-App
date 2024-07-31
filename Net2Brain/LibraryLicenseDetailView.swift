@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// view for displaying the license text of a library
 struct LibraryLicenseDetailView: View {
     var libraryLicense: LibraryLicense
     

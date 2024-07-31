@@ -7,14 +7,19 @@
 
 import SwiftUI
 
+/// struct for an image picker item that is used in the `RandomImagePicker`
+/// - Parameters:
+///   - type: type of the item ("category" or "image")
+///   - count: the number of item that should be selected
 struct ImagePickerItem: Hashable {
     let type: String
     let count: Int
 }
 
+/// view to quickly select random images or image categories
 struct RandomImagePicker: View {
     
-    @State var pipelineParameters: PipelineParameters
+    @EnvironmentObject var pipelineParameters: PipelineParameters
     
     let items = [
         ImagePickerItem(type: "category", count: 1),
@@ -91,5 +96,5 @@ struct RandomImagePicker: View {
 }
 
 #Preview {
-    RandomImagePicker(pipelineParameters: PipelineParameters())
+    RandomImagePicker()
 }

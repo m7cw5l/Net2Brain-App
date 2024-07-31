@@ -14,6 +14,10 @@ struct InnerHeightPreferenceKey: PreferenceKey {
     }
 }
 
+/// a sheet view used for displaying explanation throughout the app
+/// - Parameters:
+///   - title: the explanation's title
+///   - description: the text of the explanation
 struct ExplanationSheet: View {
     
     @Binding var sheetTitle: String

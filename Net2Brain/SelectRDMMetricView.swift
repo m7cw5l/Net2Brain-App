@@ -8,6 +8,11 @@
 import SwiftUI
 import Matft
 
+/// fifth view in the pipeline
+/// allows the selection of the distance metrix used for calculating the RDMs
+/// from this view another modal view for showing the RDMs can be opened
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectRDMMetricView: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters

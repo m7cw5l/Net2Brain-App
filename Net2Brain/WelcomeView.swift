@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+/// struct for a main menu entry
+/// - Parameters:
+///   - systemIcon: the name of the SFSymbols icon to be displayed in the entry
+///   - title: the title of the menu entry
+///   - targetView: the target view to open, when the entry is tapped
 struct MenuItem {
     var systemIcon: String
     var title: String
     var targetView: MenuTargetView
 }
 
+/// view for the app's main menu
 struct WelcomeView: View {
     let menuItems = [
         MenuItem(systemIcon: "brain.head.profile", title: "mainmenu.menu.roi.visualize", targetView: .visualizeRoi),
@@ -23,6 +29,7 @@ struct WelcomeView: View {
         MenuItem(systemIcon: "books.vertical.fill", title: "mainmenu.glossary.title", targetView: .glossary)
     ]
     
+    // two column layout
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -60,16 +67,6 @@ struct WelcomeView: View {
                         }.background(Color(uiColor: .systemGroupedBackground))
                             .listRowInsets(EdgeInsets())
                     }
-                    /*Section {
-                        NavigationLink(value: MenuTargetView.history, label: {
-                            Label("mainmenu.history.title", systemImage: "clock.fill")
-                        })
-                    }
-                    Section {
-                        NavigationLink(value: MenuTargetView.history, label: {
-                            Label("mainmenu.glossary.title", systemImage: "book.fill")
-                        })
-                    }*/
                     
                     Section("explanation.menu.title") {
                         ForEach(explanations, id: \.title) { explanation in
@@ -96,7 +93,7 @@ struct WelcomeView: View {
                     }
                 })
                 .navigationDestination(for: PipelineView.self, destination: { selection in
-                    // navigation Destinations for Prediction Pipeline
+                    // Navigation Destinations for Prediction Pipeline
                     switch selection {
                     case .datasetImages:
                         SelectDatasetImagesView(path: $path)

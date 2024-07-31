@@ -8,6 +8,11 @@
 import SwiftUI
 import Matft
 
+/// sixth view in the pipeline
+/// allows the selection of the evaluation type and its corresponding evaluation parameter
+/// currently the first values are automatically selected, because the app only one evaluation type and parameter
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectEvaluationTypeView: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters
@@ -86,9 +91,6 @@ struct SelectEvaluationTypeView: View {
                     .padding([.leading, .trailing, .bottom])
                     .disabled(pipelineParameters.evaluationType.name == "" || pipelineParameters.evaluationParameter.name == "")
             }
-                
-                
-            
         }
         .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("view.pipeline.evaluation.title")

@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+/// struct for a explanation
+/// - Parameters:
+///   - title: the title of the explanation
+///   - description: the text of the explanation
+///   - show: whether the explanation should be shown or not
 struct Explanation {
     var title: String
     var description: String
     var show: Bool
 }
 
+/// view for a row in a list that shows a explanation when tapped
+/// - Parameters:
+///   - title: the explanation's title
+///   - description: the text of the explanation
 struct ExplanationRow: View {
     
     @State var title: String

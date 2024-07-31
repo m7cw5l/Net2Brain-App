@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// view used in `VisualizeRoiImageView` to let the user select the image corresponding to the brain response
+/// - Parameters:
+///   - selectedImage: a Binding containing the name of the selected image
 struct ImageSelectorView: View {
     //https://www.hackingwithswift.com/quick-start/swiftui/how-to-position-views-in-a-grid-using-lazyvgrid-and-lazyhgrid; 16.10.23 14:52
     
@@ -15,12 +18,6 @@ struct ImageSelectorView: View {
     let columns = [
         GridItem(.adaptive(minimum: 100), spacing: 2)
     ]
-    
-    /*let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]*/
     
     let pathTrainingImages = Bundle.main.resourcePath!
     

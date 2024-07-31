@@ -7,11 +7,16 @@
 
 import Foundation
 
+/// struct for a library license
+/// - Parameters:
+///   - libraryName: the name of the library
+///   - licenseText: the text of the license
 struct LibraryLicense {
     var libraryName: String
     var licenseText: String
 }
 
+// an array if all libraries used in the app with their licenses
 let libraryLicenses = [
     LibraryLicense(libraryName: "GzipSwift", licenseText: """
 The MIT License (MIT)

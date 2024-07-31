@@ -8,6 +8,10 @@
 import SwiftUI
 import SwiftData
 
+/// final view in the pipeline
+/// shows the calculated RSA results in a bar chart and allows the restart of the pipeline
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct RSAChartView: View {
     @Environment(\.modelContext) private var modelContext
     
@@ -30,10 +34,7 @@ struct RSAChartView: View {
                 Text("pipeline.rsa.chart.no.data")
             }
             
-            /*Button("explanation.general.button.title", systemImage: "questionmark.circle", action: {
-                explanation.show.toggle()
-            })//.padding([.top])*/
-            
+            // this button is currently hidden because the RSA visualization on the brain is disabled
             /*Button(action: {
                 showBrainVisualization.toggle()
             }, label: {
@@ -60,7 +61,7 @@ struct RSAChartView: View {
                     ExplanationMenuButton(buttonTitle: "explanation.general.button.title", title: "explanation.general.alert.title", description: "explanation.rsa.chart", currentExplanation: $currentExplanation)
                 })
             }.sheet(isPresented: $showBrainVisualization) {
-                RSABrainView(pipelineParameters: pipelineParameters, pipelineData: pipelineData)
+                RSABrainView()
             }
             .sheet(isPresented: $currentExplanation.show) {
                 /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16

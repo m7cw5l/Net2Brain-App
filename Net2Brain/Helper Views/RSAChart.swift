@@ -8,12 +8,14 @@
 import SwiftUI
 import Charts
 
+/// view for displaying the RSA results in a bar chart
+/// - Parameters:
+///   - data: an array of `RSAOutput` items to be displayed in the chart
 struct RSAChart: View {
     
     var data: [RSAOutput]
-    //var pipelineParameters: PipelineParameters
+    
     @EnvironmentObject var pipelineParameters: PipelineParameters
-    //@EnvironmentObject var pipelineData: PipelineData
     
     var body: some View {
         Chart {

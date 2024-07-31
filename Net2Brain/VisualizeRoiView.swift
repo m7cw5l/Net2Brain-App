@@ -8,6 +8,9 @@
 import SwiftUI
 import SceneKit
 
+/// view to visualize the different ROIs on a 3D brain
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct VisualizeRoiView: View {
     @Binding var path: NavigationPath
     
@@ -18,6 +21,7 @@ struct VisualizeRoiView: View {
     @State private var selectedRoi: ROI = .all
     @State private var selectedHemisphere = "left"
     
+    // used to detect if any parameter corresponding to the rendered brain changes
     var selectedBrain: [String] {[
         selectedRoi.rawValue,
         selectedHemisphere
@@ -36,7 +40,7 @@ struct VisualizeRoiView: View {
     
     var body: some View {
         VStack {
-            // https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-two-views-the-same-width-or-height#; 16.10.23 16:05
+            /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-two-views-the-same-width-or-height#; 16.10.23 16:05
             HStack {
                 VStack {
                     Text("roi.title.long").font(.headline)
@@ -66,36 +70,6 @@ struct VisualizeRoiView: View {
                     .background()
                     .clipShape(.rect(cornerRadius: 16))
             }.fixedSize(horizontal: false, vertical: true)
-            /*VStack {
-                VStack {
-                    Text("roi.title.long").font(.headline)
-                    Picker("roi.title", selection: $selectedRoi) {
-                        Label("roi.all", systemImage: "brain").tag(ROI.all)
-                        Label("roi.visual", systemImage: "eyes").tag(ROI.visual)
-                        Label("roi.body", systemImage: "figure.stand").tag(ROI.body)
-                        Label("roi.face", systemImage: "face.smiling").tag(ROI.face)
-                        Label("roi.place", systemImage: "map").tag(ROI.place)
-                        Label("roi.word", systemImage: "text.bubble").tag(ROI.word)
-                        Label("roi.anatomical", systemImage: "figure.run").tag(ROI.anatomical)
-                    }
-                }.padding(.vertical)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background()
-                    .clipShape(.rect(cornerRadius: 16))
-                
-                VStack {
-                    Text("hemisphere.title").font(.headline)
-                    Picker("hemisphere.title", selection: $selectedHemisphere) {
-                        Text("hemisphere.left").tag("left")
-                        Text("hemisphere.right").tag("right")
-                    }.pickerStyle(.segmented)
-                        .fixedSize()
-                }.padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background()
-                    .clipShape(.rect(cornerRadius: 16))
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .fixedSize(horizontal: false, vertical: true)*/
                         
             GeometryReader { geo in
                 ZStack {
@@ -104,7 +78,7 @@ struct VisualizeRoiView: View {
                         pointOfView: cameraNode,
                         options: [.allowsCameraControl, .autoenablesDefaultLighting, .temporalAntialiasingEnabled],
                         delegate: nil
-                    )//.scaledToFill()
+                    )
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         .zIndex(1.0)
                     if loadingBrain {
@@ -122,7 +96,6 @@ struct VisualizeRoiView: View {
                     .clipShape(.rect(cornerRadius: 16))
                     .onChange(of: geo.size) {
                         sceneViewSize = geo.size
-                        //print(sceneViewSize)
                     }
             }
             

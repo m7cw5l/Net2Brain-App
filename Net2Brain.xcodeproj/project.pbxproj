@@ -533,8 +533,6 @@
 		AA5CB9F02B15CAA200A5C2CC /* 78images_00073.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA5CB9A22B15CAA200A5C2CC /* 78images_00073.jpg */; };
 		AA5CB9F22B15D9C100A5C2CC /* PipelineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */; };
 		AA5CB9F42B15E0B500A5C2CC /* PipelineSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */; };
-		AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */; };
-		AA6EDE2F2B17400C004EFBCF /* HeatmapChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */; };
 		AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C32B1DE15300517431 /* AvailableData.swift */; };
 		AA7380C62B1DE2A600517431 /* RSAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7380C52B1DE2A600517431 /* RSAChartView.swift */; };
 		AA73A2462B0C9F0A00EB13A1 /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73A2452B0C9F0A00EB13A1 /* RSA.swift */; };
@@ -1124,8 +1122,7 @@
 		AA5CB9A22B15CAA200A5C2CC /* 78images_00073.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 78images_00073.jpg; sourceTree = "<group>"; };
 		AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSelectionView.swift; sourceTree = "<group>"; };
 		AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSelectionRow.swift; sourceTree = "<group>"; };
-		AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapTabView.swift; sourceTree = "<group>"; };
-		AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapChartOld.swift; sourceTree = "<group>"; };
+		AA72B2212C5A288100CC8ED2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AA7380C32B1DE15300517431 /* AvailableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableData.swift; sourceTree = "<group>"; };
 		AA7380C52B1DE2A600517431 /* RSAChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAChartView.swift; sourceTree = "<group>"; };
 		AA73A2452B0C9F0A00EB13A1 /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
@@ -1620,6 +1617,7 @@
 		AA5AA2642AB838F70019C38A = {
 			isa = PBXGroup;
 			children = (
+				AA72B2212C5A288100CC8ED2 /* README.md */,
 				AA5AA26F2AB838F70019C38A /* Net2Brain */,
 				AA5AA2802AB838F80019C38A /* Net2BrainTests */,
 				AA5AA28A2AB838F80019C38A /* Net2BrainUITests */,
@@ -1713,14 +1711,12 @@
 				AA9ADFF22B46D5F900818FDB /* ExplanationMenuButton.swift */,
 				AA1B256C2B4D4E9C00AD7F2D /* ExplanationInfoButton.swift */,
 				AA9ADFEE2B46CFD900818FDB /* ExplanationSheet.swift */,
-				AAFDAAA32B4EFBBD00D19ACB /* ImageGridHeader.swift */,
 				AA5CB9F12B15D9C100A5C2CC /* PipelineSelectionView.swift */,
 				AA5CB9F32B15E0B500A5C2CC /* PipelineSelectionRow.swift */,
 				AA96FBA02B4EE9B400F9F4A6 /* RandomImagePicker.swift */,
+				AAFDAAA32B4EFBBD00D19ACB /* ImageGridHeader.swift */,
 				AAFDAAA12B4EEC1C00D19ACB /* ImageGridHeaderSelectable.swift */,
 				AA96FB9E2B4EE85B00F9F4A6 /* ImageGridItemSelectable.swift */,
-				AA6EDE2C2B173F35004EFBCF /* HeatmapTabView.swift */,
-				AA6EDE2E2B17400C004EFBCF /* HeatmapChartOld.swift */,
 				AA02C47D2B4FC8C10001B177 /* HeatmapChart.swift */,
 				AAB6C41D2B690AC200E5C882 /* RestartPipelineButton.swift */,
 				AA872A692B7250A900192A45 /* RSAChart.swift */,
@@ -2642,13 +2638,11 @@
 				AA8B10DD2AFA2A7300C76E63 /* Dist.swift in Sources */,
 				AA872A6A2B7250A900192A45 /* RSAChart.swift in Sources */,
 				AA30D9702AF10D5A00081BB8 /* HeatmapChartView.swift in Sources */,
-				AA6EDE2F2B17400C004EFBCF /* HeatmapChartOld.swift in Sources */,
 				AA1613FD2B107CB6007FFA70 /* SelectRDMMetricView.swift in Sources */,
 				AA5AA2712AB838F70019C38A /* Net2BrainApp.swift in Sources */,
 				AAF570B02B1240CF007DC141 /* SelectDatasetImagesView.swift in Sources */,
 				AA1FE1AC2B6CD2E700A367B3 /* HistoryOverview.swift in Sources */,
 				AAB6C41E2B690AC200E5C882 /* RestartPipelineButton.swift in Sources */,
-				AA6EDE2D2B173F35004EFBCF /* HeatmapTabView.swift in Sources */,
 				AA7380C42B1DE15300517431 /* AvailableData.swift in Sources */,
 				AA969A672B1A3F49002A5900 /* vgg11.mlpackage in Sources */,
 				AAC0F9BA2B18E555002A7A65 /* resnet18.mlpackage in Sources */,

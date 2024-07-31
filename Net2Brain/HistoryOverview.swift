@@ -8,6 +8,9 @@
 import SwiftUI
 import SwiftData
 
+/// view with a list of all history pipeline experiments
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct HistoryOverview: View {
     @Environment(\.modelContext) private var modelContext
     

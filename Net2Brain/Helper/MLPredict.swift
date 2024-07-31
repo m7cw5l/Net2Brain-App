@@ -9,6 +9,7 @@ import SwiftUI
 import CoreML
 import Matft
 
+/// extension for resizing a UIImage to a new size
 extension UIImage {
     func resize(targetSize: CGSize) -> UIImage {
         // Compute the new image size that preserves aspect ratio
@@ -33,6 +34,8 @@ extension UIImage {
     }
 }
 
+/// struct for handling the complete prediction workflow
+/// contains a function for every ML model, because every model has it's own classes
 struct MLPredict {
     private let pathImages = Bundle.main.resourcePath!
         
@@ -278,44 +281,4 @@ struct MLPredict {
         
         return layerOutput
     }
-    
-    /*func predictResNet18(imageNames: [String], layers: [String]) async -> [MfArray] {
-        guard let model = try? resnet18() else {
-            fatalError()
-        }
-        
-        var allLayerOutputs = [MfArray]()
-        
-        for layer in layers {
-            var layerOutputArray = [MfArray]()
-            
-            for imageName in imageNames {
-                let inputImage = loadImage(imageName)
-                guard let pixelBuffer = buffer(from: inputImage) else { return [] }
-                
-                let input = resnet18Input(image: pixelBuffer)
-                
-                guard let pred = try? await model.prediction(input: input) else {
-                    fatalError()
-                }
-                
-                guard let feature = pred.featureValue(for: layer) else { return [] }
-                guard var featureMultiArray = feature.multiArrayValue else { return [] }
-                
-                let matftArray = MfArray(base: &featureMultiArray)
-                
-                if let tensorMatft = matftArray.first {
-                    layerOutputArray.append(tensorMatft)
-                }
-            }
-            
-            guard let firstOutputItem = layerOutputArray.first else { return [] }
-            
-            let output = Matft.concatenate(layerOutputArray).reshape([imageNames.count, firstOutputItem.shape[0], firstOutputItem.shape[1], firstOutputItem.shape[2]])
-            
-            allLayerOutputs.append(flattenOutput(output))
-        }
-        
-        return allLayerOutputs
-    }*/
 }

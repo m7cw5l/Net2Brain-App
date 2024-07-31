@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// first view in the pipeline
+/// allows the selection of a dataset from the available ones
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectDatasetView: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters
@@ -18,7 +22,6 @@ struct SelectDatasetView: View {
     
     var body: some View {
         VStack {
-            
             PipelineSelectionView(currentlySelectedParameter: .dataset)
             
             Form {

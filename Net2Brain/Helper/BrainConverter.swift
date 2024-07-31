@@ -10,7 +10,8 @@ import SceneKit
 import Gzip /// https://github.com/1024jp/GzipSwift; 18.10.23 10:41
 import SwiftUI
 
-///https://www.hackingwithswift.com/example-code/uicolor/how-to-read-the-red-green-blue-and-alpha-color-components-from-a-uicolor; 19.10.23 11:40
+/// extension to get the single red/green/blue/alpha values of a `UIColor`
+/// https://www.hackingwithswift.com/example-code/uicolor/how-to-read-the-red-green-blue-and-alpha-color-components-from-a-uicolor; 19.10.23 11:40
 extension UIColor {
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
@@ -23,24 +24,42 @@ extension UIColor {
     }
 }
 
+/// enumeration for the available visualizion types for the brain
 enum BrainVisualizationType {
     case roi, fmri, rsa
 }
 
+/// struct to parse vector data from the json files
+/// - Parameters:
+///   - x: the x coordinate
+///   - y: the y coordinate
+///   - z: the z coordinate
 struct Vector: Codable {
     let x: Float
     let y: Float
     let z: Float
 }
 
+/// converts a degree value to radial
+/// - Returns: the radial value
 func deg2rad(_ number: Double) -> Double {
     return number * .pi / 180
 }
 
+/// enumeration for the different camera styles available for the scene
 enum CameraStyle {
     case perspective, orthographic
 }
 
+/// struct for storing the values corresponding to the different ROIs
+/// used in the `BrainVisualizationType.rsa`
+/// - Parameters:
+///   - visual: value for the visual ROI
+///   - body: value for the body ROI
+///   - face: value for the face ROI
+///   - place: value for the place ROI
+///   - word: value for the word ROI
+///   - anatomical: value for the anatomical ROI
 struct BrainVisualizationValues {
     let visual: Float
     let body: Float
@@ -58,23 +77,26 @@ struct BrainVisualizationValues {
     }
 }
 
+/// struct that allows the creation of a SCNScene with a 3D brain SCNGeometry node
 struct BrainConverter {
     var environment: EnvironmentValues
     
-    let heatmap = Heatmaps().coldHotUI
-    let threshold = 1e-14
+    private let heatmap = Heatmaps().coldHotUI
+    private let threshold = 1e-14
     
     @State var visualizationType: BrainVisualizationType
     @Binding var hemisphere: String
     @Binding var roi: ROI
     @Binding var image: String
-    //@State var rsaOutput: RSAOutput? = nil
+    
     @State var brainVisualizationValues: BrainVisualizationValues? = nil
     
     @Binding var sceneViewSize: CGSize
     
+    /// calculates a mix of two colors, used for getting different shades of purple
+    /// - Returns: the resulting UIColor
     /// https://stackoverflow.com/a/51679667 ; 09.04.2024 11:31
-    func calculateColor(orgColor: UIColor, overlayColor: UIColor) -> UIColor {
+    private func calculateColor(orgColor: UIColor, overlayColor: UIColor) -> UIColor {
         // Helper function to clamp values to range (0.0 ... 1.0)
         func clampValue(_ v: CGFloat) -> CGFloat {
             guard v > 0 else { return  0 }
@@ -107,7 +129,9 @@ struct BrainConverter {
         return color
     }
     
-    func getSurfaceWithColorMap() -> [SCNVector3] {
+    /// loads the brain surface and color map
+    /// - Returns: array of SCNVector3 (vectors) with the brain surface and color map combined
+    private func getSurfaceWithColorMap() -> [SCNVector3] {
         guard let resourcePath = Bundle.main.resourcePath else {
             return []
         }
@@ -117,6 +141,7 @@ struct BrainConverter {
         
         switch visualizationType {
         case .roi:
+            // simple ROI mapping (used in VisualizeRoiView)
             let colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map.gzip"
             let colorMap = readJSONFileColors(colorMapFilePath)
             
@@ -130,6 +155,7 @@ struct BrainConverter {
                 }
             }
         case .fmri:
+            // map for fMRI response (used in VisualizeRoiImageView)
             let colorMapFilePath = "\(resourcePath)/roi_\(hemisphere)_\(roi.rawValue)_color_map_\(image).gzip"
             let colorMap = readJSONFileColors(colorMapFilePath)
             
@@ -153,6 +179,7 @@ struct BrainConverter {
                 }
             }
         case .rsa:
+            // plotting values for every ROI on the brain
             let minValue = brainVisualizationValues?.getMin() ?? 0.0
             let maxValue = brainVisualizationValues?.getMax() ?? 0.0
             let difference = abs(maxValue - minValue)
@@ -179,6 +206,8 @@ struct BrainConverter {
         return surface
     }
     
+    /// calculates max and min values for fMRI plotting
+    /// - Returns: the min and max values
     func getColorExtremes() -> (min: Int, max: Int) {
         if image != "" {
             guard let resourcePath = Bundle.main.resourcePath else {
@@ -198,7 +227,10 @@ struct BrainConverter {
         }
     }
     
-    func createGeometry() async -> SCNGeometry {
+    /// main function in BrainConverter
+    /// creates a brain geometry with a surface map asynchronously based on the parameters of BrainConverter
+    /// - Returns: the generated SCNGeometry
+    private func createGeometry() async -> SCNGeometry {
         guard let resourcePath = Bundle.main.resourcePath else {
             return SCNGeometry()
         }
@@ -237,6 +269,8 @@ struct BrainConverter {
         return geometry
     }
     
+    /// creates the SCNScene that is returned to the SceneView
+    /// - Returns: the generated SCNScene
     func createScene() async -> SCNScene {
         let geometry = await createGeometry()
         
@@ -245,10 +279,10 @@ struct BrainConverter {
         DispatchQueue.main.async {
             // add the node
             let brainNode = SCNNode(geometry: geometry)
-            //brainNode.scale = SCNVector3(0.000001, 0.000001, 0.000001)
             brainNode.scale = SCNVector3(0.01, 0.01, 0.01)
             
             /// https://developer.apple.com/documentation/scenekit/scnnode/1407980-eulerangles; 18.10.23 11:11
+            // rotates the brain in the Scene to show the outer side at first
             if hemisphere == "left" {
                 brainNode.eulerAngles = SCNVector3(deg2rad(-90.0), deg2rad(90.0), deg2rad(0.0))
             } else {
@@ -256,6 +290,7 @@ struct BrainConverter {
             }
             scene.rootNode.addChildNode(brainNode)
             
+            // adds camera to allow the "Double-tab to return to start view" gesture
             let cameraStyle = CameraStyle.perspective
             let camera = SCNCamera()
             
@@ -295,13 +330,16 @@ struct BrainConverter {
     }
 }
 
-func readJSONFileVectors(_ path: String) -> [SCNVector3] {
+/// reads the json-file for the vectors
+/// - Returns: the loaded data as SCNVector3 array
+private func readJSONFileVectors(_ path: String) -> [SCNVector3] {
     let fileUrl = URL(filePath: path)
     
     guard let jsonData = try? Data(contentsOf: fileUrl) else {
         fatalError()
     }
     
+    // needed because data is gzip-compressed
     let decompressedData: Data
     if jsonData.isGzipped {
         decompressedData = try! jsonData.gunzipped()
@@ -322,13 +360,16 @@ func readJSONFileVectors(_ path: String) -> [SCNVector3] {
     return []
 }
 
-func readJSONFileIndices(_ path: String) -> [Int32] {
+/// reads the json-file for the indicecs
+/// - Returns: the loaded data as Int32 array
+private func readJSONFileIndices(_ path: String) -> [Int32] {
     let fileUrl = URL(filePath: path)
     
     guard let jsonData = try? Data(contentsOf: fileUrl) else {
         fatalError()
     }
     
+    // needed because data is gzip-compressed
     let decompressedData: Data
     if jsonData.isGzipped {
         decompressedData = try! jsonData.gunzipped()
@@ -349,13 +390,18 @@ func readJSONFileIndices(_ path: String) -> [Int32] {
     return []
 }
 
-func readJSONFileSurface(_ path: String) -> [SCNVector3] {
+/// reads the brain surface data from json
+/// the surface data is black-white and gives the brain surface structure
+/// used for every brain visualization
+/// - Returns: the loaded data as SCNVector3 array
+private func readJSONFileSurface(_ path: String) -> [SCNVector3] {
     let fileUrl = URL(filePath: path)
         
     guard let jsonData = try? Data(contentsOf: fileUrl) else {
         fatalError()
     }
     
+    // needed because data is gzip-compressed
     let decompressedData: Data
     if jsonData.isGzipped {
         decompressedData = try! jsonData.gunzipped()
@@ -377,7 +423,9 @@ func readJSONFileSurface(_ path: String) -> [SCNVector3] {
     return []
 }
 
-func readJSONFileColors(_ path: String) -> [Float] {
+/// reads colors from json-file for adding to the surface
+/// - Returns: the loaded data as Float array
+private func readJSONFileColors(_ path: String) -> [Float] {
     let fileUrl = URL(filePath: path)
         
     guard let jsonData = try? Data(contentsOf: fileUrl) else {

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// view for a button in menu that shows a explanation when tapped
+/// - Parameters:
+///   - buttonTitle: the titlle for the button
+///   - title: the explanation's title
+///   - description: the text of the explanation
 struct ExplanationMenuButton: View {
     
     @State var buttonTitle = ""

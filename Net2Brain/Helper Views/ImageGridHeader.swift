@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// view for displaying a header for a image category in a categorized image overview
+/// - Parameters:
+///   - category: the image category corresponding to the header
 struct ImageGridHeader: View {
     
     var category: N2BImageCategory

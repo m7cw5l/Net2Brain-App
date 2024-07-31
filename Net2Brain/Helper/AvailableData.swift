@@ -7,6 +7,11 @@
 
 import Foundation
 
+// this file contains all arrays with the available data in the app:
+// - datasets with corresponding images
+// - ML models with their corresponding layers
+// - RDM metrices
+// - Evaluation types with their corresponding evaluation parameters
 
 let images78 = [
     N2BImageCategory(name: "pipeline.image.category.animals", images: (1...13).map { String(format: "78images_%05d", $0) }),

@@ -8,6 +8,7 @@
 import SwiftUI
 import Matft
 
+/// view for displaying a history pipeline experiment with the parameters and RSA chart
 struct HistoryChartView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
@@ -26,12 +27,6 @@ struct HistoryChartView: View {
     }()
     
     var body: some View {
-        /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-custom-bindings ; 02.02.2024 09:18
-        /*let parametersBinding = Binding(
-            get: { PipelineParameters(historyPipelineParameters: self.historyEntry.pipelineParameters) },
-            set: { self.historyEntry.pipelineParameters = HistoryPipelineParameters(pipelineParameters: $0) }
-        )*/
-        
         VStack {
             PipelineSelectionView(currentlySelectedParameter: .none, allowCollapse: true)
             

@@ -9,10 +9,12 @@ import SwiftUI
 import SwiftData
 import Matft
 
+/// fourth view in the pipeline
+/// allows the selection of ML model layers based on the selected ML model
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct SelectMLLayersView: View {
-    
-    //@Environment(\.modelContext) var modelContext
-        
+            
     @EnvironmentObject var pipelineParameters: PipelineParameters
     @EnvironmentObject var pipelineData: PipelineData
     
@@ -26,7 +28,6 @@ struct SelectMLLayersView: View {
     
     var body: some View {
         VStack {
-            
             PipelineSelectionView(currentlySelectedParameter: .mlModelLayer)
             
             HStack {
@@ -50,6 +51,7 @@ struct SelectMLLayersView: View {
             List {
                 Section("pipeline.available.model.layers.title") {
                     ForEach(pipelineParameters.mlModel.layers, id: \.name) { layer in
+                        // custom view in the list to allow selection of multiple layers. `Picker` currently doesn't support this
                         Button(action: {
                             if pipelineParameters.mlModelLayers.contains(layer) {
                                 pipelineParameters.mlModelLayers.removeAll { $0 == layer }

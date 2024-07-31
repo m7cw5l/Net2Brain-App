@@ -25,6 +25,7 @@ extension Bundle {
     }
 }
 
+/// view for displaying info about the app like current version, build, etc.
 struct AboutAppView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
@@ -80,13 +81,12 @@ struct AboutAppView: View {
         }
     }
     
+    /// get's the size of the app's cache
+    /// - Returns: string with cache size in MB
     func getCacheSize() -> String {
         let normalCacheSize = Double(URLCache.shared.currentDiskUsage) / 1024 / 1024
-        //var totalCache = 0.0
-        //print("\(Double(URLCache.shared.currentDiskUsage) / 1024 / 1024) MB")
         
         return String(format: "%.3f MB", normalCacheSize)
-        //return normalCacheSize
     }
 }
 

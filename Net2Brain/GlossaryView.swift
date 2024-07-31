@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+/// struct for a entry in the app's glossary
+/// - Parameters:
+///   - abbreviation: the abbreviation for the entry
+///   - meaning: the description/meaning of the abbreviation
 struct GlossaryEntry {
     let abbreviation: String
     let meaning: String
 }
 
+/// view for displaying a list of glossary entries
+/// - Parameters:
+///   - path: the navigation path as a Binding
 struct GlossaryView: View {
     @Binding var path: NavigationPath
     

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// view for displaying selected parameters, the parameter currently selected and the parameters that still need to be selected
+/// - Parameters:
+///   - currentlySelectedParameter: the currently selected parameter (enum value for highlighting the parameter)
+///   - allowCollapse: whether the view can be collapsed or not
 struct PipelineSelectionView: View {
     
     @EnvironmentObject var pipelineParameters: PipelineParameters
@@ -67,52 +71,24 @@ struct PipelineSelectionView: View {
             }
     }
     
-    func datasetEmpty() -> Bool {
-        return pipelineParameters.dataset.name == ""
-    }
-    
-    func imagesEmpty() -> Bool {
-        return pipelineParameters.datasetImages.count == 0
-    }
-    
-    func mlModelEmpty() -> Bool {
-        return pipelineParameters.mlModel.name == ""
-    }
-    
-    func mlModelLayerEmpty() -> Bool {
-        return pipelineParameters.mlModelLayers.count == 0
-    }
-    
-    func rdmMetricEmpty() -> Bool {
-        return pipelineParameters.rdmMetric.name == ""
-    }
-    
-    func evaluationTypeEmpty() -> Bool {
-        return pipelineParameters.evaluationType.name == ""
-    }
-    
-    func evaluationParameterEmpty() -> Bool {
-        return pipelineParameters.evaluationParameter.name == ""
-    }
-    
     func isParameterEmpty(_ parameter: PipelineParameter) -> Bool {
         switch parameter {
         case .none:
             return true
         case .dataset:
-            return datasetEmpty()
+            return pipelineParameters.dataset.name == ""
         case .images:
-            return imagesEmpty()
+            return pipelineParameters.datasetImages.count == 0
         case .mlModel:
-            return mlModelEmpty()
+            return pipelineParameters.mlModel.name == ""
         case .mlModelLayer:
-            return mlModelLayerEmpty()
+            return pipelineParameters.mlModelLayers.count == 0
         case .rdmMetric:
-            return rdmMetricEmpty()
+            return pipelineParameters.rdmMetric.name == ""
         case .evaluationType:
-            return evaluationTypeEmpty()
+            return pipelineParameters.evaluationType.name == ""
         case .evaluationParameter:
-            return evaluationParameterEmpty()
+            return pipelineParameters.evaluationParameter.name == ""
         }
     }
     

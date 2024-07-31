@@ -8,26 +8,13 @@
 import SwiftUI
 import Matft
 
+/// modal view than can be opened from `SelectRDMMetricView`
+/// shows the different RDMs in a heatmap
+/// - Parameters:
+///   - matrices: a dictionary with the RDMs corresponding to the model layers (layer's key is the key)
 struct HeatmapChartView: View {
     
     @Environment(\.dismiss) var dismiss
-    
-    let heatmap = [
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.28409019, green: 1.0, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.71212101, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.23484906, blue: 1.0, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.75755961, alpha: 1.0),
-        UIColor(red: 0.0, green: 0.0, blue: 0.2802532, alpha: 1.0),
-        UIColor(red: 0.2802532, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 0.75755961, green: 0.0, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.23484906, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 0.71212101, blue: 0.0, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 0.28409019, alpha: 1.0),
-        UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    ].map {
-        Color(uiColor: $0)
-    }
     
     @EnvironmentObject var pipelineParameters: PipelineParameters
     
@@ -41,6 +28,7 @@ struct HeatmapChartView: View {
     @State private var chartSelectedX: String? = ""
     @State private var chartSelectedY: String? = ""
     
+    /// calculated property for the currently selected images
     var selectedImages: (firstIndex: String, first: String, secondIndex: String, second: String)? {
         guard let chartSelectedX else { return nil }
         guard let chartSelectedY else { return nil }
@@ -52,19 +40,16 @@ struct HeatmapChartView: View {
             return (firstIndex: chartSelectedX, first: xImage, secondIndex: chartSelectedY, second: yImage)
         }
         return nil
-      }
+    }
     
     @State var explanation = Explanation(title: "explanation.general.alert.title", description: "explanation.heatmap.chart", show: false)
     
     var body: some View {
         NavigationStack {
             VStack {
-                //PipelineSelectionView(pipelineParameters: $pipelineParameters, currentlySelectedParameter: .none)
-                
                 VStack {
                     if let selectedImages {
                         VStack(spacing: 2.0) {
-                            //Text("pipeline.heatmap.selected.images").font(.headline)
                             HStack {
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.first).jpg") ?? UIImage()).resizable().scaledToFit()
                                 Image(uiImage: UIImage(contentsOfFile: "\(pathImages)/\(selectedImages.second).jpg") ?? UIImage()).resizable().scaledToFit()
@@ -90,18 +75,17 @@ struct HeatmapChartView: View {
                                 ForEach(pipelineParameters.mlModelLayers, id: \.self) {
                                     Text($0.name).tag($0)
                                 }
-                            }//.pickerStyle(.segmented)
+                            }
                         }
                     }
                 }.padding(.horizontal)
                 
-                //HeatmapChart(matrix: currentMatrix, images: pipelineParameters.datasetImages)
                 HeatmapChart(heatmapEntries: getHeatmapData(), images: pipelineParameters.datasetImages, selectedX: $chartSelectedX, selectedY: $chartSelectedY)
                     .aspectRatio(1, contentMode: .fill)
                     .padding(.horizontal)
                 
                 VStack {
-                    LinearGradient(colors: [Color.white, Color.accentColor, Color.black], startPoint: .leading, endPoint: .trailing)
+                    LinearGradient(colors: Heatmaps().accentColorBlack, startPoint: .leading, endPoint: .trailing)
                         .frame(height: 16.0)
                         .clipShape(.rect(cornerRadius: 8))
                     HStack {
@@ -126,32 +110,21 @@ struct HeatmapChartView: View {
                             dismiss()
                         }
                     }
-                    /*ToolbarItem(placement: .topBarLeading) {
-                        Menu("explanation.menu.title", systemImage: "questionmark.circle", content: {
-                            Button("What does the heatmap show me?") {
-                                
-                            }
-                        })
-                    }*/
                 }
         }.onAppear {
             currentLayer = pipelineParameters.mlModelLayers.first ?? N2BMLLayer(name: "", layerDescription: "", coremlKey: "")
-            //currentMatrix = matrices.first ?? MfArray([-1])
         }
         .onChange(of: currentLayer, initial: true, {
             currentMatrix = matrices[currentLayer.coremlKey] ?? MfArray([-1])
-            //print(currentMatrix)
         })
-        /*.onChange(of: chartSelectedX) {
-            print(chartSelectedX)
-            print(chartSelectedY)
-        }*/
         .sheet(isPresented: $explanation.show) {
             /// https://www.hackingwithswift.com/quick-start/swiftui/how-to-display-a-bottom-sheet ; 04.01.24 12:16
             ExplanationSheet(sheetTitle: $explanation.title, sheetDescription: $explanation.description)
         }
     }
     
+    /// converts the matrix to the data array needed for displaying the heatmaps
+    /// - Returns: an array of `HeatmapEntry` items
     func getHeatmapData() -> [HeatmapEntry] {
         var heatmapEntries = [HeatmapEntry]()
         for x in 0..<currentMatrix.shape[0] {
@@ -162,17 +135,20 @@ struct HeatmapChartView: View {
         return heatmapEntries
     }
     
+    /// gets the minimum value in the currently displayed matrix
+    /// - Returns: the minimum value
     func getMatrixMin() -> Float {
         return currentMatrix.min().item(index: 0, type: Float.self)
     }
     
+    /// gets the maximum value in the currently displayed matrix
+    /// - Returns: the maximum value
     func getMatrixMax() -> Float {
         return currentMatrix.max().item(index: 0, type: Float.self)
     }
 }
 
 #Preview {
-    //let matrix = Matft.arange(start: -50, to: 50, by: 1, shape: [10, 10], mftype: .Float)
     let matrix = MfArray((1...100).map { _ in Float.random(in: 0...1) }, shape: [10, 10])
     let matrix2 = MfArray((1...400).map { _ in Float.random(in: 0...1) }, shape: [20, 20])
     return HeatmapChartView(matrices: ["Test1": matrix, "Test2":matrix2])
