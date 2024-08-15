@@ -1,0 +1,27 @@
+{
+  "Outputs" : {
+    "features_0" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "features_10" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "features_3" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "features_8" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "features_6" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "image" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

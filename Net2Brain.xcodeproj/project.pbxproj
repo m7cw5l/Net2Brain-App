@@ -1638,6 +1638,7 @@
 		AA5AA26F2AB838F70019C38A /* Net2Brain */ = {
 			isa = PBXGroup;
 			children = (
+				AAD387882C6DC47500863963 /* ML Packages */,
 				AA47B1FA2ADFAA8F00A933D7 /* 3d_brains */,
 				AAF570B12B12417C007DC141 /* data_rdm */,
 				AA1613FB2B107902007FFA70 /* Helper */,
@@ -1664,12 +1665,6 @@
 				AABD251D2C4E4A7500921149 /* LibraryLicenses.swift */,
 				AABD251B2C4E485400921149 /* LibraryLicensesView.swift */,
 				AABD251F2C4E4BF000921149 /* LibraryLicenseDetailView.swift */,
-				AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */,
-				AAC0F9B92B18E555002A7A65 /* resnet18.mlpackage */,
-				AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */,
-				AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */,
-				AA969A652B1A3F48002A5900 /* vgg11.mlpackage */,
-				AA969A662B1A3F49002A5900 /* vgg13.mlpackage */,
 				AA5AA2742AB838F80019C38A /* Assets.xcassets */,
 				AA5AA2762AB838F80019C38A /* Preview Content */,
 				AA9BEB492AD4238E001B3DA2 /* Localizable.xcstrings */,
@@ -1722,6 +1717,19 @@
 				AA872A692B7250A900192A45 /* RSAChart.swift */,
 			);
 			path = "Helper Views";
+			sourceTree = "<group>";
+		};
+		AAD387882C6DC47500863963 /* ML Packages */ = {
+			isa = PBXGroup;
+			children = (
+				AAC0F9AF2B18CF9A002A7A65 /* alexnet.mlpackage */,
+				AAC0F9B92B18E555002A7A65 /* resnet18.mlpackage */,
+				AAC0F9B02B18CF9B002A7A65 /* resnet34.mlpackage */,
+				AAC0F9AE2B18CF99002A7A65 /* resnet50.mlpackage */,
+				AA969A652B1A3F48002A5900 /* vgg11.mlpackage */,
+				AA969A662B1A3F49002A5900 /* vgg13.mlpackage */,
+			);
+			path = "ML Packages";
 			sourceTree = "<group>";
 		};
 		AAF570B12B12417C007DC141 /* data_rdm */ = {
