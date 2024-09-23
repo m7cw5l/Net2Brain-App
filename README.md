@@ -8,7 +8,7 @@ The Net2Brain App is a App for the iPhone that is based on the [Net2Brain toolbo
 3. **Net2Brain Pipeline:** this is the main feature of the app. The user selects parameters like the dataset, a subset of images from the dataset, the ML model, its layers, the distance metric for RDM (Representational Dissimilarity Matrix) creation and the evaluation type and parameter. The app now performs a prediction using the selected ML model with the selected images and calculates the RDM from the features of the ML model layers that then can be visualized using a Heatmap Chart. In the end RSA (Representational Similarity Analysis) is calculated and the results are shown in a bar chart.
 
 ## Current State
-The current state of the app forms the basis and is fully functional. It containts the following datasets and models:
+The current state of the app forms the basis and is fully functional. It contains the following datasets and models:
 
 ### Datasets
 - **78images** from [Algonauts2019 Challenge Training Set A](http://algonauts.csail.mit.edu/2019/download.html)
@@ -29,3 +29,6 @@ Every model comes with its own subset of layers.
 
 After opening the project in Xcode you can run it on an iPhone Simulator.
 
+## Trademark Notice and Attribution
+The Net2Brain App is an independent publication and has not been authorized, sponsored, or otherwise approved by Apple Inc.
+iPhone is a trademark of Apple Inc., registered in the U.S. and other countries and regions.
