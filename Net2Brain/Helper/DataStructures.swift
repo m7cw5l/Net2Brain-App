@@ -298,7 +298,7 @@ struct SimpleMatrix: Codable, Hashable {
 
 @Model
 final class HistoryPipelineParameters {
-    @Attribute(.unique) let id: UUID
+    @Attribute(.unique) var id: UUID
     var dataset: N2BDataset
     var datasetImages: [String]
     var mlModel: N2BMLModel
@@ -332,7 +332,7 @@ final class HistoryPipelineParameters {
 
 @Model
 final class HistoryEntry {
-    @Attribute(.unique) let id: UUID
+    @Attribute(.unique) var id: UUID
     var date: Date
     var pipelineParameters: HistoryPipelineParameters
     var distanceMatrices: [SimpleMatrix]

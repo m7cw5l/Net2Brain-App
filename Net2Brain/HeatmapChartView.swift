@@ -72,7 +72,7 @@ struct HeatmapChartView: View {
                         HStack {
                             Text("pipeline.heatmap.layer.select.title").font(.headline)
                             Picker("pipeline.heatmap.available.layers", selection: $currentLayer) {
-                                ForEach(pipelineParameters.mlModelLayers, id: \.self) {
+                                ForEach(pipelineParameters.mlModelLayers.sorted(by: { $0.coremlKey < $1.coremlKey }), id: \.self) {
                                     Text($0.name).tag($0)
                                 }
                             }

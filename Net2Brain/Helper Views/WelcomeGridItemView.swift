@@ -34,6 +34,6 @@ struct WelcomeGridItemView: View {
     }
 }
 
-#Preview {
-    WelcomeGridItemView(icon: "brain.head.profile", title: "Visualize vertices on brain surface map").previewLayout(.sizeThatFits)
+#Preview(traits: .sizeThatFitsLayout) {
+    WelcomeGridItemView(icon: "brain.head.profile", title: "Visualize vertices on brain surface map")
 }
